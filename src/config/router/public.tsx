@@ -1,5 +1,9 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
+// Pages:
+const LandingPage = lazy(() => import("../../pages/Landing"));
+
 export const PublicRouter = createBrowserRouter([
-  { path: "/", element: <h1>hello router</h1> },
+  { path: "/", element: <LandingPage /> },
 ]);

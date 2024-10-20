@@ -1,9 +1,13 @@
 import { RouterProvider } from "react-router-dom";
-// Routers:
 import { PublicRouter } from "./config/router/public";
+import { NextUIProvider } from "@nextui-org/react";
 
 function App() {
-  return <RouterProvider router={PublicRouter} />;
+  return (
+    <NextUIProvider>
+      <RouterProvider router={PublicRouter} />
+    </NextUIProvider>
+  );
 }
 
 export default App;
