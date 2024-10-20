@@ -1,5 +1,9 @@
+import { RouterProvider } from "react-router-dom";
+// Routers:
+import { PublicRouter } from "./config/router/public";
+
 function App() {
-  return <h1>hello world</h1>;
+  return <RouterProvider router={PublicRouter} />;
 }
 
 export default App;
