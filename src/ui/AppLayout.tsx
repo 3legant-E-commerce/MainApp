@@ -7,7 +7,7 @@ export default function AppLayout() {
     <div>
       <Header />
 
-      <main className="bg-red-300 h-[1200px]">
+      <main className="bg-slate-300 h-[1800px]">
         <Outlet />
       </main>
 

@@ -5,7 +5,7 @@ export default function MainContainer({
   className,
 }: {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }) {
   return (
     <div className={`~px-4/40 max-w-[1900px] mx-auto ${className}`}>
