@@ -1,3 +1,5 @@
-export default function LandingPage() {
-  return <div className="">Landing Page</div>;
+function index() {
+  return <section>Landing</section>;
 }
+
+export default index;

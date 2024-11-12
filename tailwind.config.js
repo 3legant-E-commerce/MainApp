@@ -1,13 +1,23 @@
 const { nextui } = require("@nextui-org/react");
 
+// tailwind.config.js
+import fluid, { extract, screens, fontSize } from "fluid-tailwind";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    extract,
   ],
   theme: {
+    fontFamily: {
+      sans: "Roboto Mono, monospace",
+    },
+    screens,
+    fontSize,
+
     extend: {
       colors: {
         primary: "var(--primary-color)",
@@ -35,8 +45,11 @@ export default {
         "heading-6": "var(--font-size-heading-6)",
         "heading-7": "var(--font-size-heading-7)",
       },
+      screens: {
+        xs: "20rem",
+      },
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui(), fluid],
 };

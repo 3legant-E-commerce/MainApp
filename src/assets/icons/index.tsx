@@ -11,9 +11,9 @@ function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M18.5 18.5L22 22M21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21C16.7467 21 21 16.7467 21 11.5Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -31,8 +31,8 @@ function ProfileIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M18.5588 19.5488C17.5654 16.8918 15.0036 15 12 15C8.99638 15 6.4346 16.8918 5.44117 19.5488M18.5588 19.5488C20.6672 17.7154 22 15.0134 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 15.0134 3.33285 17.7154 5.44117 19.5488M18.5588 19.5488C16.8031 21.0756 14.5095 22 12 22C9.49052 22 7.19694 21.0756 5.44117 19.5488M15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -50,15 +50,15 @@ function CartIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M9 6L9 7C9 8.65685 10.3431 10 12 10C13.6569 10 15 8.65685 15 7V6"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M15.6116 3H8.3886C6.43325 3 4.76449 4.41365 4.44303 6.3424L2.77636 16.3424C2.37001 18.7805 4.25018 21 6.72194 21H17.2783C19.75 21 21.6302 18.7805 21.2238 16.3424L19.5572 6.3424C19.2357 4.41365 17.5669 3 15.6116 3Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -95,21 +95,21 @@ function DeliveryIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M14 19V7M14 19H16M14 19H9M14 7C14 4.79086 12.2091 3 10 3H6C3.79086 3 2 4.79086 2 7V15C2 16.8652 3.27667 18.4323 5.00384 18.875M14 7H17.2091C17.7172 7 18.2063 7.1934 18.577 7.54093L21.3679 10.1574C21.7712 10.5355 22 11.0636 22 11.6165V17C22 18.1046 21.1046 19 20 19M20 19C20 20.1046 19.1046 21 18 21C16.8954 21 16 20.1046 16 19M20 19C20 17.8954 19.1046 17 18 17C16.8954 17 16 17.8954 16 19M9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 18.958 5.00129 18.9163 5.00384 18.875M9 19C9 17.8954 8.10457 17 7 17C5.93742 17 5.06838 17.8286 5.00384 18.875"
         stroke="#141718"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         d="M10 8L8 8"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M10 12L6 12"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -148,7 +148,7 @@ function PaymentIcon(props: React.SVGProps<SVGSVGElement>) {
         height="16"
         rx="4"
         stroke="#141718"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <circle
         cx="2"
@@ -156,7 +156,7 @@ function PaymentIcon(props: React.SVGProps<SVGSVGElement>) {
         r="2"
         transform="matrix(1 0 0 -1 10 14)"
         stroke="#141718"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <circle
         cx="1"
@@ -188,8 +188,8 @@ function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M21 19V17.3541C21 16.5363 20.5021 15.8008 19.7428 15.4971L17.7086 14.6835C16.7429 14.2971 15.6422 14.7156 15.177 15.646L15 16C15 16 12.5 15.5 10.5 13.5C8.5 11.5 8 9 8 9L8.35402 8.82299C9.28438 8.35781 9.70285 7.25714 9.31654 6.29136L8.50289 4.25722C8.19916 3.4979 7.46374 3 6.64593 3H5C3.89543 3 3 3.89543 3 5C3 13.8366 10.1634 21 19 21C20.1046 21 21 20.1046 21 19Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -207,8 +207,8 @@ function LockIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M16 8H8M16 8C18.2091 8 20 9.79086 20 12V18C20 20.2091 18.2091 22 16 22H8C5.79086 22 4 20.2091 4 18V12C4 9.79086 5.79086 8 8 8M16 8V6C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6V8M12 16V14"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -226,20 +226,20 @@ function ShopIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M20 12V18C20 20.2091 18.2091 22 16 22H8C5.79086 22 4 20.2091 4 18V12"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
       <path
         d="M16.7687 2H7.23122C5.41387 2 3.7796 3.24476 3.10466 5.14305L2.34667 7.27487C2.11723 7.92019 1.95862 8.61074 2.12598 9.27488C2.52232 10.8478 3.8082 12 5.3333 12C7.17424 12 8.66663 10.3211 8.66663 8.25C8.66663 10.3211 10.159 12 12 12C13.8409 12 15.3333 10.3211 15.3333 8.25C15.3333 10.3211 16.8257 12 18.6666 12C20.1917 12 21.4776 10.8478 21.8739 9.27488C22.0413 8.61074 21.8827 7.92019 21.6533 7.27487L20.8953 5.14305C20.2203 3.24475 18.5861 2 16.7687 2Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
       <path
         d="M9 19C9 17.3431 10.3431 16 12 16C13.6569 16 15 17.3431 15 19V22H9V19Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -257,9 +257,9 @@ function MailIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M6 8L9.7812 10.5208C11.1248 11.4165 12.8752 11.4165 14.2188 10.5208L18 8M6 21H18C20.2091 21 22 19.2091 22 17V7C22 4.79086 20.2091 3 18 3H6C3.79086 3 2 4.79086 2 7V17C2 19.2091 3.79086 21 6 21Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -281,10 +281,10 @@ function InstagramPhoneIcon(props: React.SVGProps<SVGSVGElement>) {
         height="20"
         rx="4"
         stroke="#141718"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <circle cx="18" cy="6" r="1" fill="#141718" />
-      <circle cx="12" cy="12" r="5" stroke="#141718" stroke-width="1.5" />
+      <circle cx="12" cy="12" r="5" stroke="#141718" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -301,9 +301,9 @@ function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M18 3H15C12.2386 3 10 5.23858 10 8V10H6V14H10V21H14V14H18V10H14V8C14 7.44772 14.4477 7 15 7H18V3Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -325,13 +325,13 @@ function YoutubeIcon(props: React.SVGProps<SVGSVGElement>) {
         height="18"
         rx="4"
         stroke="#141718"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         d="M10.4472 8.72361L15.2111 11.1056C15.9482 11.4741 15.9482 12.5259 15.2111 12.8944L10.4472 15.2764C9.78231 15.6088 9 15.1253 9 14.382V9.61803C9 8.87465 9.78231 8.39116 10.4472 8.72361Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -349,25 +349,25 @@ function CalenderIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M16 2V5"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
       <path
         d="M8 2V5"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
       <path
         d="M3 7.5C3 5.29086 4.79086 3.5 7 3.5H17C19.2091 3.5 21 5.29086 21 7.5V18C21 20.2091 19.2091 22 17 22H7C4.79086 22 3 20.2091 3 18V7.5Z"
         stroke="#141718"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         d="M3 9H21"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -402,8 +402,28 @@ function EditIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M3 21H21M13.7844 5.31171C13.7844 5.31171 13.7844 6.94634 15.419 8.58096C17.0537 10.2156 18.6883 10.2156 18.6883 10.2156M7.31963 17.9881L10.7523 17.4977C11.2475 17.4269 11.7064 17.1975 12.06 16.8438L20.3229 8.58096C21.2257 7.67818 21.2257 6.21449 20.3229 5.31171L18.6883 3.67708C17.7855 2.77431 16.3218 2.77431 15.419 3.67708L7.15616 11.94C6.80248 12.2936 6.57305 12.7525 6.50231 13.2477L6.01193 16.6804C5.90295 17.4432 6.5568 18.097 7.31963 17.9881Z"
         stroke="#141718"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+function BottomArrow(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 19 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M5.2041 6.75L9.7041 11.25L14.2041 6.75"
+        stroke="#141718"
+        strokeWidth="1.125"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -427,4 +447,5 @@ export {
   PercentIcon,
   PaymentIcon,
   PhoneIcon,
+  BottomArrow,
 };
