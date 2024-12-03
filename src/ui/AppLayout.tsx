@@ -4,10 +4,10 @@ import Footer from "./Footer";
 
 export default function AppLayout() {
   return (
-    <div>
+    <div className="bg-bg-color">
       <Header />
 
-      <main className="bg-red-300 h-[1200px]">
+      <main className="h-[3000px]">
         <Outlet />
       </main>
 

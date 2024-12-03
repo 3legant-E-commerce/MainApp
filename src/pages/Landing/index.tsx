@@ -1,5 +1,11 @@
+import Hero from "../../components/hero-section/Hero";
+
 function index() {
-  return <section>Landing</section>;
+  return (
+    <div>
+      <Hero />
+    </div>
+  );
 }
 
 export default index;

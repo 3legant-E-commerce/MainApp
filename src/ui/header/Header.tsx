@@ -7,8 +7,8 @@ import MainContainer from "../MainContainer";
 
 export default function Header() {
   return (
-    <MainContainer>
-      <header className="sticky top-0 h-[60px] flex justify-between items-center bg-white">
+    <header className="fixed top-0 left-0 z-0 w-full shadow-md bg-bg-color">
+      <MainContainer className="flex items-center justify-between h-[60px]">
         <Logo />
 
         <ul className="flex items-center gap-4 ~text-sm/lg font-semibold capitalize">
@@ -31,7 +31,7 @@ export default function Header() {
         </ul>
 
         <Tools />
-      </header>
-    </MainContainer>
+      </MainContainer>
+    </header>
   );
 }
