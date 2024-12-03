@@ -34,6 +34,8 @@ export default {
         "neutral-05": "var(--neutral-05)",
         "neutral-06": "var(--neutral-06)",
         "neutral-07": "var(--neutral-07)",
+
+        "bg-color": "var(--bg-color)",
       },
       fontSize: {
         hero: "var(--font-size-hero)",

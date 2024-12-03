@@ -7,8 +7,8 @@ import MainContainer from "../MainContainer";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full">
-      <MainContainer className="flex items-center justify-between bg-white h-[60px]">
+    <header className="fixed top-0 left-0 z-0 w-full shadow-md bg-bg-color">
+      <MainContainer className="flex items-center justify-between h-[60px]">
         <Logo />
 
         <ul className="flex items-center gap-4 ~text-sm/lg font-semibold capitalize">
