@@ -15,8 +15,8 @@ export default function Hero() {
 
         <div className="p-4 text-center sm:w-1/2 md:text-left">
           <h1 className="mb-6 ~text-3xl/6xl capitalize font-semibold">
-            Listen to the <span className="text-blue-500">amazing</span> music
-            sound.
+            Listen to the <span className="text-blue-500">TESTTTTTTTTT</span>{" "}
+            music sound.
           </h1>
 
           <p className="text-lg text-gray-700">
