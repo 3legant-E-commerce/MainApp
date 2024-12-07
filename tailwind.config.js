@@ -53,5 +53,5 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [nextui(), fluid],
+  plugins: [nextui(), fluid, require("tailwind-scrollbar-hide")],
 };

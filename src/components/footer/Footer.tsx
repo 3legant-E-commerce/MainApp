@@ -1,8 +1,8 @@
-import Info from "../components/footer/Info";
-import JoinNewsLetter from "../components/footer/JoinNewsLetter";
-import Legant from "../components/footer/Legant";
-import Page from "../components/footer/Page";
-import MainContainer from "./MainContainer";
+import Info from "./Info";
+import JoinNewsLetter from "./JoinNewsLetter";
+import Legant from "./Legant";
+import Page from "./Page";
+import MainContainer from "../../ui/MainContainer";
 
 export default function Footer() {
   return (

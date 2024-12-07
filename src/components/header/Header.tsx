@@ -3,7 +3,7 @@ import Tools from "./Tools";
 import HeaderList from "./HeaderList";
 import { BottomArrow } from "../../assets/icons";
 import { Link } from "react-router-dom";
-import MainContainer from "../MainContainer";
+import MainContainer from "../../ui/MainContainer";
 
 export default function Header() {
   return (
