@@ -50,7 +50,7 @@ export function CartHover({
 }) {
   return (
     <div className="sm:h-[450px] h-[350px] flex flex-col gap-4">
-      <div className="bg-[#F3F5F7] relative rounded-sm p-4 shadow-sm h-3/4 flex flex-col ">
+      <div className="bg-[#F3F5F7] relative rounded-sm p-4 shadow-sm h-3/4 flex flex-col group">
         <span className="absolute px-4 font-semibold ~text-xs/sm capitalize bg-white rounded-md shadow-sm left-4">
           {detail}
         </span>
@@ -61,9 +61,7 @@ export function CartHover({
           className="hidden transition duration-600 group-hover:flex"
         />
       </div>
-      <div className="hidden border-2 border-red-500 h-1/4 group-hover:block">
-        dasfas
-      </div>
+      <div className="hidden border-2 border-red-500 h-1/4 group-hover:block"></div>
     </div>
   );
 }
