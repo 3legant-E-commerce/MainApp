@@ -1,5 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 
+import Button from "../../ui/Button";
+
 export default function Hero() {
   // const navigate = useNavigate();
   return (
@@ -22,9 +24,8 @@ export default function Hero() {
           <p className="text-lg text-gray-700">
             Experience music like never before
           </p>
-          <button className="~px-12/8 py-4 mt-4 font-medium text-white bg-black rounded-md text-md hover:bg-gray-800">
-            Shopping Now
-          </button>
+
+          <Button title="Shopping Now" className="mt-6" />
         </div>
       </div>
     </section>
