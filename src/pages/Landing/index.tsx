@@ -1,13 +1,15 @@
-import Featured from "../../components/featured/Featured";
-import Hero from "../../components/heroSection/Hero";
-import NewArrivals from "../../components/newArrivals/NewArrivals";
+import Featured from "../../components/featured";
+import Hero from "../../components/heroSection";
+import ShopCollection from "../../components/shopCollection";
+import BestSeller from "../../components/bestSellers/";
 
 function index() {
   return (
     <div>
       <Hero />
       <Featured />
-      <NewArrivals />
+      <ShopCollection />
+      <BestSeller />
     </div>
   );
 }
