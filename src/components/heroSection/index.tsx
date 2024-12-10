@@ -25,7 +25,7 @@ export default function Hero() {
             Experience music like never before
           </p>
 
-          <Button title="Shopping Now" className="mt-6" />
+          <Button className="mt-6">Shopping Now</Button>
         </div>
       </div>
     </section>

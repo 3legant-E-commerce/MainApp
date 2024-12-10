@@ -1,8 +1,7 @@
-import { Image } from "@nextui-org/react";
-
 import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
+import { DeliveryIcon } from "../../assets/icons";
 
 export function CartCol({
   className,
@@ -65,10 +64,9 @@ export function CartHover({
         </span>
         <img src={src} title={title} className="w-4/5 mx-auto h-5/6" />
 
-        <Button
-          title="Add to cart"
-          className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0"
-        />
+        <Button className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0">
+          Add to cart
+        </Button>
       </div>
       <div className="flex flex-col gap-1 font-semibold h-1/4">
         <div className="h-1/4">
@@ -79,6 +77,28 @@ export function CartHover({
           ${price}
         </span>
       </div>
+    </div>
+  );
+}
+
+export function BenefitCart({
+  title,
+  text,
+  icon,
+}: {
+  title: string;
+  text: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <div className="~h-40/52 ~px-4/8 ~pt-8/12 rounded-sm shadow-sm lg:h-56 bg-neutral-02">
+      <div className="mb-4">{icon}</div>
+      <p className="~mb-0.5/2 font-semibold capitalize ~text-sm/xl text-neutral-07">
+        {title}
+      </p>
+      <span className="~text-xs/sm text-neutral-04 line-clamp-1 overflow-hidden text-ellipsis">
+        {text}
+      </span>
     </div>
   );
 }
