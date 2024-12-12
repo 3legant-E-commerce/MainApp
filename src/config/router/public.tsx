@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "../../ui/AppLayout";
 import PageNotFound from "../../ui/PageNotFound";
+// import { Loading as menuLoader } from "../../ui/Loading";
 
 // Pages:
 // const Error = lazy(() => import("../../ui/Error"));
@@ -12,6 +13,8 @@ const Order = lazy(() => import("../../pages/order"));
 const Cart = lazy(() => import("../../pages/cart"));
 const Blog = lazy(() => import("../../pages/blog"));
 const Contact = lazy(() => import("../../pages/contact"));
+const SignUp = lazy(() => import("../../pages/signUp"));
+const SigIn = lazy(() => import("../../pages/signIn"));
 
 export const PublicRouter = createBrowserRouter([
   {
@@ -51,5 +54,14 @@ export const PublicRouter = createBrowserRouter([
   {
     path: "*",
     element: <PageNotFound />,
+  },
+  {
+    path: "/SignUp",
+    element: <SignUp />,
+    // loader: menuLoader,
+  },
+  {
+    path: "/SigIn",
+    element: <SigIn />,
   },
 ]);

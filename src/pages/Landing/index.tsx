@@ -4,6 +4,7 @@ import ShopCollection from "../../components/shopCollection";
 import BestSeller from "../../components/bestSellers";
 import Promotion from "../../components/promotion";
 import BenefitsCards from "../../components/benefitsCards";
+import Instagram from "../../components/instagram";
 
 function index() {
   return (
@@ -14,6 +15,7 @@ function index() {
       <BestSeller />
       <Promotion />
       <BenefitsCards />
+      <Instagram />
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="flex flex-col-reverse mx-auto w-full ~gap-x-2/10 items-center ~px-1/6 max-w-7xl md:flex-row">
         <div className="sm:w-1/2">
           <img
-            src="../../../public/images/hero-012.png"
+            src="/images/hero-012.png"
             alt="Music Listening mobile"
             className="w-full mx-auto"
           />
