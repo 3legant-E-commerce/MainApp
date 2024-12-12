@@ -8,7 +8,7 @@ type FormValues = {
   terms: boolean;
 };
 
-export default function SignUpForm() {
+export default function SignUpFormTest() {
   const {
     register,
     handleSubmit,

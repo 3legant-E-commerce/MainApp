@@ -1,4 +1,4 @@
-import Input from "../../ui/Input";
+import Input from "../../ui/FooterInput";
 
 export default function JoinNewsLetter() {
   return (
