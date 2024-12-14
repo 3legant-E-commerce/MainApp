@@ -58,7 +58,6 @@ export const PublicRouter = createBrowserRouter([
   {
     path: "/SignUp",
     element: <SignUp />,
-    // loader: menuLoader,
   },
   {
     path: "/SigIn",

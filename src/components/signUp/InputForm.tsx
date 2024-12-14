@@ -1,4 +1,4 @@
-import { Input } from "@nextui-org/react";
+import { Checkbox, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Error from "./Error";
@@ -25,7 +25,7 @@ export default function InputForm() {
 
   return (
     <form
-      className="flex flex-col flex-wrap w-full gap-4 md:flex-nowrap"
+      className="flex flex-col flex-wrap w-full sm:gap-3 md:flex-nowrap"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
@@ -34,9 +34,11 @@ export default function InputForm() {
           type="text"
           id="name"
           variant="underlined"
-          {...register("name", { required: "this field is required" })}
+          {...register("name", { required: "Name is required" })}
+          size="sm"
         />
 
+        {/* {errors.name && <Error>{errors.name.message}</Error>} */}
         <Error>{errors?.name?.message}</Error>
       </div>
 
@@ -46,7 +48,9 @@ export default function InputForm() {
           type="text"
           id="username"
           variant="underlined"
-          {...register("username", { required: "this field is required" })}
+          {...register("username", {
+            required: "Username is required",
+          })}
         />
 
         <Error>{errors?.username?.message}</Error>
@@ -58,7 +62,13 @@ export default function InputForm() {
           type="email"
           id="email"
           variant="underlined"
-          {...register("email", { required: "this field is required" })}
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Invalid email format",
+            },
+          })}
         />
 
         <Error>{errors?.email?.message}</Error>
@@ -70,16 +80,60 @@ export default function InputForm() {
           type="password"
           id="password"
           variant="underlined"
-          {...register("password", { required: "this field is required" })}
+          {...register("password", {
+            required: "Password is required",
+
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 characters",
+            },
+
+            pattern: {
+              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
+              message:
+                "Password must include uppercase, lowercase, and a number",
+            },
+          })}
         />
 
-        <Error>{errors?.name?.message}</Error>
+        <Error>{errors?.password?.message}</Error>
       </div>
 
-      <div className="flex justify-between gap-10 mt-8">
-        <Button type="submit">Sign Up</Button>
+      <div className="flex flex-col gap-3 mt-2">
+        <Checkbox
+          {...register("terms", { required: "You must agree to the terms" })}
+          color="secondary"
+          radius="sm"
+          size="sm"
+        >
+          I agree with
+          <a
+            href="#"
+            className="mx-2 text-blue-500 underline underline-offset-4"
+          >
+            Privacy Policy
+          </a>
+          and
+          <a
+            href="#"
+            className="ml-2 text-blue-500 underline underline-offset-4"
+          >
+            Terms of Use
+          </a>
+        </Checkbox>
 
-        <Button type="reset" className="text-black bg-gray-400">
+        <Error>{errors?.terms?.message}</Error>
+      </div>
+
+      <div className="flex justify-between ~gap-4/10 ~mt-2/8">
+        <Button type="submit" className="~text-sm/lg ~px-6/12">
+          Sign Up
+        </Button>
+
+        <Button
+          type="reset"
+          className="~px-6/12 text-black ~text-sm/lg bg-gray-400"
+        >
           Reset
         </Button>
       </div>
