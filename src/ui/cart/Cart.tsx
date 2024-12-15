@@ -1,7 +1,6 @@
 import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
-import { DeliveryIcon } from "../../assets/icons";
 
 export function CartCol({
   className,
