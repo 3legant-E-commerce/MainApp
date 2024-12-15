@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import {
   FeaturedSvg1,
   FeaturedSvg2,
