@@ -1,3 +1,5 @@
-export default function index() {
-  return <div>Testttttttt</div>;
+import SignInForm from "../../components/signIn";
+
+export default function SignIn() {
+  return <SignInForm />;
 }
