@@ -1,6 +1,7 @@
 import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
+import { useState } from "react";
 
 export function CartCol({
   className,
@@ -46,35 +47,45 @@ export function CartHover({
   detail,
   description,
   price,
+  discount,
+  priceDecoration,
   rating,
+  children,
 }: {
   src: string;
   title: string;
   detail?: string;
   description: string;
   price: number;
+  discount?: number;
+  priceDecoration?: number;
   rating: number;
+  children?: React.ReactNode;
 }) {
   return (
-    <div className="sm:h-[400px] h-[350px] flex flex-col gap-4">
+    <div className="sm:h-[350px] h-[350px] flex flex-col gap-4">
       <div className="bg-[#F3F5F7] relative rounded-sm p-4 shadow-sm h-3/4 cursor-pointer group">
-        <span className="absolute px-4 font-semibold ~text-xs/sm capitalize bg-white rounded-md shadow-sm left-4">
+        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-white rounded-sm shadow-sm left-4">
           {detail}
         </span>
-        <img src={src} title={title} className="w-4/5 mx-auto h-5/6" />
+        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
+          {discount}
+        </span>
+        <img src={src} title={title} className="w-4/5 mx-auto mt-6 h-5/6" />
 
-        <Button className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0">
-          Add to cart
-        </Button>
+        {children}
       </div>
       <div className="flex flex-col gap-1 font-semibold h-1/4">
         <div className="h-1/4">
           <StarsRating rating={rating} />
         </div>
         <div className="text-sm h-1/2">{description}</div>
-        <span className="flex items-center text-xs font-bold h-1/4">
-          ${price}
-        </span>
+        <div className="flex items-center gap-4 text-xs font-bold h-1/4">
+          <span>${price}</span>
+          <span className="line-through text-neutral-04 decoration-black">
+            {priceDecoration}
+          </span>
+        </div>
       </div>
     </div>
   );

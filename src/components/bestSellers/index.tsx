@@ -1,3 +1,4 @@
+import Button from "../../ui/Button";
 import { CartHover } from "../../ui/cart/Cart";
 import CartHeader from "../../ui/cart/CartHeader";
 import MainContainer from "../../ui/MainContainer";
@@ -57,7 +58,11 @@ export default function BestSeller() {
               price={item.price}
               rating={item.rating}
               key={item.id}
-            />
+            >
+              <Button className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0">
+                Add to cart
+              </Button>
+            </CartHover>
           ))}
         </div>
       </MainContainer>
