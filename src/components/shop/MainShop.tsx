@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BottomArrow, ShopViewIcon1, ShopViewIcon2 } from "../../assets/icons";
-import { CartHover, ShopCartView2 } from "../../ui/cart/Cart";
+import { ShopCartView1, ShopCartView2 } from "../../ui/cart/Cart";
 import data from "../../../data/cart.json";
 import Button from "../../ui/Button";
 import CategoriesOption from "./CategoriesOption";
@@ -8,12 +8,12 @@ import PriceFilter from "./PriceFilter";
 import FilterSearch from "./FilterSerach";
 
 export default function MainShop() {
-  const [activeCart, setActiveCart] = useState(1); // 1 for cart1, 2 for cart2
+  const [activeCart, setActiveCart] = useState(1);
   const [visibleCart, setVisibleCart] = useState(12);
 
   const cart = data.carts;
 
-  const handleShowCart = (cartNumber) => {
+  const handleShowCart = (cartNumber: number) => {
     setActiveCart(cartNumber);
     setVisibleCart(cartNumber === 1 ? 12 : 6);
   };
@@ -25,7 +25,7 @@ export default function MainShop() {
   const renderCartItems = () =>
     cart.slice(0, visibleCart).map((item) =>
       activeCart === 1 ? (
-        <CartHover
+        <ShopCartView1
           key={item.id}
           src={item.src}
           title={item.title}
@@ -38,7 +38,7 @@ export default function MainShop() {
           <Button className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0">
             Add to cart
           </Button>
-        </CartHover>
+        </ShopCartView1>
       ) : (
         <ShopCartView2
           key={item.id}

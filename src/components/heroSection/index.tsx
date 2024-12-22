@@ -26,7 +26,10 @@ export default function Hero() {
             Experience music like never before
           </p>
 
-          <Button className="mt-6 ~px-12/8" onClick={() => navigate("/shop")}>
+          <Button
+            className="mt-6 ~px-12/8 ~py-6/7"
+            onClick={() => navigate("/shop")}
+          >
             Shopping Now
           </Button>
         </div>

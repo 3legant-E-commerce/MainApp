@@ -1,7 +1,7 @@
 import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
-import { useState } from "react";
+// import { useState } from "react";
 import { HeartIcon } from "../../assets/icons";
 
 export function CartCol({
@@ -42,7 +42,7 @@ export function CartRow({
   );
 }
 
-export function CartHover({
+export function ShopCartView1({
   src,
   title,
   detail,
@@ -80,7 +80,7 @@ export function CartHover({
         <div className="h-1/4">
           <StarsRating rating={rating} />
         </div>
-        <div className="pr-4 text-sm truncate h-1/2">{description}</div>
+        <div className="pr-4 text-sm line-clamp-1 h-1/2">{description}</div>
         <div className="flex items-center gap-4 text-xs font-bold h-1/4">
           <span>${price}</span>
           <span className="line-through text-neutral-04 decoration-black">

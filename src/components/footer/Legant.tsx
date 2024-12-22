@@ -7,7 +7,7 @@ import {
 export default function Legant() {
   return (
     <div>
-      <h2 className="mb-8 text-2xl font-semibold text-neutral-06">3legant.</h2>
+      <h2 className="mb-8 text-2xl font-semibold text-neutral-01">3legant.</h2>
 
       <ul className="mb-4">
         <li className="mb-6 leading-8 sm:w-32">
