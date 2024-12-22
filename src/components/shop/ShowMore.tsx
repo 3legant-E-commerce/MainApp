@@ -10,7 +10,7 @@ const products: Product[] = Array.from({ length: 50 }, (_, i) => ({
   name: `Product ${i + 1}`,
 }));
 
-export default function Test() {
+export default function SHowMore() {
   const [visibleProducts, setVisibleProducts] = useState(9);
 
   const showMoreProducts = () => {

@@ -7,7 +7,7 @@ export default function ShopHeader() {
   return (
     <div className="relative w-full h-60 sm:h-80 lg:h-[400px] 3xl:h-[530px]">
       <img
-        src="../../../public/images/shopHeader08.jpg"
+        src="/images/shopHeader08.jpg"
         className="absolute z-[-1] w-full h-full"
       />
       <div className="flex flex-col items-center h-full ~pt-4/12 text-black">

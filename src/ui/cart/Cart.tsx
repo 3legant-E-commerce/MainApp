@@ -2,6 +2,7 @@ import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
 import { useState } from "react";
+import { HeartIcon } from "../../assets/icons";
 
 export function CartCol({
   className,
@@ -79,13 +80,68 @@ export function CartHover({
         <div className="h-1/4">
           <StarsRating rating={rating} />
         </div>
-        <div className="text-sm h-1/2">{description}</div>
+        <div className="pr-4 text-sm truncate h-1/2">{description}</div>
         <div className="flex items-center gap-4 text-xs font-bold h-1/4">
           <span>${price}</span>
           <span className="line-through text-neutral-04 decoration-black">
             {priceDecoration}
           </span>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function ShopCartView2({
+  detail,
+  discount,
+  src,
+  title,
+  rating,
+  description,
+  price,
+  priceDecoration,
+}: {
+  detail?: string;
+  discount?: number;
+  src: string;
+  title: string;
+  rating: number;
+  description: string;
+  price: number;
+  priceDecoration?: number;
+}) {
+  return (
+    <div className="flex border-2 rounded-sm shadow-sm cursor-pointer">
+      <div className="bg-[#F3F5F7] relative w-1/2 h-full">
+        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-white rounded-sm shadow-sm left-4 top-4">
+          {detail}
+        </span>
+        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
+          {discount}
+        </span>
+        <img src={src} title={title} className="h-full" />
+      </div>
+      <div className="flex flex-col w-1/2 px-6 overflow-hidden py-7">
+        <StarsRating rating={rating} />
+        <h2 className="mt-4 text-xl font-semibold capitalize">{title}</h2>
+        <div className="flex items-center gap-4 mt-2 mb-6 text-sm font-bold">
+          <span>${price}</span>
+          <span className="line-through text-neutral-04 decoration-black">
+            {priceDecoration}
+          </span>
+        </div>
+        <div className="text-sm leading-6 h-28 text-neutral-04 line-clamp-4">
+          {description}
+        </div>
+        <Button className="mt-4">Add to cart</Button>
+        <button
+          className="flex items-center justify-center gap-2 px-4 py-2 mt-2 font-semibold text-black transition-all bg-white rounded-md shadow-sm hover:bg-gray-100 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-300"
+          aria-label="Add to Wishlist"
+        >
+          <HeartIcon className="w-6 h-6 text-red-500 transition-transform hover:scale-125" />
+          <span>Wishlist</span>
+        </button>
       </div>
     </div>
   );
