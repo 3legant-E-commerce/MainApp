@@ -17,6 +17,7 @@ export default function Button({
       className={`text-white font-semibold bg-black rounded-md text-md hover:bg-gray-800 ${className}`}
       type={type}
       onClick={onClick}
+      size="lg"
     >
       {children}
     </NextButton>

@@ -26,7 +26,7 @@ export default function Header() {
           </HeaderList>
 
           <HeaderList>
-            <span>product</span>
+            <Link to="/product">product</Link>
           </HeaderList>
 
           <HeaderList>

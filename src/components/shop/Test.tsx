@@ -703,3 +703,101 @@ export default function Test() {
     </Table>
   );
 }
+
+// import { configureStore } from "@reduxjs/toolkit";
+// import userReducer from "./userSlice";
+
+// const store = configureStore({
+//   reducer: {
+//     users: userReducer,
+//   },
+// });
+
+// export default store;
+
+///////////////////////////////////
+
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const initialState = {
+//   users: [],
+//   filterValue: "",
+//   statusFilter: "all",
+//   page: 1,
+//   rowsPerPage: 5,
+//   sortDescriptor: { column: "age", direction: "ascending" },
+// };
+
+// const userSlice = createSlice({
+//   name: "users",
+//   initialState,
+//   reducers: {
+//     setUsers: (state, action) => {
+//       state.users = action.payload;
+//     },
+//     setFilterValue: (state, action) => {
+//       state.filterValue = action.payload;
+//     },
+//     setStatusFilter: (state, action) => {
+//       state.statusFilter = action.payload;
+//     },
+//     setPage: (state, action) => {
+//       state.page = action.payload;
+//     },
+//     setRowsPerPage: (state, action) => {
+//       state.rowsPerPage = action.payload;
+//     },
+//     setSortDescriptor: (state, action) => {
+//       state.sortDescriptor = action.payload;
+//     },
+//   },
+// });
+
+// export const {
+//   setUsers,
+//   setFilterValue,
+//   setStatusFilter,
+//   setPage,
+//   setRowsPerPage,
+//   setSortDescriptor,
+// } = userSlice.actions;
+
+// export default userSlice.reducer;
+
+////////////////////////////////
+
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// import { Provider } from "react-redux";
+// import store from "./store";
+// import App from "./App";
+
+// ReactDOM.createRoot(document.getElementById("root")).render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>
+// );
+
+///////////////////////////////////
+
+// import { useSelector, useDispatch } from "react-redux";
+// import { setFilterValue, setPage } from "./userSlice";
+
+// const Test = () => {
+//   const filterValue = useSelector((state) => state.users.filterValue);
+//   const dispatch = useDispatch();
+
+//   const onSearchChange = (value) => {
+//     dispatch(setFilterValue(value));
+//     dispatch(setPage(1));
+//   };
+
+//   return (
+//     <Input
+//       isClearable
+//       placeholder="Search by name..."
+//       value={filterValue}
+//       onValueChange={onSearchChange}
+//     />
+//   );
+// };

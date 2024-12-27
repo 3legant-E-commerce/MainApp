@@ -3,6 +3,7 @@ import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
 // import { useState } from "react";
 import { HeartIcon } from "../../assets/icons";
+import WishListButton from "../WishListButton";
 
 export function CartCol({
   className,
@@ -135,13 +136,7 @@ export function ShopCartView2({
           {description}
         </div>
         <Button className="mt-4">Add to cart</Button>
-        <button
-          className="flex items-center justify-center gap-2 px-4 py-2 mt-2 font-semibold text-black transition-all bg-white rounded-md shadow-sm hover:bg-gray-100 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-300"
-          aria-label="Add to Wishlist"
-        >
-          <HeartIcon className="w-6 h-6 text-red-500 transition-transform hover:scale-125" />
-          <span>Wishlist</span>
-        </button>
+        <WishListButton />
       </div>
     </div>
   );
@@ -164,6 +159,29 @@ export function BenefitCart({
       </p>
       <span className="~text-xs/sm text-neutral-04 line-clamp-1 overflow-hidden text-ellipsis">
         {text}
+      </span>
+    </div>
+  );
+}
+
+export function TimeCart({
+  hour,
+  day,
+  bg = "bg-white",
+}: {
+  hour: number;
+  day: string;
+  bg?: string;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+      <span
+        className={`flex items-center justify-center ~w-12/16 ~h-12/16 text-3xl font-semibold ${bg} text-neutral-07`}
+      >
+        {hour}
+      </span>
+      <span className="text-xs font-semibold capitalize text-neutral-04">
+        {day}
       </span>
     </div>
   );
