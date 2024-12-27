@@ -15,7 +15,7 @@ export default function ProductDetail() {
   ]);
 
   return (
-    <div className="w-3/5 h-full">
+    <div className="w-3/5">
       <div className="flex flex-col pr-16">
         <div className="flex gap-4">
           <StarsRating rating={1} />
@@ -49,12 +49,6 @@ export default function ProductDetail() {
         </div>
 
         <div className="flex flex-col gap-6 mb-8">
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold text-neutral-04">
-              Measurements
-            </span>
-            <span className="">17 1/2x20 5/8</span>
-          </div>
           <div className="flex flex-col gap-2">
             <div className="flex gap-2 text-xs cursor-pointer hover:text-neutral-05 text-neutral-04">
               <span className="font-semibold">Choose Color</span>

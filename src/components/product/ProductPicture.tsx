@@ -1,51 +1,79 @@
+import { useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
-export default function ProductPicture() {
+function ProductPicture() {
+  const images = [
+    "/images/chair02.png",
+    "/images/chair03.png",
+    "/images/chair04.png",
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0); // Track the active image index
+
+  const handlePrevious = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handleThumbnailClick = (index: number) => {
+    setActiveIndex(index);
+  };
+
   return (
-    <div className="flex flex-col w-3/6 h-full gap-4">
-      <div className="relative h-3/4">
+    <div className="flex flex-col w-3/6 gap-y-4">
+      <div className="relative h-4/5">
         <img
-          src="/images/chair01.png"
-          className="w-full h-full"
-          alt="chair01"
+          src={images[activeIndex]}
+          className="object-cover w-full h-full"
+          alt={`chair${activeIndex + 1}`}
         />
-        <span className="absolute px-4 py-1 font-semibold text-white ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
+        <span className="absolute px-4 py-1 text-xs font-semibold text-white uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
           -50%
         </span>
-        <span className="absolute px-4 py-1 font-semibold ~text-xs/sm uppercase bg-white rounded-sm shadow-sm left-4 top-2">
+        <span className="absolute px-4 py-1 text-xs font-semibold uppercase bg-white rounded-sm shadow-sm left-4 top-2">
           New
         </span>
-        <div className="absolute flex items-center justify-center bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 left-4">
+
+        <div
+          onClick={handlePrevious}
+          className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 left-4 hover:bg-gray-200"
+        >
           <AiOutlineArrowLeft />
         </div>
-        <div className="absolute flex items-center justify-center bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 right-4">
+        <div
+          onClick={handleNext}
+          className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 right-4 hover:bg-gray-200"
+        >
           <AiOutlineArrowRight />
         </div>
       </div>
 
-      <div className="flex gap-5 h-1/4">
-        <div className="w-1/3 h-full">
-          <img
-            src="/images/chair02.png"
-            className="w-full h-full"
-            alt="chair02"
-          />
-        </div>
-        <div className="w-1/3">
-          <img
-            src="/images/chair03.png"
-            className="w-full h-full"
-            alt="chair03"
-          />
-        </div>
-        <div className="w-1/3">
-          <img
-            src="/images/chair04.png"
-            className="w-full h-full"
-            alt="chair04"
-          />
-        </div>
+      <div className="flex gap-4 h-1/5">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`w-1/3 h-full cursor-pointer border-2 rounded-md ${
+              activeIndex === index ? "border-gray-800" : "border-transparent"
+            }`}
+            onClick={() => handleThumbnailClick(index)}
+          >
+            <img
+              src={image}
+              className="object-cover w-full h-full rounded-md"
+              alt={`Thumbnail ${index + 1}`}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+
+export default ProductPicture;
