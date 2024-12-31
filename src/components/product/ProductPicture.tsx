@@ -27,8 +27,8 @@ function ProductPicture() {
   };
 
   return (
-    <div className="flex flex-col w-3/6 gap-y-4">
-      <div className="relative h-4/5">
+    <div className="flex h-[300px] sm:h-[400px] xl:h-[700px] flex-col xl:w-3/6 gap-y-4">
+      <div className="relative h-full xl:h-4/5">
         <img
           src={images[activeIndex]}
           className="object-cover w-full h-full"
@@ -55,7 +55,7 @@ function ProductPicture() {
         </div>
       </div>
 
-      <div className="flex gap-4 h-1/5">
+      <div className="hidden gap-4 xl:flex h-1/5">
         {images.map((image, index) => (
           <div
             key={index}

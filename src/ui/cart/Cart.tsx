@@ -174,9 +174,9 @@ export function TimeCart({
   bg?: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+    <div className="flex flex-col justify-center items-center gap-0.5 sm:gap-1">
       <span
-        className={`flex items-center justify-center ~w-12/16 ~h-12/16 text-3xl font-semibold ${bg} text-neutral-07`}
+        className={`flex items-center justify-center ~w-10/16 ~h-10/16 ~text-2xl/3xl font-semibold ${bg} text-neutral-07`}
       >
         {hour}
       </span>

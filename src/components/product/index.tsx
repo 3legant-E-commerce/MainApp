@@ -27,7 +27,7 @@ export default function ShopHeader() {
         </Breadcrumbs>
       </div>
 
-      <div className="flex gap-14">
+      <div className="flex flex-col xl:flex-row ~gap-8/14">
         <ProductPicture />
         <ProductDetail />
       </div>
