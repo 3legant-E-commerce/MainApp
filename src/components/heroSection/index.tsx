@@ -1,9 +1,10 @@
 // import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 
 export default function Hero() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <section className="~pt-20/4 bg-bg-color">
       <div className="flex flex-col-reverse mx-auto w-full ~gap-x-2/10 items-center ~px-1/6 max-w-7xl md:flex-row">
@@ -25,7 +26,12 @@ export default function Hero() {
             Experience music like never before
           </p>
 
-          <Button className="mt-6 ~px-12/8">Shopping Now</Button>
+          <Button
+            className="mt-6 ~px-12/8 ~py-6/7"
+            onClick={() => navigate("/shop")}
+          >
+            Shopping Now
+          </Button>
         </div>
       </div>
     </section>
