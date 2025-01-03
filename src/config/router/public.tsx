@@ -3,11 +3,11 @@ import AppLayout from "../../ui/AppLayout";
 import PageNotFound from "../../ui/PageNotFound";
 
 // Pages:
-import LandingPage from "../../pages/landing";
-import Product from "../../pages/product";
-import Shop from "../../pages/shop";
-import SignUp from "../../pages/signUp";
-import SignIn from "../../pages/signIn";
+import Landing from "../../pages/landing.tsx";
+import Product from "../../pages/product.tsx";
+import Shop from "../../pages/shop.tsx";
+import SignUp from "../../pages/signUp.tsx";
+import SignIn from "../../pages/signIn.tsx";
 
 export const PublicRouter = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ export const PublicRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <LandingPage />,
+        element: <Landing />,
       },
       {
         path: "/product",
