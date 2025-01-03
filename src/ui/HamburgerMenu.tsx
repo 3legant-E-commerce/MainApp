@@ -85,12 +85,7 @@ export function HamburgerMenu() {
                   >
                     <Link
                       to={section}
-                      activeClass="text-[#212529]"
                       className="cursor-pointer transition-all hover:text-[#212529] min-w-fit"
-                      smooth={true}
-                      duration={500}
-                      offset={-200}
-                      spy={true}
                       onClick={toggleMenu}
                     >
                       {section === "/product" && "Product"}

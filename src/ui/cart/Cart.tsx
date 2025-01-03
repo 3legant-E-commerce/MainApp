@@ -1,8 +1,6 @@
 import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
-// import { useState } from "react";
-import { HeartIcon } from "../../assets/icons";
 import WishListButton from "../WishListButton";
 
 export function CartCol({
