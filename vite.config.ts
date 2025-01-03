@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate", // auto-register the service worker
+      injectRegister: "auto",
+      registerType: "autoUpdate",
       manifest: {
         name: "RM-Ecommerce",
         short_name: "RM-Shop",
@@ -25,27 +26,8 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // Enable offline support by caching assets
-        runtimeCaching: [
-          {
-            urlPattern: /\/.*\.(?:js|css|html|json|png|jpg|jpeg|svg)/, // match js, css, html, image files
-            handler: "CacheFirst", // Cache assets for offline use
-            options: {
-              cacheName: "assets-cache",
-              expiration: {
-                maxEntries: 100, // maximum number of entries to store in cache
-                maxAgeSeconds: 60 * 60 * 24 * 30, // cache for 30 days
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/your-api-endpoint/, // Cache API requests
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "api-cache",
-            },
-          },
-        ],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+        cleanupOutdatedCaches: false,
       },
     }),
   ],
