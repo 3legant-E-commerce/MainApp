@@ -1,0 +1,31 @@
+{
+  "id": "/",
+  "name": "RM-Ecommerce",
+  "short_name": "RM-Shop",
+  "description": "A progressive web app built with Vite",
+  "theme_color": "#FFC93C",
+  "background_color": "#FFC93C",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons/logo.png",
+      "sizes": "384x386",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/preview/mobile.png",
+      "sizes": "413x827",
+      "type": "images/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/preview/desktop.png",
+      "sizes": "1919x916",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

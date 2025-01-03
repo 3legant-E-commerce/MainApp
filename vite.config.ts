@@ -7,21 +7,27 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      injectRegister: "auto",
       registerType: "autoUpdate",
-      manifest: {
-        name: "RM-Ecommerce",
-        short_name: "RM-Shop",
-        description: "A progressive web app built with Vite",
-        start_url: ".",
-        display: "standalone",
-        background_color: "#FFC93C",
-        theme_color: "#FFC93C",
-        icons: [
+      manifest: false,
+      workbox: {
+        runtimeCaching: [
           {
-            src: "/logo.png",
-            sizes: "260x260",
-            type: "image/png",
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "images",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
+              },
+            },
+          },
+          {
+            urlPattern: /\/.*\.(?:js|css)$/,
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "static-resources",
+            },
           },
         ],
       },
