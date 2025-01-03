@@ -57,10 +57,12 @@ export default {
     },
   },
   darkMode: "class",
+
   plugins: [
     nextui(),
     fluid({
       checkSC144: false, // default: true
     }),
   ],
+
 };

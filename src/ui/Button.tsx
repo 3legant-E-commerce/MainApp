@@ -19,7 +19,7 @@ export default function Button({
       onClick={onClick}
       size="lg"
     >
-      {children}
+      <div className="flex justify-center">{children}</div>
     </NextButton>
   );
 }

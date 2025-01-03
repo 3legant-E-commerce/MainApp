@@ -1,36 +1,22 @@
-import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import MainContainer from "../../ui/MainContainer";
-import { useNavigate } from "react-router-dom";
 import ProductPicture from "./ProductPicture";
 import ProductDetail from "./ProductDetail";
+import BreadCrumb from "../../ui/BreadCrumb";
+import Comment from "./Comment";
 
 export default function ShopHeader() {
-  const navigate = useNavigate();
-
   return (
-    <MainContainer className="pt-24">
-      <div className="~mb-0.5/4 ~text-xs/base text-neutral-04">
-        <Breadcrumbs underline="active">
-          <BreadcrumbItem onClick={() => navigate("/")} key="home" size="md">
-            Home
-          </BreadcrumbItem>
-
-          <BreadcrumbItem
-            onClick={() => navigate("/shop")}
-            key="shop"
-            size="md"
-          >
-            Shop
-          </BreadcrumbItem>
-          <BreadcrumbItem size="md">Living Room</BreadcrumbItem>
-          <BreadcrumbItem size="md">Product</BreadcrumbItem>
-        </Breadcrumbs>
+    <MainContainer className="~pt-20/24">
+      <div className="mb-4 ~text-xs/base text-neutral-04">
+        <BreadCrumb />
       </div>
 
-      <div className="flex flex-col xl:flex-row ~gap-8/14">
+      <div className="flex flex-col xl:flex-row ~gap-8/14 mb-10">
         <ProductPicture />
         <ProductDetail />
       </div>
+
+      <Comment />
     </MainContainer>
   );
 }
