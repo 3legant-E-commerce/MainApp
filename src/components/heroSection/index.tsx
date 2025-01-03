@@ -1,13 +1,16 @@
 // import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import Button from "../../ui/Button";
+
 export default function Hero() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <section className="~pt-20/4 bg-bg-color">
       <div className="flex flex-col-reverse mx-auto w-full ~gap-x-2/10 items-center ~px-1/6 max-w-7xl md:flex-row">
         <div className="sm:w-1/2">
           <img
-            src="../../../public/images/hero-012.png"
+            src="/images/hero-012.png"
             alt="Music Listening mobile"
             className="w-full mx-auto"
           />
@@ -22,9 +25,13 @@ export default function Hero() {
           <p className="text-lg text-gray-700">
             Experience music like never before
           </p>
-          <button className="~px-12/8 py-4 mt-4 font-medium text-white bg-black rounded-md text-md hover:bg-gray-800">
+
+          <Button
+            className="mt-6 ~px-12/8 ~py-6/7"
+            onClick={() => navigate("/shop")}
+          >
             Shopping Now
-          </button>
+          </Button>
         </div>
       </div>
     </section>

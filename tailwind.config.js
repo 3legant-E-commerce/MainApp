@@ -18,6 +18,10 @@ export default {
     screens,
     fontSize,
 
+    fluid: ({ theme }) => ({
+      defaultScreens: ["20rem", theme("screens.lg")],
+    }),
+
     extend: {
       colors: {
         primary: "var(--primary-color)",
@@ -53,5 +57,12 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [nextui(), fluid],
+
+  plugins: [
+    nextui(),
+    fluid({
+      checkSC144: false, // default: true
+    }),
+  ],
+
 };

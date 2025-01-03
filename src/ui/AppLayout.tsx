@@ -7,7 +7,7 @@ export default function AppLayout() {
     <div>
       <Header />
 
-      <main className="h-[3000px]">
+      <main className="mb-16">
         <Outlet />
       </main>
 

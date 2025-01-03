@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export const HamburgerMenu = () => {
+export function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -106,4 +106,4 @@ export const HamburgerMenu = () => {
       </AnimatePresence>
     </li>
   );
-};
+}
