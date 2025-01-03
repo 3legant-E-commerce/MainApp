@@ -6,7 +6,6 @@ import Promotion from "../../components/promotion";
 import BenefitsCards from "../../components/benefitsCards";
 import Instagram from "../../components/instagram";
 
-
 function index() {
   return (
     <div>
