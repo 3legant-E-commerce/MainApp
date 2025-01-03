@@ -27,13 +27,24 @@ function ProductPicture() {
   };
 
   return (
-    <div className="flex h-[300px] sm:h-[400px] xl:h-[700px] flex-col xl:w-3/6 gap-y-4">
-      <div className="relative h-full xl:h-4/5">
-        <img
-          src={images[activeIndex]}
-          className="object-cover w-full h-full"
-          alt={`chair${activeIndex + 1}`}
-        />
+    <div className="flex h-[300px] sm:h-[400px] xl:h-[700px] flex-col xl:w-3/6 ~gap-y-1/4">
+      <div className="relative h-full overflow-hidden xl:h-4/5">
+        <div
+          className="flex h-full transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${activeIndex * 100}%)`,
+          }}
+        >
+          {images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              className="object-cover w-full h-full shrink-0"
+              alt={`chair${index + 1}`}
+            />
+          ))}
+        </div>
+
         <span className="absolute px-4 py-1 text-xs font-semibold text-white uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
           -50%
         </span>
@@ -55,7 +66,7 @@ function ProductPicture() {
         </div>
       </div>
 
-      <div className="hidden gap-4 xl:flex h-1/5">
+      <div className="flex ~gap-1/4 h-1/5">
         {images.map((image, index) => (
           <div
             key={index}

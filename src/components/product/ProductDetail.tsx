@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../../ui/Button";
 import StarsRating from "../../ui/Star";
 import { TimeCart } from "../../ui/cart/Cart";
-import { HeartIcon } from "../../assets/icons";
+// import { HeartIcon } from "../../assets/icons";
 import WishListButton from "../../ui/WishListButton";
 // import { InputOtp } from "@nextui-org/input-otp";
 
