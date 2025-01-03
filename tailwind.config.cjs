@@ -1,10 +1,9 @@
 const { nextui } = require("@nextui-org/react");
-
-// tailwind.config.js
-import fluid, { extract, screens, fontSize } from "fluid-tailwind";
+const fluid = require("fluid-tailwind");
+const { extract, screens, fontSize } = fluid;
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -57,12 +56,10 @@ export default {
     },
   },
   darkMode: "class",
-
   plugins: [
     nextui(),
     fluid({
       checkSC144: false, // default: true
     }),
   ],
-
 };
