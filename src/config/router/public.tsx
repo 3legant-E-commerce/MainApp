@@ -6,7 +6,7 @@ import PageNotFound from "../../ui/PageNotFound";
 
 // Pages:
 // const Error = lazy(() => import("../../ui/Error"));
-const LandingPage = lazy(() => import("../../pages/landing/index"));
+const LandingPage = lazy(() => import("../../pages/landing"));
 const Product = lazy(() => import("../../pages/product"));
 const Shop = lazy(() => import("../../pages/shop"));
 const Order = lazy(() => import("../../pages/order"));
