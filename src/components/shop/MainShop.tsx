@@ -58,7 +58,7 @@ export default function MainShop() {
     <div className="flex mt-16 gap-14">
       <div className="flex flex-col w-full">
         <div className="flex flex-col lg:flex-row justify-between ~gap-4/6 lg:gap-10">
-          <div className="flex flex-col sm:flex-row w-full lg:w-2/5 ~gap-2/4 border-2 border-blue-400">
+          <div className="flex flex-col sm:flex-row w-full lg:w-2/5 ~gap-2/4">
             <CategoriesOption />
             <PriceFilter />
           </div>
