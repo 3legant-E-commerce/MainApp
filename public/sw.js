@@ -1,10 +1,5 @@
 const CACHE_NAME = "my-app-cache-v1";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/manifest.webmanifest",
-  "/icons/logo.png",
-];
+const urlsToCache = ["/", "/index.html", "/manifest.json", "/icons/logo.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

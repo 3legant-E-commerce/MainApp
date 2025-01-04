@@ -10,7 +10,7 @@ function App() {
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
-          .register("/sw.js") // Make sure the path is correct
+          .register("/sw.js")
           .then((registration) => {
             console.log(
               "Service Worker registered with scope:",
