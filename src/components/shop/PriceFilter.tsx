@@ -8,23 +8,16 @@ const priceOptions = [
   { id: "400+", label: "$400+" },
 ];
 
-// const items = [
-//   { id: 1, name: "Item 1", price: 50 },
-//   { id: 2, name: "Item 2", price: 150 },
-//   { id: 3, name: "Item 3", price: 250 },
-//   { id: 4, name: "Item 4", price: 450 },
-// ];
-
 export default function PriceFilter() {
   return (
-    <div className="w-1/2">
-      <p className="mb-2 text-sm font-semibold uppercase text-neutral-04">
+    <div className="sm:w-1/2 w-full">
+      <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04">
         Price
       </p>
       <Select
         aria-label="test"
         isRequired
-        className="max-w-xs"
+        className="max-w-lg"
         defaultSelectedKeys={[priceOptions[0].id]}
         // onSelectionChange={(key) => handleFilterChange(key as string)}
       >

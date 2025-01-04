@@ -57,16 +57,16 @@ export default function MainShop() {
   return (
     <div className="flex mt-16 gap-14">
       <div className="flex flex-col w-full">
-        <div className="flex justify-between gap-10">
-          <div className="flex w-2/5 gap-4">
+        <div className="flex flex-col lg:flex-row justify-between ~gap-4/6 lg:gap-10">
+          <div className="flex flex-col sm:flex-row w-full lg:w-2/5 ~gap-2/4 border-2 border-blue-400">
             <CategoriesOption />
             <PriceFilter />
           </div>
-          <div className="flex items-end justify-between w-3/5 gap-8">
-            <div className="w-1/2">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between w-full lg:w-3/5 ~gap-4/6 md:gap-8">
+            <div className="w-full md:w-1/2">
               <FilterSearch />
             </div>
-            <div className="flex items-center h-10 gap-6">
+            <div className="flex max-lg:w-full max-lg:justify-between items-center gap-4 md:gap-6">
               <div className="flex items-center justify-center gap-1 font-semibold cursor-pointer">
                 <span className="text-sm">Sort by</span>
                 <BottomArrow className="relative top-0.5" />
@@ -95,7 +95,9 @@ export default function MainShop() {
 
         <div
           className={`grid gap-6 my-10 ${
-            activeCart === 1 ? "grid-cols-4 grid-rows-3 gap-y-8" : "grid-cols-2"
+            activeCart === 1
+              ? "lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-rows-3 gap-y-8"
+              : "lg:grid-cols-2 grid-cols-1"
           }`}
         >
           {renderCartItems()}

@@ -10,14 +10,14 @@ const categorie = [
 
 export default function CategoriesOption() {
   return (
-    <div className="w-1/2">
-      <p className="mb-2 text-sm font-semibold uppercase text-neutral-04">
+    <div className="sm:w-1/2 w-full">
+      <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04">
         categories
       </p>
       <Select
         aria-label="test"
         isRequired
-        className="max-w-xs"
+        className="max-w-lg"
         defaultSelectedKeys={["airpod"]}
         // placeholder="Select an categories"
       >

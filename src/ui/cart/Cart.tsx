@@ -71,7 +71,10 @@ export function ShopCartView1({
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
           {discount}
         </span>
-        <img src={src} title={title} className="w-4/5 mx-auto mt-6 h-5/6" />
+        <div className="h-full flex justify-center items-center">
+          {/* <img src={src} title={title} className="w-4/5 mx-auto mt-6 h-5/6" /> */}
+          <img src={src} title={title} className="h-full" />
+        </div>
 
         {children}
       </div>
@@ -79,7 +82,7 @@ export function ShopCartView1({
         <div className="h-1/4">
           <StarsRating rating={rating} />
         </div>
-        <div className="pr-4 text-sm line-clamp-1 h-1/2">{description}</div>
+        <div className="pr-4 text-sm line-clamp-1 h-1/3">{description}</div>
         <div className="flex items-center gap-4 text-xs font-bold h-1/4">
           <span>${price}</span>
           <span className="line-through text-neutral-04 decoration-black">
@@ -111,29 +114,33 @@ export function ShopCartView2({
   priceDecoration?: number;
 }) {
   return (
-    <div className="flex border-2 rounded-sm shadow-sm cursor-pointer">
-      <div className="bg-[#F3F5F7] relative w-1/2 h-full">
+    <div className="flex flex-col sm:flex-row border-1 h-[500px] sm:h-full rounded-sm shadow-sm cursor-pointer">
+      <div className="bg-[#F3F5F7] relative h-1/2 sm:h-full sm:w-1/2 w-full">
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-white rounded-sm shadow-sm left-4 top-4">
           {detail}
         </span>
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
           {discount}
         </span>
-        <img src={src} title={title} className="h-full" />
+        <div className="h-full flex justify-center items-center">
+          <img src={src} title={title} className="h-full" />
+        </div>
       </div>
-      <div className="flex flex-col w-1/2 px-6 overflow-hidden py-7">
+      <div className="flex flex-col ~px-3/6 overflow-hidden ~py-2/7 h-1/2 sm:h-full sm:w-1/2 w-full">
         <StarsRating rating={rating} />
-        <h2 className="mt-4 text-xl font-semibold capitalize">{title}</h2>
-        <div className="flex items-center gap-4 mt-2 mb-6 text-sm font-bold">
+        <h2 className="~mt-1/4 ~text-lg/xl font-semibold capitalize">
+          {title}
+        </h2>
+        <div className="flex items-center gap-4 ~mt-1/2 ~mb-2/6 text-sm font-bold">
           <span>${price}</span>
           <span className="line-through text-neutral-04 decoration-black">
             {priceDecoration}
           </span>
         </div>
-        <div className="text-sm leading-6 h-28 text-neutral-04 line-clamp-4">
+        <div className="~text-xs/sm leading-2 sm:leading-6 ~h-12/28 text-neutral-04 line-clamp-2 sm:line-clamp-4">
           {description}
         </div>
-        <Button className="mt-4">Add to cart</Button>
+        <Button className="~mt-1/4">Add to cart</Button>
         <WishListButton />
       </div>
     </div>
