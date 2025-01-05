@@ -33,7 +33,7 @@ export default function Promotion() {
           ))}
         </div>
 
-        <Button className="self-start w-full sm:py-6">shop now</Button>
+        <Button className="self-start w-full sm:w-3/5 sm:py-6">shop now</Button>
       </div>
     </section>
   );
