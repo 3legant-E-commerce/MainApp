@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { BottomArrow, ShopViewIcon1, ShopViewIcon2 } from "../../assets/icons";
-import { ShopCartView1, ShopCartView2 } from "../../ui/cart/Cart";
+import { ShopCartView1, ShopCartView2 } from "../../ui/cart/Carts";
 import data from "../../../data/cart.json";
 import Button from "../../ui/Button";
 import CategoriesOption from "./CategoriesOption";
 import PriceFilter from "./PriceFilter";
-import FilterSearch from "./FilterSerach";
+import FilterSearch from "./FilterSearch";
+import { useMediaQuery } from "react-responsive";
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);
@@ -22,9 +23,22 @@ export default function MainShop() {
     setVisibleCart((prev) => prev + 4);
   };
 
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 640px)" });
+
   const renderCartItems = () =>
     cart.slice(0, visibleCart).map((item) =>
-      activeCart === 1 ? (
+      isSmallScreen ? (
+        <ShopCartView2
+          key={item.id}
+          detail={item.detail}
+          discount={item.discount}
+          src={item.src}
+          title={item.title}
+          rating={item.rating}
+          description={item.description}
+          price={item.price}
+        />
+      ) : activeCart === 1 ? (
         <ShopCartView1
           key={item.id}
           src={item.src}
@@ -49,7 +63,6 @@ export default function MainShop() {
           rating={item.rating}
           description={item.description}
           price={item.price}
-          priceDecoration={item.priceDecoration}
         />
       )
     );
@@ -71,7 +84,7 @@ export default function MainShop() {
                 <span className="text-sm">Sort by</span>
                 <BottomArrow className="relative top-0.5" />
               </div>
-              <div className="flex items-center gap-2 border cursor-pointer h-fit">
+              <div className="hidden sm:flex items-center gap-2 border cursor-pointer h-fit">
                 <div
                   className={`p-2 border ${
                     activeCart === 1 ? "bg-gray-200" : ""

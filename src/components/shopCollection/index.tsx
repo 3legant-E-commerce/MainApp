@@ -1,4 +1,4 @@
-import { CartCol, CartRow } from "../../ui/cart/Cart";
+import { CartCol, CartRow } from "../../ui/cart/Carts";
 import CartHeader from "../../ui/cart/CartHeader";
 import MainContainer from "../../ui/MainContainer";
 

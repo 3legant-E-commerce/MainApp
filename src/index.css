@@ -43,3 +43,23 @@ body {
   font-family: Poppins-Black;
   src: url("../public/font/Poppins-Black.ttf");
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 10s linear infinite;
+  will-change: transform;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

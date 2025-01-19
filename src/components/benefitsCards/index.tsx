@@ -4,7 +4,7 @@ import {
   PaymentIcon,
   PhoneIcon,
 } from "../../assets/icons";
-import { BenefitCart } from "../../ui/cart/Cart";
+import { BenefitCart } from "../../ui/cart/Carts";
 import MainContainer from "../../ui/MainContainer";
 
 export default function BenefitsCards() {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../../ui/Button";
-import { TimeCart } from "../../ui/cart/Cart";
+import { TimeCart } from "../../ui/cart/Carts";
 
 export default function Promotion() {
   const [time] = useState([

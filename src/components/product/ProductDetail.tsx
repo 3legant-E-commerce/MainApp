@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../../ui/Button";
 import StarsRating from "../../ui/Star";
-import { TimeCart } from "../../ui/cart/Cart";
+import { TimeCart } from "../../ui/cart/Carts";
 // import { HeartIcon } from "../../assets/icons";
 import WishListButton from "../../ui/WishListButton";
 // import { InputOtp } from "@nextui-org/input-otp";
@@ -25,7 +25,7 @@ export default function ProductDetail() {
           tray table
         </h2>
         <p className="~mb-2/4 text-sm leading-6 text-neutral-04 line-clamp-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobs seep
           adipisci earum, nihil voluptate provident maxime? Laudantium,
           voluptate deserunt? Voluptatum corrupti excepturi repellendus enim
           doloremque est modi natus beatae similique.

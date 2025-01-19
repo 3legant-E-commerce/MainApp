@@ -69,7 +69,7 @@ export function HamburgerMenu() {
               onClick={(e) => e.stopPropagation()}
             >
               <ul className="space-y-0 mt-12 pr-5 text-[16px] flex flex-col gap-2">
-                {["/product", "/shop", "/"].map((section, index) => (
+                {["/product", "/cart", "/shop", "/"].map((section, index) => (
                   <motion.li
                     key={section}
                     className="font-semibold text-center list-none"
@@ -90,6 +90,7 @@ export function HamburgerMenu() {
                     >
                       {section === "/product" && "Product"}
                       {section === "/shop" && "Shop"}
+                      {section === "/cart" && "Cart"}
                       {section === "/" && "LandingPage"}
                     </Link>
                   </motion.li>
