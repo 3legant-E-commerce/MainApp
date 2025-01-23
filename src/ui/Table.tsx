@@ -16,7 +16,7 @@ function Table({
     const updateColumns = () => {
       if (window.innerWidth >= 1024) {
         // large screens
-        setScreenSize("2.4fr 1.5fr 1fr 1fr");
+        setScreenSize("2.4fr 1fr 1fr 1fr");
       } else {
         // small screens
         setScreenSize("2fr 1fr");
@@ -59,7 +59,7 @@ function Row({ children }: { children: React.ReactNode }) {
     <div
       role="row"
       style={{ gridTemplateColumns: columns }}
-      className="grid gap-6 items-center py-3 border-b border-gray-200 last:border-none"
+      className="grid gap-10 items-center py-3 border-b border-gray-200 last:border-none"
     >
       {children}
     </div>

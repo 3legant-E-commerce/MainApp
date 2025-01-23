@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Table from "../../ui/Table";
 
 interface Shop {
@@ -10,6 +11,16 @@ interface Shop {
 }
 
 function ShoppingRow({ shop }: { shop: Shop }) {
+  const [count, setCount] = useState<number>(shop.quantity);
+
+  function handleSum() {
+    setCount((c) => c + 1);
+  }
+
+  function handlePrv() {
+    setCount((c) => (c > 0 ? c - 1 : 0));
+  }
+
   return (
     <Table.Row>
       <div className="flex gap-4 h-20">
@@ -31,7 +42,21 @@ function ShoppingRow({ shop }: { shop: Shop }) {
           </div>
         </div>
       </div>
-      <div className="lg:flex hidden justify-center">{shop.quantity}</div>
+      <div className="lg:flex hidden justify-between border-2 border-stone-400 rounded-md px-2">
+        <button className="text-lg font-semibold" onClick={handlePrv}>
+          -
+        </button>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+          className="w-2/3 text-center"
+        />
+        <button className="text-lg font-semibold" onClick={handleSum}>
+          +
+        </button>
+      </div>
+
       <div className="flex max-lg:justify-end">{shop.price}</div>
       <div className="lg:flex hidden gap-2 items-center justify-center text-neutral-04 cursor-pointer hover:font-semibold hover:text-md transition-all duration-100 hover:text-neutral-05">
         <span>Remove</span>
