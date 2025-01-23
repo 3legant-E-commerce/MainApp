@@ -2,18 +2,21 @@
   "cartV2": [
     {
       "id": 1,
+      "title": "Cart",
       "label": "Shopping cart",
-      "content": "hello"
+      "content": "ShoppingCart"
     },
     {
       "id": 2,
+      "title": "Check Out",
       "label": "Checkout details",
-      "content": "hello"
+      "content": "CheckOutCart"
     },
     {
       "id": 3,
+      "title": "Complete!",
       "label": "Order complete",
-      "content": "zert"
+      "content": "CompleteCart"
     }
   ]
 }

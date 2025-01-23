@@ -1,10 +1,10 @@
 import MainContainer from "../../ui/MainContainer";
-import TabV1 from "../../ui/TabV1";
+import CartTab from "./CartTab";
 
 export default function Cart() {
   return (
-    <MainContainer className="mt-20">
-      <TabV1 />
+    <MainContainer className="~mt-44/60">
+      <CartTab />
     </MainContainer>
   );
 }

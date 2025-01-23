@@ -4,7 +4,7 @@ import type { Variants } from "motion/react";
 import * as motion from "motion/react-client";
 import { useEffect, useRef, useState } from "react";
 
-export function Variants() {
+export function HamburgerMenuTest() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
