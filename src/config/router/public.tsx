@@ -8,6 +8,7 @@ import Product from "../../pages/product.tsx";
 import Shop from "../../pages/shop.tsx";
 import SignUp from "../../pages/signUp.tsx";
 import SignIn from "../../pages/signIn.tsx";
+import CartPage from "../../pages/CartPage.tsx";
 
 export const PublicRouter = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const PublicRouter = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },
