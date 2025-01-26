@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Table from "../../ui/Table";
 import ShoppingRow from "./ShoppingRow";
-import Summary from "./Summary";
+import CartSummary from "./CartSummary";
 
 export default function ShoppingCart() {
   const [shopping] = useState([
@@ -44,11 +44,19 @@ export default function ShoppingCart() {
             data={shopping}
             render={(shop) => <ShoppingRow key={shop.id} shop={shop} />}
           />
+
+          <div className="flex flex-col gap-3 md:w-2/3 border-2 rounded-md p-4 border-stone-300 mt-10">
+            <p className="font-semibold ~text-sm/lg">Have a coupon?</p>
+            <span className="text-stone-400 ~text-xs/base">
+              Add your code for an instant cart discount
+            </span>
+            <input type="text" className="border-2 w-2/3 h-8" />
+          </div>
         </Table>
       </div>
 
       <div className="xl:w-1/3 w-full max-w-[500px] border-2 p-6 border-gray-400 rounded-lg">
-        <Summary />
+        <CartSummary />
       </div>
     </div>
   );

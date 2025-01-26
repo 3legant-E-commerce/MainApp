@@ -3,6 +3,7 @@ import data from "../../../data/cartV2.json";
 import ShoppingCart from "./ShoppingCart";
 import CheckOutCart from "./CheckOutCart";
 import CompleteCart from "./CompleteCart";
+import StepButton from "../../ui/StepButton";
 
 type TabData = {
   id: number;
@@ -67,6 +68,12 @@ function CartTab() {
           ]
         }
       </div>
+
+      <StepButton
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        tabs={tabs}
+      />
     </div>
   );
 }

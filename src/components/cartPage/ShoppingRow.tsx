@@ -42,8 +42,8 @@ function ShoppingRow({ shop }: { shop: Shop }) {
           </div>
         </div>
       </div>
-      <div className="lg:flex hidden justify-between border-2 border-stone-400 rounded-md px-2">
-        <button className="text-lg font-semibold" onClick={handlePrv}>
+      <div className="lg:flex hidden justify-between border-2 border-stone-400 rounded-md">
+        <button className="text-lg font-semibold px-2" onClick={handlePrv}>
           -
         </button>
         <input
@@ -52,13 +52,13 @@ function ShoppingRow({ shop }: { shop: Shop }) {
           onChange={(e) => setCount(Number(e.target.value))}
           className="w-2/3 text-center"
         />
-        <button className="text-lg font-semibold" onClick={handleSum}>
+        <button className="text-lg font-semibold px-2" onClick={handleSum}>
           +
         </button>
       </div>
 
       <div className="flex max-lg:justify-end">{shop.price}</div>
-      <div className="lg:flex hidden gap-2 items-center justify-center text-neutral-04 cursor-pointer hover:font-semibold hover:text-md transition-all duration-100 hover:text-neutral-05">
+      <div className="lg:flex hidden gap-2 items-center justify-center text-neutral-04 cursor-pointer hover:font-semibold hover:text-md transition-all duration-150 hover:text-neutral-05">
         <span>Remove</span>
         <span className="text-lg">&#9747;</span>
       </div>

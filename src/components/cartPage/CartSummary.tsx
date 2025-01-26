@@ -8,7 +8,7 @@ interface User {
   role: string;
 }
 
-export default function Summery() {
+export default function CartSummary() {
   const user: User[] = [
     {
       id: 1,
