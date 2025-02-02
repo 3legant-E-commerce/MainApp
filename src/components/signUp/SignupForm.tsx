@@ -1,4 +1,4 @@
-import { Input } from "@nextui-org/react";
+import { Checkbox, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Error from "./Error";
@@ -7,12 +7,14 @@ import { EyeFilledIcon, EyeSlashFilledIcon } from "../../assets/icons";
 import { useState } from "react";
 
 type FormValues = {
-  identifier: string;
+  name: string;
+  username: string;
+  email: string;
   password: string;
-  // terms: boolean;
+  terms: boolean;
 };
 
-export default function InputForm() {
+export default function SignupForm() {
   // const [formData, setFormData] = useState<FormValues | undefined>(undefined);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -35,10 +37,19 @@ export default function InputForm() {
         <h3>Form Submitted Data:</h3>
         <ul>
           <li>
-            <strong>Identifier (Username/Email):</strong> {data.identifier}
+            <strong>Name:</strong> {data.name}
+          </li>
+          <li>
+            <strong>Username:</strong> {data.username}
+          </li>
+          <li>
+            <strong>Email:</strong> {data.email}
           </li>
           <li>
             <strong>Password:</strong> {data.password}
+          </li>
+          <li>
+            <strong>Terms Accepted:</strong> {data.terms ? "Yes" : "No"}
           </li>
         </ul>
       </div>
@@ -49,25 +60,55 @@ export default function InputForm() {
 
   return (
     <form
-      className="flex flex-col flex-wrap w-full gap-3 md:flex-nowrap"
+      className="flex flex-col flex-wrap w-full sm:gap-3 md:flex-nowrap"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
         <Input
-          label="Your Username or Email address"
+          label="Your name"
           type="text"
-          id="identifier"
+          id="name"
           variant="underlined"
-          {...register("identifier", {
-            required: "Username or Email address is required",
-            validate: (value) =>
-              value.includes("@") ||
-              value.length >= 3 ||
-              "Enter a valid email or at least 3 characters for username",
+          {...register("name", { required: "Name is required" })}
+          size="sm"
+          // placeholder="Enter your name"
+          className="placeholder:text-sm"
+        />
+
+        <Error>{errors?.name?.message}</Error>
+      </div>
+
+      <div>
+        <Input
+          label="Username"
+          type="text"
+          id="username"
+          variant="underlined"
+          {...register("username", {
+            required: "Username is required",
           })}
         />
 
-        <Error>{errors?.identifier?.message}</Error>
+        <Error>{errors?.username?.message}</Error>
+      </div>
+
+      <div>
+        <Input
+          label="Email address"
+          // defaultValue="test@example.com"
+          type="email"
+          id="email"
+          variant="underlined"
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Invalid email format",
+            },
+          })}
+        />
+
+        <Error>{errors?.email?.message}</Error>
       </div>
 
       <div>
@@ -106,6 +147,32 @@ export default function InputForm() {
         />
 
         <Error>{errors?.password?.message}</Error>
+      </div>
+
+      <div className="flex flex-col gap-3 mt-2">
+        <Checkbox
+          {...register("terms", { required: "You must agree to the terms" })}
+          color="secondary"
+          radius="sm"
+          size="sm"
+        >
+          I agree with
+          <a
+            href="#"
+            className="mx-2 text-blue-500 underline underline-offset-4"
+          >
+            Privacy Policy
+          </a>
+          and
+          <a
+            href="#"
+            className="ml-2 text-blue-500 underline underline-offset-4"
+          >
+            Terms of Use
+          </a>
+        </Checkbox>
+
+        <Error>{errors?.terms?.message}</Error>
       </div>
 
       <div className="flex justify-between ~gap-4/10 ~mt-2/8">

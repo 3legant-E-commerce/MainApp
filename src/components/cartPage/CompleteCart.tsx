@@ -26,7 +26,7 @@ export default function CompleteCart() {
           alt=""
         />
       </div>
-      <div className="flex flex-col gap-4 w-2/5 mx-auto">
+      <div className="flex flex-col gap-4 ~text-xs/base lg:w-3/5 xl:w-2/5 mx-auto">
         <div className="flex justify-between">
           <span className="text-neutral-04">Order code:</span>
           <span className="text-stone-600 font-semibold">123456789</span>

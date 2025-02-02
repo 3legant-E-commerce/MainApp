@@ -1,18 +1,30 @@
 import { useState } from "react";
 import { BottomArrow, ShopViewIcon1, ShopViewIcon2 } from "../../assets/icons";
 import { ShopCartView1, ShopCartView2 } from "../../ui/cart/Carts";
-import data from "../../../data/cart.json";
+// import data from "../../../data/cart.json";
 import Button from "../../ui/Button";
 import CategoriesOption from "./CategoriesOption";
 import PriceFilter from "./PriceFilter";
 import FilterSearch from "./FilterSearch";
 import { useMediaQuery } from "react-responsive";
+import { useQuery } from "@tanstack/react-query";
+import { getShops } from "../../services/apiShoping";
+import { Loading } from "../../ui/Loading";
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);
   const [visibleCart, setVisibleCart] = useState(12);
 
-  const cart = data.carts;
+  // const cart = data.carts;
+
+  const {
+    isLoading,
+    data: shops,
+    // error,
+  } = useQuery({
+    queryKey: ["shop"],
+    queryFn: getShops,
+  });
 
   const handleShowCart = (cartNumber: number) => {
     setActiveCart(cartNumber);
@@ -25,8 +37,10 @@ export default function MainShop() {
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 640px)" });
 
+  if (isLoading) return <Loading />;
+
   const renderCartItems = () =>
-    cart.slice(0, visibleCart).map((item) =>
+    shops?.slice(0, visibleCart).map((item) =>
       isSmallScreen ? (
         <ShopCartView2
           key={item.id}
@@ -36,15 +50,17 @@ export default function MainShop() {
           title={item.title}
           rating={item.rating}
           description={item.description}
+          priceDecoration={item.priceDecoration}
           price={item.price}
         />
       ) : activeCart === 1 ? (
         <ShopCartView1
           key={item.id}
-          src={item.src}
+          src={item.img}
           title={item.title}
           detail={item.detail}
           description={item.description}
+          priceDecoration={item.priceDecoration}
           price={item.price}
           discount={item.discount}
           rating={item.rating}
@@ -62,6 +78,7 @@ export default function MainShop() {
           title={item.title}
           rating={item.rating}
           description={item.description}
+          priceDecoration={item.priceDecoration}
           price={item.price}
         />
       )
@@ -116,7 +133,7 @@ export default function MainShop() {
           {renderCartItems()}
         </div>
 
-        {visibleCart < cart.length && (
+        {shops && visibleCart < shops.length && (
           <button
             className="self-center py-1 my-10 border-2 border-gray-500 text-neutral-06 hover:font-semibold hover:border-gray-700 w-36 rounded-xl"
             onClick={showMoreProduct}
