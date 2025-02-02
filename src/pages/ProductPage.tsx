@@ -1,10 +1,10 @@
-import MainContainer from "../../ui/MainContainer";
-import ProductPicture from "./ProductPicture";
-import ProductDetail from "./ProductDetail";
-import BreadCrumb from "../../ui/BreadCrumb";
-import Comment from "./Comment";
+import Comment from "../components/product/Comment";
+import ProductDetail from "../components/product/ProductDetail";
+import ProductPicture from "../components/product/ProductPicture";
+import BreadCrumb from "../ui/BreadCrumb";
+import MainContainer from "../ui/MainContainer";
 
-export default function ShopHeader() {
+export default function ProductPage() {
   return (
     <MainContainer className="~pt-20/24">
       <div className="mb-4 ~text-xs/base text-neutral-04">

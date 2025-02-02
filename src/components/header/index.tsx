@@ -37,6 +37,10 @@ export default function Header() {
           <HeaderList>
             <Link to="/cart">cart</Link>
           </HeaderList>
+
+          <HeaderList>
+            <Link to="/account">account</Link>
+          </HeaderList>
         </ul>
 
         <Tools />

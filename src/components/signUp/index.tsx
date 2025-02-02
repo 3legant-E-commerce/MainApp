@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import InputForm from "./InputForm";
+import SignupForm from "./SignupForm";
 
 export default function SignUpForm() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function SignUpForm() {
           </span>
         </div>
 
-        <InputForm />
+        <SignupForm />
       </div>
     </div>
   );

@@ -6,9 +6,9 @@ import Promotion from "../components/promotion";
 import BenefitsCards from "../components/benefitsCards";
 import Instagram from "../components/instagram";
 
-function index() {
+function Landing() {
   return (
-    <div>
+    <>
       <Hero />
       <Featured />
       <ShopCollection />
@@ -16,8 +16,8 @@ function index() {
       <Promotion />
       <BenefitsCards />
       <Instagram />
-    </div>
+    </>
   );
 }
 
-export default index;
+export default Landing;

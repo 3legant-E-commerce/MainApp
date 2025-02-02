@@ -1,16 +1,16 @@
-import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
-import Button from "../../ui/Button";
+import InputForm from "../../ui/InputForm";
+import { Input } from "@nextui-org/react";
 import Error from "../../ui/Error";
 
 type FormValues = {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
 };
 
-export default function CheckOutCart() {
+export default function Dashboard() {
   const {
     register,
     handleSubmit,
@@ -20,63 +20,67 @@ export default function CheckOutCart() {
 
   function onSubmit(data: FormValues) {
     console.log("Form Data:", data);
-    // setFormData(data);
-
     reset();
   }
 
   return (
-    <form
-      className="w-full ~gap-4/8 md:flex-nowrap flex flex-col"
+    <InputForm
       onSubmit={handleSubmit(onSubmit)}
+      button="Save Changes"
+      className="border-2 border-gray-300 rounded-md py-10"
     >
-      <div className="border rounded-md border-stone-300 px-6 py-10">
-        <h2 className="font-semibold text-xl mb-4">Contact Information</h2>
-        <div className="grid md:grid-cols-2 gap-x-8 ~gap-y-4/10">
+      <h2 className="text-xl font-semibold">Contact Information</h2>
+      <div className="grid md:grid-cols-2 gap-x-8 ~gap-y-4/10">
+        <div>
           <Input
-            label="FIRST NAME"
+            label="First Name *"
             type="text"
             id="firstName"
             variant="underlined"
-            // {...register("name", { required: "Name is required" })}
-            {...register("firstName")}
+            {...register("firstName", { required: "First Name is required" })}
             size="sm"
-            className="placeholder:text-sm"
+            className="placeholder:text-sm font-semibold uppercase"
           />
+          <Error>{errors?.firstName?.message}</Error>
+        </div>
 
+        <div>
           <Input
-            label="LAST NAME"
+            label="last name *"
             type="text"
             id="lastName"
             variant="underlined"
-            {...register("lastName")}
+            {...register("lastName", { required: "Last Name is required" })}
             size="sm"
-            className="placeholder:text-sm"
+            className="placeholder:text-sm font-semibold uppercase"
           />
+          <Error>{errors?.lastName?.message}</Error>
+        </div>
 
-          <div>
-            <Input
-              label="PHONE NUMBER"
-              type="text"
-              id="phoneNumber"
-              variant="underlined"
-              {...register("phoneNumber", {
-                required: "Phone number is required",
-                validate: {
-                  minLength: (value) =>
-                    value.toString().length >= 10 ||
-                    "Phone number must be at least 10 digits",
-                  maxLength: (value) =>
-                    value.toString().length <= 11 ||
-                    "Phone number cannot be more than 11 digits",
-                },
-              })}
-              size="sm"
-              className="placeholder:text-sm"
-            />
-            <Error>{errors?.phoneNumber?.message}</Error>
-          </div>
+        <div>
+          <Input
+            label="PHONE NUMBER"
+            type="text"
+            id="phoneNumber"
+            variant="underlined"
+            {...register("phoneNumber", {
+              required: "Phone number is required",
+              validate: {
+                minLength: (value) =>
+                  value.toString().length >= 10 ||
+                  "Phone number must be at least 10 digits",
+                maxLength: (value) =>
+                  value.toString().length <= 11 ||
+                  "Phone number cannot be more than 11 digits",
+              },
+            })}
+            size="sm"
+            className="placeholder:text-sm font-semibold uppercase"
+          />
+          <Error>{errors?.phoneNumber?.message}</Error>
+        </div>
 
+        <div>
           <Input
             label="Email"
             type="email"
@@ -90,17 +94,10 @@ export default function CheckOutCart() {
               },
             })}
             size="sm"
-            className="placeholder:text-sm"
+            className="placeholder:text-sm font-semibold uppercase"
           />
         </div>
       </div>
-
-      <Button
-        type="submit"
-        className="~text-sm/lg ~px-6/12 w-full md:w-1/2 mx-auto mt-8"
-      >
-        Place Order
-      </Button>
-    </form>
+    </InputForm>
   );
 }
