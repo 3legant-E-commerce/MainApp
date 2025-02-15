@@ -1,4 +1,4 @@
-export default function Filter({
+export default function ShopFilter({
   title,
   children,
   className,

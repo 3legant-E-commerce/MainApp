@@ -10,7 +10,7 @@ const categorie = [
 
 export default function CategoriesOption() {
   return (
-    <div className="sm:w-1/2 w-full">
+    <div className="sm:w-1/2 w-full self-end">
       <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04">
         categories
       </p>

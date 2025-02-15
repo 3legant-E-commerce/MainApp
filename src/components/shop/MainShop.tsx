@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BottomArrow, ShopViewIcon1, ShopViewIcon2 } from "../../assets/icons";
+import { ShopViewIcon1, ShopViewIcon2 } from "../../assets/icons";
 import { ShopCartView1, ShopCartView2 } from "../../ui/cart/Carts";
 // import data from "../../../data/cart.json";
 import Button from "../../ui/Button";
@@ -9,16 +9,30 @@ import FilterSearch from "./FilterSearch";
 import { useMediaQuery } from "react-responsive";
 import { useQuery } from "@tanstack/react-query";
 import { getShops } from "../../services/apiShoping";
-import { Loading } from "../../ui/Loading";
+import { useSearchParams } from "react-router-dom";
+import Filter from "../../ui/Filter";
+// import { Loading } from "../../ui/Loading";
+
+interface Shop {
+  id: number;
+  detail: string;
+  discount: number;
+  image: string;
+  title: string;
+  rating: number;
+  description: string;
+  price: number;
+}
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);
   const [visibleCart, setVisibleCart] = useState(12);
+  const [searchParams] = useSearchParams();
 
   // const cart = data.carts;
 
   const {
-    isLoading,
+    // isLoading,
     data: shops,
     // error,
   } = useQuery({
@@ -37,30 +51,40 @@ export default function MainShop() {
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 640px)" });
 
-  if (isLoading) return <Loading />;
+  const filterValue = searchParams.get("discount") || "all";
+  console.log(filterValue);
+
+  let filteredShop: Shop[] | undefined;
+  if (filterValue === "all") filteredShop = shops;
+
+  if (filterValue === "no-discount" && shops)
+    filteredShop = shops.filter((shop) => shop.discount === null);
+
+  if (filterValue === "with-discount" && shops)
+    filteredShop = shops.filter((shop) => shop.discount > 0);
+
+  // if (isLoading) return <Loading />;
 
   const renderCartItems = () =>
-    shops?.slice(0, visibleCart).map((item) =>
+    filteredShop?.slice(0, visibleCart).map((item) =>
       isSmallScreen ? (
         <ShopCartView2
           key={item.id}
           detail={item.detail}
           discount={item.discount}
-          src={item.src}
+          src={item.image}
           title={item.title}
           rating={item.rating}
           description={item.description}
-          priceDecoration={item.priceDecoration}
           price={item.price}
         />
       ) : activeCart === 1 ? (
         <ShopCartView1
           key={item.id}
-          src={item.img}
+          src={item.image}
           title={item.title}
           detail={item.detail}
           description={item.description}
-          priceDecoration={item.priceDecoration}
           price={item.price}
           discount={item.discount}
           rating={item.rating}
@@ -74,11 +98,10 @@ export default function MainShop() {
           key={item.id}
           detail={item.detail}
           discount={item.discount}
-          src={item.src}
+          src={item.image}
           title={item.title}
           rating={item.rating}
           description={item.description}
-          priceDecoration={item.priceDecoration}
           price={item.price}
         />
       )
@@ -96,12 +119,18 @@ export default function MainShop() {
             <div className="w-full md:w-1/2">
               <FilterSearch />
             </div>
-            <div className="flex max-lg:w-full max-lg:justify-between items-center gap-4 md:gap-6">
-              <div className="flex items-center justify-center gap-1 font-semibold cursor-pointer">
-                <span className="text-sm">Sort by</span>
-                <BottomArrow className="relative top-0.5" />
+            <div className="flex w-1/2 max-lg:w-full justify-between max-lg:justify-between items-center gap-4 md:gap-6">
+              <div className="w-full font-semibold cursor-pointer">
+                <Filter
+                  filterField="discount"
+                  options={[
+                    { value: "all", label: "All" },
+                    { value: "no-discount", label: "No discount" },
+                    { value: "with-discount", label: "With discount" },
+                  ]}
+                />
               </div>
-              <div className="hidden sm:flex items-center gap-2 border cursor-pointer h-fit">
+              <div className="hidden sm:flex items-center gap-2 border cursor-pointer h-fit self-end">
                 <div
                   className={`p-2 border ${
                     activeCart === 1 ? "bg-gray-200" : ""
@@ -126,14 +155,16 @@ export default function MainShop() {
         <div
           className={`grid gap-6 my-10 ${
             activeCart === 1
-              ? "lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-rows-3 gap-y-8"
+              ? `lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 ${
+                  activeCart === 1 ? "" : "grid-rows-3"
+                } gap-y-8`
               : "lg:grid-cols-2 grid-cols-1"
           }`}
         >
           {renderCartItems()}
         </div>
 
-        {shops && visibleCart < shops.length && (
+        {filteredShop && visibleCart < filteredShop.length && (
           <button
             className="self-center py-1 my-10 border-2 border-gray-500 text-neutral-06 hover:font-semibold hover:border-gray-700 w-36 rounded-xl"
             onClick={showMoreProduct}

@@ -48,7 +48,6 @@ export function ShopCartView1({
   description,
   price,
   discount,
-  priceDecoration,
   rating,
   children,
 }: {
@@ -58,10 +57,11 @@ export function ShopCartView1({
   description: string;
   price: number;
   discount?: number;
-  priceDecoration?: number;
   rating: number;
   children?: React.ReactNode;
 }) {
+  const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
+
   return (
     <div className="sm:h-[350px] h-[350px] flex flex-col gap-4">
       <div className="bg-[#F3F5F7] relative rounded-sm p-4 shadow-sm h-3/4 cursor-pointer group">
@@ -69,11 +69,11 @@ export function ShopCartView1({
           {detail}
         </span>
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
-          {discount}
+          {discount && discount < 100 ? `${discount}` : null}
         </span>
         <div className="h-full flex justify-center items-center">
           {/* <img src={src} title={title} className="w-4/5 mx-auto mt-6 h-5/6" /> */}
-          <img src={src} title={title} className="h-full" />
+          <img src={src} title={title} className="h-full pt-7" />
         </div>
 
         {children}
@@ -84,9 +84,9 @@ export function ShopCartView1({
         </div>
         <div className="pr-4 text-sm line-clamp-1 h-1/3">{description}</div>
         <div className="flex items-center gap-4 text-xs font-bold h-1/4">
-          <span>${price}</span>
+          <span>${priceWithDiscount}</span>
           <span className="line-through text-neutral-04 decoration-black">
-            {priceDecoration}
+            {priceWithDiscount === price ? "" : price}
           </span>
         </div>
       </div>
@@ -102,8 +102,8 @@ export function ShopCartView2({
   rating,
   description,
   price,
-  priceDecoration,
-}: {
+}: // priceDecoration,
+{
   detail?: string;
   discount?: number;
   src: string;
@@ -111,8 +111,10 @@ export function ShopCartView2({
   rating: number;
   description: string;
   price: number;
-  priceDecoration?: number;
+  // priceDecoration?: number;
 }) {
+  const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
+
   return (
     <div className="flex flex-col sm:flex-row border-1 h-[500px] sm:h-full rounded-sm shadow-sm cursor-pointer">
       <div className="bg-[#F3F5F7] relative h-1/2 sm:h-full sm:w-1/2 w-full">
@@ -123,7 +125,7 @@ export function ShopCartView2({
           {discount}
         </span>
         <div className="h-full flex justify-center items-center">
-          <img src={src} title={title} className="h-full" />
+          <img src={src} title={title} className="h-full p-4" />
         </div>
       </div>
       <div className="flex flex-col ~px-3/6 overflow-hidden ~py-2/7 h-1/2 sm:h-full sm:w-1/2 w-full">
@@ -132,15 +134,15 @@ export function ShopCartView2({
           {title}
         </h2>
         <div className="flex items-center gap-4 ~mt-1/2 ~mb-2/6 text-sm font-bold">
-          <span>${price}</span>
+          <span>${priceWithDiscount}</span>
           <span className="line-through text-neutral-04 decoration-black">
-            {priceDecoration}
+            {priceWithDiscount === price ? "" : price}
           </span>
         </div>
-        <div className="~text-xs/sm leading-2 sm:leading-6 ~h-12/28 text-neutral-04 line-clamp-2 sm:line-clamp-4">
+        <div className="~text-xs/sm leading-2 sm:leading-6 ~h-10/28 text-neutral-04 line-clamp-2 sm:line-clamp-4">
           {description}
         </div>
-        <Button className="~mt-1/4">Add to cart</Button>
+        <Button className="~mt-1/4 h-10">Add to cart</Button>
         <WishListButton />
       </div>
     </div>
