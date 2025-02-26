@@ -1,12 +1,26 @@
-import { RouterProvider } from "react-router-dom";
-import { PublicRouter } from "./config/router/public";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { NextUIProvider } from "@nextui-org/react";
 import { Suspense, useEffect } from "react";
-import { Loading } from "./ui/Loading";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// Pages
+import { Loading } from "./ui/Loading";
+import AppLayout from "./ui/AppLayout";
+import Landing from "./pages/landing";
+import Product from "./pages/ProductPage";
+import Shop from "./pages/shop";
+import Cart from "./components/cartPage";
+import Account from "./components/account/Account";
+import Dashboard from "./components/cartPage/CheckOutCart";
+import Address from "./components/account/Address";
+import Orders from "./components/account/Orders";
+import WishList from "./components/account/WishList";
+import PageNotFound from "./ui/PageNotFound";
+import Login from "./pages/Login";
+import SignUp from "./pages/signUp";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -58,7 +72,29 @@ function App() {
         />
 
         <Suspense fallback={<Loading />}>
-          <RouterProvider router={PublicRouter} />
+          <BrowserRouter>
+            <Routes>
+              <Route element={<AppLayout />}>
+                <Route index element={<Navigate replace to="landing" />} />
+                <Route path="landing" element={<Landing />} />
+                <Route path="product" element={<Product />} />
+                <Route path="shop" element={<Shop />} />
+                <Route path="cart" element={<Cart />} />
+
+                <Route path="account" element={<Account />}>
+                  <Route index element={<Navigate replace to="dashboard" />} />
+                  <Route path="dashboard" element={<Dashboard />} />
+                  <Route path="address" element={<Address />} />
+                  <Route path="orders" element={<Orders />} />
+                  <Route path="wishlist" element={<WishList />} />
+                </Route>
+              </Route>
+
+              <Route path="*" element={<PageNotFound />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signUp" element={<SignUp />} />
+            </Routes>
+          </BrowserRouter>
         </Suspense>
       </NextUIProvider>
     </QueryClientProvider>

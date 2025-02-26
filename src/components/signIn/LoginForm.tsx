@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import SigninInput from "./SigninInput";
+import LoginInput from "./LoginInput";
 
-export default function SignInForm() {
+export default function LoginForm() {
   const navigate = useNavigate();
 
   return (
@@ -26,7 +26,7 @@ export default function SignInForm() {
             </span>
           </div>
 
-          <SigninInput />
+          <LoginInput />
         </div>
       </div>
     </div>

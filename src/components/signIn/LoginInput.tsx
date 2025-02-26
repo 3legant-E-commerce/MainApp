@@ -12,7 +12,7 @@ type FormValues = {
   // terms: boolean;
 };
 
-export default function SigninInput() {
+export default function LoginInput() {
   // const [formData, setFormData] = useState<FormValues | undefined>(undefined);
 
   const [isVisible, setIsVisible] = useState(false);

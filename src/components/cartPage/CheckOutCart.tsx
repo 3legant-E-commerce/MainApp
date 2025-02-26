@@ -27,10 +27,11 @@ export default function Dashboard() {
     <InputForm
       onSubmit={handleSubmit(onSubmit)}
       button="Save Changes"
-      className="border-2 border-gray-300 rounded-md py-10"
+      className="rounded-md py-10"
     >
       <h2 className="text-xl font-semibold">Contact Information</h2>
-      <div className="grid md:grid-cols-2 gap-x-8 ~gap-y-4/10">
+      {/* <div className="grid md:grid-cols-2 gap-x-8 ~gap-y-4/10"> */}
+      <div className="flex flex-col gap-10">
         <div>
           <Input
             label="First Name *"
