@@ -6,6 +6,8 @@ import { Loading } from "./ui/Loading";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -35,6 +37,8 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen />
+
       <NextUIProvider>
         <Toaster
           position="top-center"
@@ -52,6 +56,7 @@ function App() {
             },
           }}
         />
+
         <Suspense fallback={<Loading />}>
           <RouterProvider router={PublicRouter} />
         </Suspense>
