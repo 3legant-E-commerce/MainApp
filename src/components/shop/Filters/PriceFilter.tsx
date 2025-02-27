@@ -8,7 +8,7 @@ const priceOptions = [
   { id: "400+", label: "$400+" },
 ];
 
-export default function PriceFilter() {
+function PriceFilter() {
   return (
     <div className="sm:w-1/2 w-full self-end">
       <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04">
@@ -28,3 +28,5 @@ export default function PriceFilter() {
     </div>
   );
 }
+
+export default PriceFilter;

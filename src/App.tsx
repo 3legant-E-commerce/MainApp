@@ -11,7 +11,7 @@ import { Loading } from "./ui/Loading";
 import AppLayout from "./ui/AppLayout";
 import Landing from "./pages/landing";
 import Product from "./pages/ProductPage";
-import Shop from "./pages/shop";
+import Shop from "./pages/Shop";
 import Cart from "./components/cartPage";
 import Account from "./components/account/Account";
 import Dashboard from "./components/cartPage/CheckOutCart";
@@ -20,7 +20,7 @@ import Orders from "./components/account/Orders";
 import WishList from "./components/account/WishList";
 import PageNotFound from "./ui/PageNotFound";
 import Login from "./pages/Login";
-import SignUp from "./pages/signUp";
+import SignUp from "./pages/SignUp";
 
 const queryClient = new QueryClient({
   defaultOptions: {

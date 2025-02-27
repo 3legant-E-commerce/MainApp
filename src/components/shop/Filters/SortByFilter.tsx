@@ -6,7 +6,13 @@ interface FilterProps {
   options: { value: string; label: string }[];
 }
 
-export default function Filter({ filterField, options }: FilterProps) {
+// const options = [
+//   { value: "all", label: "All" },
+//   { value: "no-discount", label: "No discount" },
+//   { value: "with-discount", label: "With discount" },
+// ];
+
+export default function SortBy({ filterField, options }: FilterProps) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   function handleClick(value: string) {
