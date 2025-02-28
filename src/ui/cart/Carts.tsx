@@ -2,6 +2,7 @@ import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
 import WishListButton from "../WishListButton";
+import { formatCurrency } from "../../utils/helper";
 
 export function CartCol({
   className,
@@ -84,9 +85,9 @@ export function ShopCartView1({
         </div>
         <div className="pr-4 text-sm line-clamp-1 h-1/3">{description}</div>
         <div className="flex items-center gap-4 text-xs font-bold h-1/4">
-          <span>${priceWithDiscount}</span>
+          <span>{formatCurrency(priceWithDiscount)}</span>
           <span className="line-through text-neutral-04 decoration-black">
-            {priceWithDiscount === price ? "" : price}
+            {priceWithDiscount === price ? "" : formatCurrency(price)}
           </span>
         </div>
       </div>
@@ -134,9 +135,9 @@ export function ShopCartView2({
           {title}
         </h2>
         <div className="flex items-center gap-4 ~mt-1/2 ~mb-2/6 text-sm font-bold">
-          <span>${priceWithDiscount}</span>
+          <span>{formatCurrency(priceWithDiscount)}</span>
           <span className="line-through text-neutral-04 decoration-black">
-            {priceWithDiscount === price ? "" : price}
+            {priceWithDiscount === price ? "" : formatCurrency(price)}
           </span>
         </div>
         <div className="~text-xs/sm leading-2 sm:leading-6 ~h-10/28 text-neutral-04 line-clamp-2 sm:line-clamp-4">

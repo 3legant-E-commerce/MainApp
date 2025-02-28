@@ -49,7 +49,7 @@ function Window({ children, name }: { children: ReactElement; name: string }) {
   if (name !== openName) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 bg-backdrop backdrop-blur-sm transition-all">
+    <div className="fixed inset-0 z-50 bg-backdrop backdrop-blur-sm transition-all mt-10">
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
         className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-300 font-semibold rounded-lg shadow-lg p-8 transition-all"

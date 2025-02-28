@@ -23,6 +23,13 @@ const RenderCartItems = ({
   isSmallScreen: boolean;
   activeCart: number;
 }) => {
+  if (!filteredShop || filteredShop.length === 0) {
+    return (
+      <div className="col-span-4 flex justify-center items-center h-72 text-4xl text-neutral-04">
+        No shops found
+      </div>
+    );
+  }
   return filteredShop?.slice(0, visibleCart).map((item) =>
     isSmallScreen ? (
       <ShopCartView2

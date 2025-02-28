@@ -1,44 +1,48 @@
-import { useState } from "react";
-// import data from "../../../data/cart.json";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { useSearchParams } from "react-router-dom";
-import { getShops } from "../../services/apiShoping";
 import RenderCartItems from "./RenderCartItems";
 import { ShopFilter } from "./ShopFilter";
-// import { Loading } from "../../ui/Loading";
-
-interface Shop {
-  id: number;
-  detail: string;
-  discount: number;
-  image: string;
-  title: string;
-  rating: number;
-  description: string;
-  price: number;
-}
+import { Loading } from "../../ui/Loading";
+import useGetShop from "./useGetShop";
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);
-  const [visibleCart, setVisibleCart] = useState(12);
-  const [searchParams] = useSearchParams();
+  const [visibleCart, setVisibleCart] = useState(8);
+  const [isFetching, setIsFetching] = useState(false);
+  const loaderRef = useRef<HTMLButtonElement | null>(null);
 
-  // const cart = data.carts;
-
-  const {
-    // isLoading,
-    data: shops,
-    // error,
-  } = useQuery({
-    queryKey: ["shop"],
-    queryFn: getShops,
-  });
+  const { shops, isLoading } = useGetShop();
 
   const handleShowCart = (cartNumber: number) => {
     setActiveCart(cartNumber);
     setVisibleCart(cartNumber === 1 ? 12 : 6);
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isFetching) {
+          setIsFetching(true);
+          setTimeout(() => {
+            setVisibleCart((prev) => prev + 4);
+            setIsFetching(false);
+          }, 2000);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    const currentLoaderRef = loaderRef.current;
+    if (currentLoaderRef) {
+      observer.observe(currentLoaderRef);
+    }
+
+    return () => {
+      if (currentLoaderRef) {
+        observer.unobserve(currentLoaderRef);
+      }
+    };
+  }, [isFetching]);
 
   const showMoreProduct = () => {
     setVisibleCart((prev) => prev + 4);
@@ -46,19 +50,7 @@ export default function MainShop() {
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 640px)" });
 
-  const filterValue = searchParams.get("discount") || "all";
-  console.log(filterValue);
-
-  let filteredShop: Shop[] | undefined;
-  if (filterValue === "all") filteredShop = shops;
-
-  if (filterValue === "no-discount" && shops)
-    filteredShop = shops.filter((shop) => shop.discount === null);
-
-  if (filterValue === "with-discount" && shops)
-    filteredShop = shops.filter((shop) => shop.discount > 0);
-
-  // if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="flex mt-16 gap-14">
@@ -74,10 +66,9 @@ export default function MainShop() {
               : "lg:grid-cols-2 grid-cols-1"
           }`}
         >
-          {/* {renderCartItems()} */}
-          {filteredShop && (
+          {shops && (
             <RenderCartItems
-              filteredShop={filteredShop}
+              filteredShop={shops}
               visibleCart={visibleCart}
               isSmallScreen={isSmallScreen}
               activeCart={activeCart}
@@ -85,12 +76,13 @@ export default function MainShop() {
           )}
         </div>
 
-        {filteredShop && visibleCart < filteredShop.length && (
+        {shops && visibleCart < shops.length && (
           <button
-            className="self-center py-1 my-10 border-2 border-gray-500 text-neutral-06 hover:font-semibold hover:border-gray-700 w-36 rounded-xl"
+            ref={loaderRef}
+            className="self-center py-1 my-10 border-2 border-gray-500 text-neutral-06 hover:font-semibold hover:border-gray-700 w-36 h-16 rounded-xl"
             onClick={showMoreProduct}
           >
-            Show more
+            {isFetching && <span>Show more...</span>}
           </button>
         )}
       </div>

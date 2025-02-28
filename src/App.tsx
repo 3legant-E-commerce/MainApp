@@ -58,7 +58,8 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route element={<AppLayout />}>
-                <Route index element={<Navigate replace to="landing" />} />
+                {/* <Route index element={<Navigate replace to="landing" />} /> */}
+                <Route index element={<Landing />} />
                 <Route path="landing" element={<Landing />} />
                 <Route path="product" element={<Product />} />
                 <Route path="shop" element={<Shop />} />

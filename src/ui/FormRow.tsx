@@ -10,7 +10,7 @@ interface FormRowProps {
 function FormRow({ label, error, children }: FormRowProps) {
   return (
     <div
-      className={`grid items-center grid-cols-[16rem_1fr_1.2fr] gap-6 py-3 border-gray-500
+      className={`grid items-center grid-cols-[16rem_1fr_1.2fr] gap-4 py-3 border-gray-500
           ${!error ? "border-b" : ""} 
           ${
             children && children.type === "button"
