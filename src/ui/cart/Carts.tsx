@@ -131,7 +131,7 @@ export function ShopCartView2({
       </div>
       <div className="flex flex-col ~px-3/6 overflow-hidden ~py-2/7 h-1/2 sm:h-full sm:w-1/2 w-full">
         <StarsRating rating={rating} />
-        <h2 className="~mt-1/4 ~text-lg/xl font-semibold capitalize">
+        <h2 className="~mt-1/4 ~text-lg/xl font-semibold capitalize line-clamp-2 max-h-7">
           {title}
         </h2>
         <div className="flex items-center gap-4 ~mt-1/2 ~mb-2/6 text-sm font-bold">
