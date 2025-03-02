@@ -74,7 +74,7 @@ export function ShopCartView1({
         </span>
         <div className="h-full flex justify-center items-center">
           {/* <img src={src} title={title} className="w-4/5 mx-auto mt-6 h-5/6" /> */}
-          <img src={src} title={title} className="h-full pt-7" />
+          <img src={src} title={title} className="h-full pt-7" loading="lazy" />
         </div>
 
         {children}
@@ -126,7 +126,7 @@ export function ShopCartView2({
           {discount}
         </span>
         <div className="h-full flex justify-center items-center">
-          <img src={src} title={title} className="h-full p-4" />
+          <img src={src} title={title} className="h-full p-4" loading="lazy" />
         </div>
       </div>
       <div className="flex flex-col ~px-3/6 overflow-hidden ~py-2/7 h-1/2 sm:h-full sm:w-1/2 w-full">
