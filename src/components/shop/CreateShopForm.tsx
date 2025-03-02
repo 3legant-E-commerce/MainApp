@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from "react-hook-form";
-// import useCreateShop from "./useCreateShop";
-// import { useEditShops } from "./useEditShop";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import ShopButton from "./ShopButton";
@@ -16,14 +13,6 @@ export default function CreateShopForm({
   // shopToEdit: object;
   onCloseModal: () => void;
 }) {
-  // export default function AddFormShop({ shopToEdit = {} }) {
-  // const { createShop, isShoping } = useCreateShop();
-  // const { editShop, isEditing } = useEditShops();
-  // const isCreating = isShoping || isEditing;
-
-  // const { id: editId, ...editValues } = shopToEdit;
-  // const isEditSession = Boolean(editId);
-
   const { register, formState, handleSubmit, reset, getValues } =
     useForm<ShopFormData>();
   const { errors } = formState;

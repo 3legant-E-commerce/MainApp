@@ -1,26 +1,28 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { NextUIProvider } from "@nextui-org/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Suspense, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Pages
-import { Loading } from "./ui/Loading";
-import AppLayout from "./ui/AppLayout";
-import Landing from "./pages/landing";
-import Product from "./pages/ProductPage";
-import Shop from "./pages/Shop";
-import Cart from "./components/cartPage";
 import Account from "./components/account/Account";
-import Dashboard from "./components/cartPage/CheckOutCart";
 import Address from "./components/account/Address";
 import Orders from "./components/account/Orders";
 import WishList from "./components/account/WishList";
-import PageNotFound from "./ui/PageNotFound";
+import Cart from "./components/cartPage";
+import Dashboard from "./components/cartPage/CheckOutCart";
+import Landing from "./pages/landing";
 import Login from "./pages/Login";
+import Product from "./pages/ProductPage";
+import Shop from "./pages/Shop";
 import SignUp from "./pages/SignUp";
+import AppLayout from "./ui/AppLayout";
+import { Loading } from "./ui/Loading";
+import PageNotFound from "./ui/PageNotFound";
+import ScrollOnTop from "./ui/ScrollOnTop";
+// import ScrollToTop from "./ui/ScrollToTop";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -56,12 +58,13 @@ function App() {
       <NextUIProvider>
         <Suspense fallback={<Loading />}>
           <BrowserRouter>
+            <ScrollOnTop />
             <Routes>
               <Route element={<AppLayout />}>
                 {/* <Route index element={<Navigate replace to="landing" />} /> */}
                 <Route index element={<Landing />} />
                 <Route path="landing" element={<Landing />} />
-                <Route path="product" element={<Product />} />
+                <Route path="product/:shopId" element={<Product />} />
                 <Route path="shop" element={<Shop />} />
                 <Route path="cart" element={<Cart />} />
 

@@ -5,6 +5,7 @@ import { ShopFilter } from "./ShopFilter";
 import { Loading } from "../../ui/Loading";
 import useGetShop from "./useGetShop";
 import { Pagination, Spinner } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);
@@ -13,6 +14,7 @@ export default function MainShop() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const loaderRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
   const { shops, isLoading } = useGetShop();
 
@@ -53,11 +55,13 @@ export default function MainShop() {
     };
   }, [visibleCart, isFetching, isSmallScreen]);
 
+  /* Loading */
   if (isLoading) return <Loading />;
 
   return (
     <div className="flex mt-16 gap-14">
       <div className="flex flex-col w-full">
+        {/* Filters */}
         <ShopFilter handleClick={handleShowCart} activeCart={activeCart} />
 
         <div
@@ -69,12 +73,14 @@ export default function MainShop() {
               : "lg:grid-cols-2 grid-cols-1"
           }`}
         >
+          {/* Items */}
           {isSmallScreen ? (
             <RenderCartItems
               filteredShop={shops?.slice(0, visibleCart)}
               visibleCart={visibleCart}
               isSmallScreen={isSmallScreen}
               activeCart={activeCart}
+              onClick={(id) => navigate(`/product/${id}`)}
             />
           ) : (
             <RenderCartItems
@@ -82,10 +88,12 @@ export default function MainShop() {
               visibleCart={itemsPerPage}
               isSmallScreen={isSmallScreen}
               activeCart={activeCart}
+              onClick={(id) => navigate(`/product/${id}`)}
             />
           )}
         </div>
 
+        {/* Pagination */}
         {/* Mobile Screen */}
         {isSmallScreen && shops && visibleCart < shops.length && (
           <div

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { useShoping } from "../shop/useShoping";
+import { Loading } from "../../ui/Loading";
 
 function ProductPicture() {
-  const images = [
-    "/images/chair02.png",
-    "/images/chair03.png",
-    "/images/chair04.png",
-  ];
+  const { isLoading, shoping } = useShoping();
+  const { image_type: images } = shoping || {};
+  console.log(images);
 
-  const [activeIndex, setActiveIndex] = useState(0); // Track the active image index
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrevious = () => {
     setActiveIndex((prevIndex) =>
@@ -25,6 +25,8 @@ function ProductPicture() {
   const handleThumbnailClick = (index: number) => {
     setActiveIndex(index);
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="flex h-[300px] sm:h-[400px] xl:h-[700px] flex-col xl:w-3/6 ~gap-y-1/4">

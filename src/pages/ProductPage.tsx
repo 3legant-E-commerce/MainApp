@@ -13,6 +13,7 @@ export default function ProductPage() {
 
       <div className="flex flex-col xl:flex-row ~gap-8/14 mb-10">
         <ProductPicture />
+
         <ProductDetail />
       </div>
 

@@ -16,6 +16,21 @@ export async function getShops(filters: any) {
   return data;
 }
 
+export async function getShop(id) {
+  const { data, error } = await supabase
+    .from("shop")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Shopping not found");
+  }
+
+  return data;
+}
+
 export async function CreateEditShop(newShop) {
   // https://ejnqnprxcxrkuuaiqdzw.supabase.co/storage/v1/object/public/shop-images//bed-02.png
 

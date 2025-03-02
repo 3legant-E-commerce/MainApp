@@ -17,11 +17,13 @@ const RenderCartItems = ({
   visibleCart,
   isSmallScreen,
   activeCart,
+  onClick,
 }: {
   filteredShop: filteredShopProps[];
   visibleCart: number;
   isSmallScreen: boolean;
   activeCart: number;
+  onClick?: (id: number) => void;
 }) => {
   if (!filteredShop || filteredShop.length === 0) {
     return (
@@ -53,8 +55,11 @@ const RenderCartItems = ({
         discount={item.discount}
         rating={item.rating}
       >
-        <Button className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0">
-          Add to cart
+        <Button
+          className="absolute w-3/4 transition-all duration-1000 transform -translate-x-1/2 translate-y-4 opacity-0 bottom-4 left-1/2 group-hover:opacity-100 group-hover:translate-y-0"
+          onClick={() => onClick?.(item.id)}
+        >
+          See details
         </Button>
       </ShopCartView1>
     ) : (
@@ -67,6 +72,7 @@ const RenderCartItems = ({
         rating={item.rating}
         description={item.description}
         price={item.price}
+        onClick={() => onClick?.(item.id)}
       />
     )
   );
