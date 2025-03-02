@@ -4,12 +4,13 @@ import RenderCartItems from "./RenderCartItems";
 import { ShopFilter } from "./ShopFilter";
 import { Loading } from "../../ui/Loading";
 import useGetShop from "./useGetShop";
+import { Spinner } from "@nextui-org/react";
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);
   const [visibleCart, setVisibleCart] = useState(8);
   const [isFetching, setIsFetching] = useState(false);
-  const loaderRef = useRef<HTMLButtonElement | null>(null);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
 
   const { shops, isLoading } = useGetShop();
 
@@ -26,27 +27,22 @@ export default function MainShop() {
           setTimeout(() => {
             setVisibleCart((prev) => prev + 4);
             setIsFetching(false);
-          }, 2000);
+          }, 1000);
         }
       },
       { threshold: 1.0 }
     );
 
-    const currentLoaderRef = loaderRef.current;
-    if (currentLoaderRef) {
-      observer.observe(currentLoaderRef);
-    }
+    if (loaderRef.current) observer.observe(loaderRef.current);
 
     return () => {
-      if (currentLoaderRef) {
-        observer.unobserve(currentLoaderRef);
-      }
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
     };
-  }, [isFetching]);
+  }, [visibleCart, isFetching]);
 
-  const showMoreProduct = () => {
+  /*  const showMoreProduct = () => {
     setVisibleCart((prev) => prev + 4);
-  };
+  }; */
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 640px)" });
 
@@ -77,13 +73,22 @@ export default function MainShop() {
         </div>
 
         {shops && visibleCart < shops.length && (
-          <button
+          <div
             ref={loaderRef}
-            className="self-center py-1 my-10 border-2 border-gray-500 text-neutral-06 hover:font-semibold hover:border-gray-700 w-36 h-16 rounded-xl"
-            onClick={showMoreProduct}
+            className="self-center flex justify-center items-center gap-6 ~px-2/4 ~py-1/2 my-10 border-2 border-gray-500 text-neutral-06 hover:font-semibold hover:border-gray-700 rounded-xl cursor-pointer"
           >
-            {isFetching && <span>Show more...</span>}
-          </button>
+            {isFetching ? (
+              <>
+                <span>Loading more . . .</span>
+                <Spinner />
+              </>
+            ) : (
+              <>
+                <span className="opacity-50">Loading more...</span>
+                <Spinner />
+              </>
+            )}
+          </div>
         )}
       </div>
     </div>
