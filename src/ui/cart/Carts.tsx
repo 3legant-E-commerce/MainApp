@@ -70,7 +70,7 @@ export function ShopCartView1({
           {detail}
         </span>
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
-          {discount && discount < 100 ? `${discount}` : null}
+          {discount && discount < 100 ? `${discount}%` : null}
         </span>
         <div className="h-full flex justify-center items-center">
           {/* <img src={src} title={title} className="w-4/5 mx-auto mt-6 h-5/6" /> */}
@@ -124,7 +124,7 @@ export function ShopCartView2({
           {detail}
         </span>
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
-          {discount}
+          {discount}%
         </span>
         <div className="h-full flex justify-center items-center">
           <img src={src} title={title} className="h-full p-4" loading="lazy" />

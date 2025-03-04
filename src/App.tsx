@@ -22,7 +22,6 @@ import AppLayout from "./ui/AppLayout";
 import { Loading } from "./ui/Loading";
 import PageNotFound from "./ui/PageNotFound";
 import ScrollOnTop from "./ui/ScrollOnTop";
-// import ScrollToTop from "./ui/ScrollToTop";
 
 const queryClient = new QueryClient({
   defaultOptions: {

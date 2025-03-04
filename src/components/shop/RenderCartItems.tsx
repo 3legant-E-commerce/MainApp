@@ -6,6 +6,7 @@ interface filteredShopProps {
   detail: string;
   discount: number;
   image: string;
+  images: string;
   title: string;
   rating: number;
   description: string;
@@ -38,7 +39,7 @@ const RenderCartItems = ({
         key={item.id}
         detail={item.detail}
         discount={item.discount}
-        src={item.image}
+        src={item.images?.[0] ? item.images?.[0] : item.image}
         title={item.title}
         rating={item.rating}
         description={item.description}
@@ -47,7 +48,7 @@ const RenderCartItems = ({
     ) : activeCart === 1 ? (
       <ShopCartView1
         key={item.id}
-        src={item.image}
+        src={item.images?.[0] ? item.images?.[0] : item.image}
         title={item.title}
         detail={item.detail}
         description={item.description}
@@ -67,7 +68,7 @@ const RenderCartItems = ({
         key={item.id}
         detail={item.detail}
         discount={item.discount}
-        src={item.image}
+        src={item.images?.[0] ? item.images?.[0] : item.image}
         title={item.title}
         rating={item.rating}
         description={item.description}
