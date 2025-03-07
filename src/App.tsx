@@ -26,6 +26,7 @@ import ScrollOnTop from "./ui/ScrollOnTop";
 
 // SERVICE WORKER
 import ServiceWorker from "./ui/ServiceWorker";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,7 +47,13 @@ function App() {
           <BrowserRouter>
             <ScrollOnTop />
             <Routes>
-              <Route element={<AppLayout />}>
+              <Route
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
                 {/* <Route index element={<Navigate replace to="landing" />} /> */}
                 <Route index element={<Landing />} />
                 <Route path="landing" element={<Landing />} />
