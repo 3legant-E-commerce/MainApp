@@ -12,7 +12,7 @@ type FormValues = {
   // terms: boolean;
 };
 
-export default function SigninInput() {
+export default function LoginInput() {
   // const [formData, setFormData] = useState<FormValues | undefined>(undefined);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -83,7 +83,8 @@ export default function SigninInput() {
               message: "Password must be at least 6 characters",
             },
             pattern: {
-              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
+              // value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
+              value: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
               message:
                 "Password must include uppercase, lowercase, and a number",
             },
@@ -123,3 +124,6 @@ export default function SigninInput() {
     </form>
   );
 }
+
+/* deactive confirm email :in supabase/authenication/sign up/email/confirm email , read documentations */
+/* SUPABASE : go to API docs we need Authentication and user management */

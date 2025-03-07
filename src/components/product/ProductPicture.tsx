@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { useShoping } from "../shop/useShoping";
+import { Loading } from "../../ui/Loading";
 
 function ProductPicture() {
-  const images = [
-    "/images/chair02.png",
-    "/images/chair03.png",
-    "/images/chair04.png",
-  ];
+  const { isLoading, shoping } = useShoping();
+  const { images = [], detail, discount } = shoping || {};
+  const hasImages = images && images.length > 0;
 
-  const [activeIndex, setActiveIndex] = useState(0); // Track the active image index
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrevious = () => {
     setActiveIndex((prevIndex) =>
@@ -26,6 +26,8 @@ function ProductPicture() {
     setActiveIndex(index);
   };
 
+  if (isLoading) return <Loading />;
+
   return (
     <div className="flex h-[300px] sm:h-[400px] xl:h-[700px] flex-col xl:w-3/6 ~gap-y-1/4">
       <div className="relative h-full overflow-hidden xl:h-4/5">
@@ -35,53 +37,67 @@ function ProductPicture() {
             transform: `translateX(-${activeIndex * 100}%)`,
           }}
         >
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              className="object-cover w-full h-full shrink-0"
-              alt={`chair${index + 1}`}
-            />
-          ))}
+          {hasImages ? (
+            images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                className="object-cover w-full h-full shrink-0"
+                alt={`chair${index + 1}`}
+              />
+            ))
+          ) : (
+            <p className="text-center text-gray-500 self-center mx-auto">
+              No images available
+            </p>
+          )}
         </div>
 
         <span className="absolute px-4 py-1 text-xs font-semibold text-white uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
-          -50%
+          {discount}%
         </span>
         <span className="absolute px-4 py-1 text-xs font-semibold uppercase bg-white rounded-sm shadow-sm left-4 top-2">
-          New
+          {detail}
         </span>
 
-        <div
-          onClick={handlePrevious}
-          className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 left-4 hover:bg-gray-200"
-        >
-          <AiOutlineArrowLeft />
-        </div>
-        <div
-          onClick={handleNext}
-          className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 right-4 hover:bg-gray-200"
-        >
-          <AiOutlineArrowRight />
-        </div>
+        {hasImages && (
+          <>
+            <div
+              onClick={handlePrevious}
+              className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 left-4 hover:bg-gray-200"
+            >
+              <AiOutlineArrowLeft />
+            </div>
+            <div
+              onClick={handleNext}
+              className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 right-4 hover:bg-gray-200"
+            >
+              <AiOutlineArrowRight />
+            </div>
+          </>
+        )}
       </div>
 
       <div className="flex ~gap-1/4 h-1/5">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`w-1/3 h-full cursor-pointer border-2 rounded-md ${
-              activeIndex === index ? "border-gray-800" : "border-transparent"
-            }`}
-            onClick={() => handleThumbnailClick(index)}
-          >
-            <img
-              src={image}
-              className="object-cover w-full h-full rounded-md"
-              alt={`Thumbnail ${index + 1}`}
-            />
-          </div>
-        ))}
+        {hasImages
+          ? images.map((image, index) => (
+              <div
+                key={index}
+                className={`w-1/3 h-full cursor-pointer border-2 rounded-md ${
+                  activeIndex === index
+                    ? "border-gray-800"
+                    : "border-transparent"
+                }`}
+                onClick={() => handleThumbnailClick(index)}
+              >
+                <img
+                  src={image}
+                  className="object-cover w-full h-full rounded-md"
+                  alt={`Thumbnail ${index + 1}`}
+                />
+              </div>
+            ))
+          : ""}
       </div>
     </div>
   );

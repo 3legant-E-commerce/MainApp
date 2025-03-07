@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
-import { BottomArrow } from "../assets/icons";
 
 export default function ScrollToTop() {
   const [showButton, setShowButton] = useState(false);

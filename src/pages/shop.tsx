@@ -3,7 +3,7 @@ import ShopHeader from "../components/shop/ShopHeader";
 import MainContainer from "../ui/MainContainer";
 import AddShop from "./AddShop";
 
-export default function index() {
+export default function Shop() {
   return (
     <MainContainer className="mt-20">
       <ShopHeader />

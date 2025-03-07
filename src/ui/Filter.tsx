@@ -1,39 +1,50 @@
-import { useSearchParams } from "react-router-dom";
 import { Select, SelectItem } from "@nextui-org/react";
+import { useSearchParams } from "react-router-dom";
 
 interface FilterProps {
-  filterField: string;
+  title: string;
   options: { value: string; label: string }[];
+  filterField: string;
 }
 
-export default function Filter({ filterField, options }: FilterProps) {
+function Filter({ title, options, filterField }: FilterProps) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const currentField =
+    searchParams.get(filterField) || options.at(0)?.value || "";
 
   function handleClick(value: string) {
-    searchParams.set(filterField, value);
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+    if (value && value !== "all") {
+      newParams.set(filterField, value);
+    } else {
+      newParams.delete(filterField);
+    }
+
+    setSearchParams(newParams);
   }
 
   return (
-    <div className="w-full">
-      <p className="mb-2 text-xs font-semibold uppercase text-neutral-04">
-        Sort By
+    <div className="sm:w-1/2 w-full self-end">
+      <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04">
+        {title}
       </p>
-
       <Select
-        className="w-full"
-        // label="Sort By"
-        // placeholder="Select an option"
+        aria-label={title}
+        isRequired
+        className="max-w-lg"
+        defaultSelectedKeys={[currentField]}
         onSelectionChange={(value) =>
           handleClick(Array.from(value)[0] as string)
         }
-        defaultSelectedKeys={["all"]}
-        aria-label="test"
       >
-        {options.map((option) => (
-          <SelectItem key={option.value}>{option.label}</SelectItem>
+        {options.map((item) => (
+          <SelectItem className="capitalize" key={item.value}>
+            {item.label}
+          </SelectItem>
         ))}
       </Select>
     </div>
   );
 }
+
+export default Filter;

@@ -3,10 +3,17 @@ import Button from "../../ui/Button";
 import StarsRating from "../../ui/Star";
 import { TimeCart } from "../../ui/cart/Carts";
 // import { HeartIcon } from "../../assets/icons";
+import { Loading } from "../../ui/Loading";
 import WishListButton from "../../ui/WishListButton";
+import { formatCurrency } from "../../utils/helper";
+import { useShoping } from "../shop/useShoping";
 // import { InputOtp } from "@nextui-org/input-otp";
 
 export default function ProductDetail() {
+  const { shoping, isLoading } = useShoping();
+
+  const { title, discount, rating, description, price } = shoping || {};
+
   const [time] = useState([
     { id: 1, hour: 2, day: "Days" },
     { id: 2, hour: 12, day: "Hours" },
@@ -14,26 +21,27 @@ export default function ProductDetail() {
     { id: 4, hour: 29, day: "Seconds" },
   ]);
 
+  const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
+
+  if (isLoading) <Loading />;
+
   return (
     <div className="flex justify-center xl:w-3/5">
       <div className="flex flex-col lg:pr-16">
         <div className="flex ~gap-2/4">
-          <StarsRating rating={1} />
+          <StarsRating rating={rating} />
           <span className="text-sm text-neutral-04">11 Reviews</span>
         </div>
         <h2 className="~my-3/6 ~text-3xl/4xl font-semibold capitalize">
-          tray table
+          {title}
         </h2>
         <p className="~mb-2/4 text-sm leading-6 text-neutral-04 line-clamp-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobs seep
-          adipisci earum, nihil voluptate provident maxime? Laudantium,
-          voluptate deserunt? Voluptatum corrupti excepturi repellendus enim
-          doloremque est modi natus beatae similique.
+          {description}
         </p>
         <div className="flex items-center gap-4 pb-6 ~mb-3/6 font-semibold border-b-2">
-          <span className="text-2xl">$1000</span>
+          <span className="text-2xl">{formatCurrency(priceWithDiscount)}</span>
           <span className="text-lg line-through text-neutral-04 decoration-black">
-            $1200
+            {priceWithDiscount === price ? "" : formatCurrency(price)}
           </span>
         </div>
         <div className="flex flex-col gap-2 pb-6 mb-6 border-b-2">

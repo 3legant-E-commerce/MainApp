@@ -1,11 +1,31 @@
+import { applyFilters } from "../hooks/applyFilters";
 import supabase, { supabaseUrl } from "./supabase";
 
-export async function getShops() {
-  const { data, error } = await supabase.from("shop").select("*");
+export async function getShops(filters: any) {
+  let query = supabase.from("shop").select("*");
+
+  query = applyFilters(query, filters);
+
+  const { data, error } = await query;
 
   if (error) {
     console.error(error);
-    throw new Error("Cabins could not be loaded");
+    throw new Error("Shops could not be loaded");
+  }
+
+  return data;
+}
+
+export async function getShop(id) {
+  const { data, error } = await supabase
+    .from("shop")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Shopping not found");
   }
 
   return data;

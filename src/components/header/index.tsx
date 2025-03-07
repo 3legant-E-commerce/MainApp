@@ -26,9 +26,9 @@ export default function Header() {
             <BottomArrow />
           </HeaderList>
 
-          <HeaderList>
+          {/* <HeaderList>
             <Link to="/product">product</Link>
-          </HeaderList>
+          </HeaderList> */}
 
           {/* <HeaderList>
             <span>contact us</span>
