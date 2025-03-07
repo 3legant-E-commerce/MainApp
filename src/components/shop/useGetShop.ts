@@ -21,8 +21,11 @@ function useGetShop() {
   let filteredShops = shops || [];
   if (searchTerm && shops) {
     filteredShops = shops.filter((shop) =>
-      [shop.title, shop.description, shop.category].some((field) =>
-        field.toLowerCase().includes(searchTerm.toLowerCase())
+      [shop.title, shop.description, shop.category].some(
+        (field) =>
+          field &&
+          typeof field === "string" &&
+          field.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
   }
