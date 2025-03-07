@@ -1,27 +1,31 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 
-// Pages
+// COMPONENTS
 import Account from "./components/account/Account";
 import Address from "./components/account/Address";
 import Orders from "./components/account/Orders";
 import WishList from "./components/account/WishList";
 import Cart from "./components/cartPage";
 import Dashboard from "./components/cartPage/CheckOutCart";
+
+// PAGES
 import Landing from "./pages/landing";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import Product from "./pages/ProductPage";
 import Shop from "./pages/Shop";
-import SignUp from "./pages/SignUp";
 import AppLayout from "./ui/AppLayout";
 import { Loading } from "./ui/Loading";
 import PageNotFound from "./ui/PageNotFound";
 import ScrollOnTop from "./ui/ScrollOnTop";
+
+// SERVICE WORKER
+import ServiceWorker from "./ui/ServiceWorker";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,29 +36,12 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("/sw.js")
-          .then((registration) => {
-            console.log(
-              "Service Worker registered with scope:",
-              registration.scope
-            );
-          })
-          .catch((error) => {
-            console.log("Service Worker registration failed:", error);
-          });
-      });
-    }
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen />
 
       <NextUIProvider>
+        <ServiceWorker />
         <Suspense fallback={<Loading />}>
           <BrowserRouter>
             <ScrollOnTop />
