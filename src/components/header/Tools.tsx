@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { CartIcon, ProfileIcon, SearchIcon } from "../../assets/icons";
+import { CartIcon, ProfileIcon } from "../../assets/icons";
 
 import { HamburgerMenu } from "../../ui/HamburgerMenu";
+import Logout from "../authentication/Logout";
 
 export default function Tools() {
   const navigate = useNavigate();
 
   return (
     <ul className="flex items-center gap-4">
-      <SearchIcon className="max-sm:hidden" />
+      {/* <SearchIcon className="max-sm:hidden" /> */}
+      <Logout />
+
       <button className="cursor-pointer" onClick={() => navigate("/SignUp")}>
         <ProfileIcon className="max-sm:hidden" />
       </button>

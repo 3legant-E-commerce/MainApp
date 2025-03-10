@@ -112,8 +112,7 @@ export function ShopCartView2({
   rating: number;
   description: string;
   price: number;
-
-  onClick?: React.MouseEventHandler;
+  onClick?: () => void;
 }) {
   const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
 

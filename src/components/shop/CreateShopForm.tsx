@@ -36,12 +36,16 @@ export default function CreateShopForm({
     price: number;
     discount: number;
     rating: number;
-    image: FileList | string;
+    image: FileList;
   }
 
   function onSubmit(data: ShopFormData) {
-    mutate({ ...data, image: data.image[0] });
-    // console.log(data);
+    const { image, title, ...rest } = data;
+    mutate({
+      name: title,
+      image: image[0],
+      ...rest,
+    });
   }
 
   return (
@@ -129,10 +133,17 @@ export default function CreateShopForm({
       <FormRow label="Cabin photo">
         <input
           id="image"
-          // accept="image/*"
           type="file"
           className="text-md rounded-sm file:font-inherit file:font-medium file:px-4 file:py-2 file:mr-3 file:rounded-sm file:border-none file:text-brand-50 file:bg-brand-600 file:cursor-pointer file:transition-colors hover:file:bg-brand-700"
-          {...register("image", { required: "this field is required" })}
+          {...register("image", {
+            required: "this field is required",
+            onChange: (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                e.target.value = file;
+              }
+            },
+          })}
         />
       </FormRow>
 
@@ -144,10 +155,7 @@ export default function CreateShopForm({
         >
           Cancel
         </ShopButton>
-        <ShopButton disabled={isCreating}>
-          {/* {isEditSession ? "Edit Shop" : "new shop"} */}
-          Edit Shop
-        </ShopButton>
+        <ShopButton disabled={isCreating}>Edit Shop</ShopButton>
       </div>
     </Form>
   );

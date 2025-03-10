@@ -2,6 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import { getShops } from "../../services/apiShoping";
 import { useSearchParams } from "react-router-dom";
 
+interface filteredShopProps {
+  id: number;
+  detail: string;
+  discount: number;
+  image: string;
+  images: string;
+  title: string;
+  rating: number;
+  description: string;
+  price: number;
+}
+
 function useGetShop() {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category") || "all";
@@ -13,7 +25,7 @@ function useGetShop() {
     isLoading,
     data: shops,
     error,
-  } = useQuery({
+  } = useQuery<filteredShopProps[]>({
     queryKey: ["shop", category, price, searchTerm, filterValue],
     queryFn: () => getShops({ category, price }),
   });
@@ -21,7 +33,7 @@ function useGetShop() {
   let filteredShops = shops || [];
   if (searchTerm && shops) {
     filteredShops = shops.filter((shop) =>
-      [shop.title, shop.description, shop.category].some(
+      [shop.title, shop.description].some(
         (field) =>
           field &&
           typeof field === "string" &&
@@ -31,7 +43,7 @@ function useGetShop() {
   }
 
   if (filterValue === "no-discount" && shops) {
-    filteredShops = filteredShops.filter((shop) => shop.discount === null);
+    filteredShops = filteredShops.filter((shop) => shop.discount === 0);
   }
 
   if (filterValue === "with-discount" && shops) {

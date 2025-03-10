@@ -1,10 +1,9 @@
-import Button from "../../ui/Button";
-import { ShopCartView1, ShopCartView2 } from "../../ui/cart/Carts";
 import CartHeader from "../../ui/cart/CartHeader";
+import { ShopCartView1 } from "../../ui/cart/Carts";
 import MainContainer from "../../ui/MainContainer";
 
-import data from "../../../data/cart.json";
 import { useState } from "react";
+import data from "../../../data/cart.json";
 
 export default function BestSeller() {
   const cart = data.carts;

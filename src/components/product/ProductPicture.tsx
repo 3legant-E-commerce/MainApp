@@ -38,7 +38,7 @@ function ProductPicture() {
           }}
         >
           {hasImages ? (
-            images.map((image, index) => (
+            images.map((image: string, index: number) => (
               <img
                 key={index}
                 src={image}
@@ -80,7 +80,7 @@ function ProductPicture() {
 
       <div className="flex ~gap-1/4 h-1/5">
         {hasImages
-          ? images.map((image, index) => (
+          ? images.map((image: string, index: number) => (
               <div
                 key={index}
                 className={`w-1/3 h-full cursor-pointer border-2 rounded-md ${
