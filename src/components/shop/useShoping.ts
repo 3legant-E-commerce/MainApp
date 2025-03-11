@@ -11,7 +11,10 @@ export function useShoping() {
     error,
   } = useQuery({
     queryKey: ["shop", shopId],
-    queryFn: () => getShop(shopId),
+    queryFn: () => {
+      if (!shopId) throw new Error("Shop ID is required");
+      return getShop(Number(shopId));
+    },
     retry: false,
   });
 

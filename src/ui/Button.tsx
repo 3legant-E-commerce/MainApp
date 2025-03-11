@@ -10,7 +10,7 @@ export default function Button({
   children: React.ReactNode;
   className?: string;
   type?: "button" | "submit" | "reset";
-  onClick?: (e: React.PressEvent) => void;
+  onClick?: () => void;
   size?: "lg" | "sm" | "md";
 }) {
   return (
@@ -18,7 +18,7 @@ export default function Button({
       color="primary"
       className={`text-white font-semibold bg-black rounded-md text-md hover:bg-gray-800 ${className}`}
       type={type}
-      onPress={onClick}
+      onPress={onClick || (() => {})}
       size={size}
     >
       <div className="flex justify-center">{children}</div>

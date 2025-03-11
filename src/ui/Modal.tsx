@@ -4,6 +4,8 @@ import {
   useContext,
   useState,
   ReactElement,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
@@ -12,7 +14,7 @@ import useOutsideClick from "../hooks/useOutsideClick";
 const ModalContext = createContext({
   openName: "",
   close: () => {},
-  open: (name: string) => {},
+  open: (() => {}) as Dispatch<SetStateAction<string>>,
 });
 
 import { ReactNode } from "react";

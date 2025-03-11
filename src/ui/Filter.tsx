@@ -38,7 +38,11 @@ function Filter({ title, options, filterField }: FilterProps) {
         }
       >
         {options.map((item) => (
-          <SelectItem className="capitalize" key={item.value}>
+          <SelectItem
+            className="capitalize"
+            key={item.value}
+            onPress={() => handleClick(item.value)}
+          >
             {item.label}
           </SelectItem>
         ))}

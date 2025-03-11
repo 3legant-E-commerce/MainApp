@@ -1,8 +1,20 @@
 import { applyFilters } from "../hooks/applyFilters";
 import supabase, { supabaseUrl } from "./supabase";
 
+interface Shop {
+  id?: number;
+  name: string;
+  image: File;
+  [key: string]: any;
+}
+
+interface ShopResponse {
+  id: number;
+  [key: string]: any;
+}
+
 export async function getShops(filters: any) {
-  let query = supabase.from("shop").select("*");
+  let query: any = supabase.from("shop").select("*");
 
   query = applyFilters(query, filters);
 
@@ -16,7 +28,7 @@ export async function getShops(filters: any) {
   return data;
 }
 
-export async function getShop(id) {
+export async function getShop(id: number) {
   const { data, error } = await supabase
     .from("shop")
     .select("*")
@@ -31,16 +43,17 @@ export async function getShop(id) {
   return data;
 }
 
-export async function CreateEditShop(newShop) {
+export async function CreateEditShop(newShop: Shop) {
   // https://ejnqnprxcxrkuuaiqdzw.supabase.co/storage/v1/object/public/shop-images//bed-02.png
 
   const ImageName = `${Math.random()}-${newShop.image.name}`;
   const ImagePath = `${supabaseUrl}/storage/v1/object/public/shop-images/${ImageName}`;
   // 1. Create Shop
-  const { data, error } = await supabase
+  const { data, error } = (await supabase
     .from("shop")
-    .insert([{ ...newShop, image: ImagePath }]);
-  // .select();
+    .insert([{ ...newShop, image: ImagePath }])
+    .select()
+    .single()) as { data: ShopResponse | null; error: any };
 
   if (error) {
     console.error(error);
@@ -53,7 +66,7 @@ export async function CreateEditShop(newShop) {
     .upload(ImageName, newShop.image);
 
   // 3.Delete shop if there was an error uploading image
-  if (storageError) {
+  if (storageError && data) {
     await supabase.from("shop").delete().eq("id", data.id);
     console.error(storageError);
     throw new Error(
