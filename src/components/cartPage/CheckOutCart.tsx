@@ -2,19 +2,22 @@ import { useForm } from "react-hook-form";
 import InputForm from "../../ui/InputForm";
 import { Input } from "@nextui-org/react";
 import Error from "../../ui/Error";
+import { useUser } from "../authentication/useUser";
 
 type FormValues = {
-  firstName: string;
+  fullName: string;
   lastName: string;
   email: string;
   phoneNumber: string;
 };
 
 export default function Dashboard() {
+  const { user } = useUser();
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -36,13 +39,39 @@ export default function Dashboard() {
           <Input
             label="First Name *"
             type="text"
-            id="firstName"
+            id="fullName"
             variant="underlined"
-            {...register("firstName", { required: "First Name is required" })}
+            {...register("fullName", {
+              required: "First Name is required",
+              value: user?.user_metadata?.fullName,
+            })}
             size="sm"
-            className="placeholder:text-sm font-semibold uppercase"
+            className="placeholder:text-sm font-semibold uppercase bg-bg-color rounded-md pl-2"
+            onChange={(e) => setValue("fullName", e.target.value)}
           />
-          <Error>{errors?.firstName?.message}</Error>
+          <Error>{errors?.fullName?.message}</Error>
+        </div>
+
+        <div>
+          <Input
+            label="Email"
+            type="email"
+            id="email"
+            variant="underlined"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Invalid email format",
+              },
+            })}
+            size="sm"
+            className="placeholder:text-sm font-semibold uppercase bg-bg-color rounded-md pl-2"
+            value={user?.user_metadata?.email}
+            onChange={(e) => {
+              e.target.value = user?.user_metadata?.email;
+            }}
+          />
         </div>
 
         <div>
@@ -79,24 +108,6 @@ export default function Dashboard() {
             className="placeholder:text-sm font-semibold uppercase"
           />
           <Error>{errors?.phoneNumber?.message}</Error>
-        </div>
-
-        <div>
-          <Input
-            label="Email"
-            type="email"
-            id="email"
-            variant="underlined"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email format",
-              },
-            })}
-            size="sm"
-            className="placeholder:text-sm font-semibold uppercase"
-          />
         </div>
       </div>
     </InputForm>

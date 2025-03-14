@@ -7,6 +7,11 @@ import Error from "./Error";
 import { useLogin } from "./useLogin";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "../../assets/icons";
 
+type FormValues = {
+  email: string;
+  password: string;
+};
+
 export default function LoginInput() {
   // const [email, setEmail] = useState<string>("ramtin@example.com");
   // const [password, setPassWord] = useState<string>("RAMTIN1234");
@@ -24,7 +29,7 @@ export default function LoginInput() {
     defaultValues: { email: "ramtin@example.com", password: "RAMTIN1234" },
   });
 
-  function onSubmit(data: { email: string; password: string }) {
+  function onSubmit(data: FormValues) {
     if (!data.email || !data.password) return;
     login(
       { email: data.email, password: data.password },
