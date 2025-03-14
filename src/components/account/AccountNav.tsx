@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../authentication/useUser";
 
 interface Account {
   title: string;
@@ -12,6 +13,7 @@ interface AccountNavProps {
 }
 
 export default function AccountNav({ account, setPageTitle }: AccountNavProps) {
+  const { user } = useUser();
   const [selectedTitle, setSelectedTitle] = useState<string>("");
 
   return (
@@ -24,7 +26,9 @@ export default function AccountNav({ account, setPageTitle }: AccountNavProps) {
             className="w-20 h-20 rounded-full"
           />
         </div>
-        <h3 className="font-semibold text-xl">Ramtin Ramezani</h3>
+        <h3 className="font-semibold text-xl">
+          {user?.user_metadata?.fullName || "User"}
+        </h3>
       </div>
       <ul className="flex flex-col gap-6 mb-10 font-semibold text-neutral-04 w-1/3">
         {account.map((acc) => (

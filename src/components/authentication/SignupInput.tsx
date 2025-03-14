@@ -1,101 +1,68 @@
 import { Checkbox, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
-import Error from "./Error";
-import { toast } from "react-hot-toast";
-import { EyeFilledIcon, EyeSlashFilledIcon } from "../../assets/icons";
-import { useState } from "react";
+import Error from "../signUp/Error";
+import { useSignup } from "./useSignup";
+import { Loading } from "../../ui/Loading";
 
 type FormValues = {
-  name: string;
-  username: string;
+  fullName: string;
   email: string;
   password: string;
+  confirmPassword: string;
   terms: boolean;
 };
 
-export default function SignupForm() {
+export default function SignupInput() {
   // const [formData, setFormData] = useState<FormValues | undefined>(undefined);
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  const toggleVisibility = () => setIsVisible(!isVisible);
+  const { signup, isPending } = useSignup();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
+    getValues,
   } = useForm<FormValues>();
 
   function onSubmit(data: FormValues) {
-    console.log("Form Data:", data);
-    // setFormData(data);
-
-    toast.success(
-      <div>
-        <h3>Form Submitted Data:</h3>
-        <ul>
-          <li>
-            <strong>Name:</strong> {data.name}
-          </li>
-          <li>
-            <strong>Username:</strong> {data.username}
-          </li>
-          <li>
-            <strong>Email:</strong> {data.email}
-          </li>
-          <li>
-            <strong>Password:</strong> {data.password}
-          </li>
-          <li>
-            <strong>Terms Accepted:</strong> {data.terms ? "Yes" : "No"}
-          </li>
-        </ul>
-      </div>
+    signup(
+      {
+        fullName: data.fullName,
+        email: data.email,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+        terms: data.terms,
+      },
+      { onSettled: () => reset() }
     );
-
-    reset();
+    console.log(data);
   }
 
   return (
     <form
-      className="flex flex-col flex-wrap w-full sm:gap-3 md:flex-nowrap"
+      className="flex flex-col flex-wrap w-full gap-3 md:flex-nowrap"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
         <Input
-          label="Your name"
-          type="text"
-          id="name"
+          label="Full Name"
+          type="fullName"
+          id="fullName"
           variant="underlined"
-          {...register("name", { required: "Name is required" })}
-          size="sm"
-          // placeholder="Enter your name"
-          className="placeholder:text-sm"
-        />
-
-        <Error>{errors?.name?.message}</Error>
-      </div>
-
-      <div>
-        <Input
-          label="Username"
-          type="text"
-          id="username"
-          variant="underlined"
-          {...register("username", {
-            required: "Username is required",
+          {...register("fullName", {
+            required: "fullName is required",
           })}
+          disabled={isPending}
         />
 
-        <Error>{errors?.username?.message}</Error>
+        <Error>{errors?.fullName?.message}</Error>
       </div>
 
       <div>
         <Input
           label="Email address"
-          // defaultValue="test@example.com"
           type="email"
           id="email"
           variant="underlined"
@@ -103,9 +70,11 @@ export default function SignupForm() {
             required: "Email is required",
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              // value: /\S+@\S+\.\S+/,
               message: "Invalid email format",
             },
           })}
+          disabled={isPending}
         />
 
         <Error>{errors?.email?.message}</Error>
@@ -113,15 +82,15 @@ export default function SignupForm() {
 
       <div>
         <Input
-          label="Password"
-          type={isVisible ? "text" : "password"}
+          label="Password (8 characters minimum)"
+          type="text"
           id="password"
           variant="underlined"
           {...register("password", {
             required: "Password is required",
             minLength: {
-              value: 6,
-              message: "Password must be at least 6 characters",
+              value: 8,
+              message: "Password must be at least 8 characters",
             },
             pattern: {
               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
@@ -130,23 +99,28 @@ export default function SignupForm() {
             },
           })}
           autoComplete="new-password"
-          endContent={
-            <button
-              aria-label="toggle password visibility"
-              className="focus:outline-none"
-              type="button"
-              onClick={toggleVisibility}
-            >
-              {isVisible ? (
-                <EyeSlashFilledIcon className="text-2xl pointer-events-none text-default-400" />
-              ) : (
-                <EyeFilledIcon className="text-2xl pointer-events-none text-default-400" />
-              )}
-            </button>
-          }
+          disabled={isPending}
         />
 
         <Error>{errors?.password?.message}</Error>
+      </div>
+
+      <div>
+        <Input
+          label="Confirm Password"
+          type="text"
+          id="confirmPassword"
+          variant="underlined"
+          {...register("confirmPassword", {
+            required: "Confirm Password is required",
+            validate: (value) =>
+              value === getValues().password || "Password needs to match",
+          })}
+          autoComplete="new-password"
+          disabled={isPending}
+        />
+
+        <Error>{errors?.confirmPassword?.message}</Error>
       </div>
 
       <div className="flex flex-col gap-3 mt-2">
@@ -155,6 +129,7 @@ export default function SignupForm() {
           color="secondary"
           radius="sm"
           size="sm"
+          disabled={isPending}
         >
           I agree with
           <a
