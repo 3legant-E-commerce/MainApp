@@ -12,7 +12,9 @@ export default function StarsRating({
           key={index}
           xmlns="http://www.w3.org/2000/svg"
           className={`w-4 h-4 ${
-            index < rating ? "text-neutral-05" : "text-gray-300"
+            index < rating
+              ? "text-neutral-05 dark:text-white"
+              : "text-gray-300 dark:text-gray-600"
           }`}
           fill={index < rating ? "currentColor" : "none"}
           viewBox="0 0 24 24"

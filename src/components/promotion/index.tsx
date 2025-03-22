@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Button from "../../ui/Button";
 import { TimeCart } from "../../ui/cart/Carts";
+import { useNavigate } from "react-router-dom";
 
 export default function Promotion() {
+  const navigate = useNavigate();
+
   const [time] = useState([
     { id: 1, hour: 2, day: "Days" },
     { id: 2, hour: 5, day: "Hours" },
@@ -33,7 +36,12 @@ export default function Promotion() {
           ))}
         </div>
 
-        <Button className="self-start w-full sm:w-3/5 sm:py-6">shop now</Button>
+        <Button
+          className="self-start w-full sm:w-3/5 sm:py-6"
+          onClick={() => navigate("/shop")}
+        >
+          shop now
+        </Button>
       </div>
     </section>
   );

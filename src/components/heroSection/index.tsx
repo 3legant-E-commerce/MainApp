@@ -6,7 +6,7 @@ import Button from "../../ui/Button";
 export default function Hero() {
   const navigate = useNavigate();
   return (
-    <section className="~pt-20/4 bg-bg-color">
+    <section className="~pt-20/4 mb-10 bg-bg-color dark:bg-grey-900 dark:border-b dark:border-b-grey-700">
       <div className="flex flex-col-reverse mx-auto w-full ~gap-x-2/10 items-center ~px-1/6 max-w-7xl md:flex-row">
         <div className="sm:w-1/2">
           <img
@@ -22,12 +22,12 @@ export default function Hero() {
             music sound.
           </h1>
 
-          <p className="text-lg text-gray-700">
+          <p className="text-lg text-gray-700 dark:text-grey-400">
             Experience music like never before
           </p>
 
           <Button
-            className="mt-6 ~px-12/8 ~py-6/7"
+            className="~mt-6/10 ~px-12/8 ~py-6/7 ~text-sm/xl"
             onClick={() => navigate("/shop")}
           >
             Shopping Now

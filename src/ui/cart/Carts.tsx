@@ -15,10 +15,10 @@ export function CartCol({
 }) {
   return (
     <div
-      className={`flex flex-col col-span-1 row-span-2 shadow-sm ~px-6/14 rounded-sm bg-[#F3F5F7] pt-8 ${className}`}
+      className={`flex flex-col col-span-1 row-span-2 shadow-sm ~px-6/14 rounded-sm bg-[#F3F5F7] dark:bg-grey-800 pt-8 ${className}`}
     >
       <img src={src} title={title} className="w-5/6 mx-auto h-5/6" />
-      <CartTitle title={title} className="h-1/6" />
+      <CartTitle title={title} className="h-1/6 dark:text-grey-200" />
     </div>
   );
 }
@@ -34,10 +34,13 @@ export function CartRow({
 }) {
   return (
     <div
-      className={`flex flex-row-reverse rounded-sm col-span-1 row-span-1 shadow-sm ~px-4/8 bg-[#F3F5F7] pt-6 ${className}`}
+      className={`flex flex-row-reverse rounded-sm col-span-1 row-span-1 shadow-sm ~px-4/8 bg-[#F3F5F7] dark:bg-grey-800 pt-6 ${className}`}
     >
       <img src={src} title={title} className="w-1/2 sm:w-3/5" />
-      <CartTitle title={title} className="self-end w-1/2 ~mb-6/14 sm:w-2/5" />
+      <CartTitle
+        title={title}
+        className="self-end w-1/2 ~mb-6/14 sm:w-2/5 dark:text-grey-200"
+      />
     </div>
   );
 }
@@ -65,11 +68,11 @@ export function ShopCartView1({
 
   return (
     <div className="sm:h-[350px] h-[350px] flex flex-col gap-4">
-      <div className="bg-[#F3F5F7] relative rounded-sm p-4 shadow-sm h-3/4 cursor-pointer group">
-        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-white rounded-sm shadow-sm left-4">
+      <div className="bg-[#F3F5F7] dark:bg-grey-800 relative rounded-sm p-4 shadow-sm h-3/4 cursor-pointer group">
+        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-grey-200 rounded-sm shadow-sm left-4 dark:text-grey-700">
           {detail}
         </span>
-        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
+        <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-green-300 dark:bg-green-700 rounded-sm shadow-sm left-4 top-11">
           {discount && discount < 100 ? `${discount}%` : null}
         </span>
         <div className="h-full flex justify-center items-center">
@@ -162,12 +165,12 @@ export function BenefitCart({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="~h-40/52 ~px-4/8 ~pt-8/12 rounded-sm shadow-sm lg:h-56 bg-neutral-02">
+    <div className="~h-40/52 ~px-4/8 ~pt-8/12 rounded-sm shadow-sm lg:h-56 bg-neutral-02 dark:bg-grey-800">
       <div className="mb-4">{icon}</div>
-      <p className="~mb-0.5/2 font-semibold capitalize ~text-sm/xl text-neutral-07">
+      <p className="~mb-0.5/2 font-semibold capitalize ~text-sm/xl text-neutral-07 dark:text-grey-200">
         {title}
       </p>
-      <span className="~text-xs/sm text-neutral-04 line-clamp-1 overflow-hidden text-ellipsis">
+      <span className="~text-xs/sm text-neutral-04 line-clamp-1 overflow-hidden text-ellipsis dark:text-grey-400">
         {text}
       </span>
     </div>
@@ -190,7 +193,7 @@ export function TimeCart({
       >
         {hour}
       </span>
-      <span className="text-xs font-semibold capitalize text-neutral-04">
+      <span className="text-xs font-semibold capitalize text-neutral-04 dark:text-grey-300">
         {day}
       </span>
     </div>
