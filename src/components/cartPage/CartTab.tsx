@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import data from "../../../data/cartV2.json";
 import ShoppingCart from "./ShoppingCart";
-import CheckOutCart from "./CheckOutCart";
+import CheckOutCart from "./Dashboard";
 import CompleteCart from "./CompleteCart";
 import StepButton from "../../ui/StepButton";
 

@@ -5,6 +5,7 @@ import BestSeller from "../components/bestSellers";
 import Promotion from "../components/promotion";
 import BenefitsCards from "../components/benefitsCards";
 import Instagram from "../components/instagram";
+import ScrollToTop from "../ui/ScrollToTop";
 
 function Landing() {
   return (
@@ -16,6 +17,7 @@ function Landing() {
       <Promotion />
       <BenefitsCards />
       <Instagram />
+      <ScrollToTop />
     </>
   );
 }

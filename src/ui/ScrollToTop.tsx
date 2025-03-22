@@ -12,7 +12,7 @@ export default function ScrollToTop() {
       const documentHeight = document.documentElement.scrollHeight;
 
       // Show the button when near the bottom
-      if (scrolledFromTop >= documentHeight - 1000) {
+      if (scrolledFromTop >= documentHeight - 2000) {
         setShowButton(true);
       } else {
         setShowButton(false);

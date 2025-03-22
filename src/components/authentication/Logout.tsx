@@ -12,7 +12,7 @@ function Logout() {
 
   return (
     <ButtonIcon disabled={isPending} onClick={handleLogout}>
-      <HiArrowRightOnRectangle size={24} color="red" />
+      <HiArrowRightOnRectangle className="~text-lg/3xl" color="red" />
     </ButtonIcon>
   );
 }
