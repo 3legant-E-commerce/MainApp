@@ -11,12 +11,12 @@ import Address from "./components/account/Address";
 import Orders from "./components/account/Orders";
 import WishList from "./components/account/WishList";
 import Cart from "./components/cartPage";
-import Dashboard from "./components/cartPage/CheckOutCart";
+import Dashboard from "./components/cartPage/Dashboard";
 
 // PAGES
 import Landing from "./pages/landing";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/signUp";
 import Product from "./pages/ProductPage";
 import Shop from "./pages/Shop";
 import AppLayout from "./ui/AppLayout";

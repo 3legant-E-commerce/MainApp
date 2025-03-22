@@ -1,10 +1,11 @@
 import { Logo } from "../../assets/Svg";
-import Tools from "./Tools";
 import HeaderList from "./HeaderList";
 import { BottomArrow } from "../../assets/icons";
 import { Link, useNavigate } from "react-router-dom";
 import MainContainer from "../../ui/MainContainer";
 import ScrollYMotion from "../../ui/ScrollYMotion";
+import HeaderMenu from "../../ui/HeaderMenu";
+import UserAvatar from "../authentication/UserAvatar";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -26,24 +27,15 @@ export default function Header() {
             <BottomArrow />
           </HeaderList>
 
-          {/* <HeaderList>
-            <Link to="/product">product</Link>
-          </HeaderList> */}
-
-          {/* <HeaderList>
-            <span>contact us</span>
-          </HeaderList> */}
-
           <HeaderList>
             <Link to="/cart">cart</Link>
           </HeaderList>
-
-          <HeaderList>
-            <Link to="/account">account</Link>
-          </HeaderList>
         </ul>
 
-        <Tools />
+        <div className="flex items-center ~gap-1/8">
+          <UserAvatar />
+          <HeaderMenu />
+        </div>
 
         <ScrollYMotion />
       </MainContainer>
