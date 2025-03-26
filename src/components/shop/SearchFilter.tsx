@@ -1,4 +1,4 @@
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 import { SearchIcon2 } from "../../assets/icons";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";

@@ -1,4 +1,4 @@
-const { nextui } = require("@nextui-org/react");
+const { heroui } = require("@heroui/react");
 const fluid = require("fluid-tailwind");
 const { extract, screens, fontSize } = fluid;
 
@@ -7,7 +7,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
     extract,
   ],
   theme: {
@@ -129,7 +129,7 @@ module.exports = {
   },
   darkMode: "class",
   plugins: [
-    nextui(),
+    heroui(),
     fluid({
       checkSC144: false, // default: true
     }),

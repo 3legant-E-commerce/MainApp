@@ -1,4 +1,4 @@
-import { Button as NextButton } from "@nextui-org/button";
+import { Button as NextButton } from "@heroui/button";
 
 export default function Button({
   children,

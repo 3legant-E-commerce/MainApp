@@ -1,5 +1,3 @@
-// import { Link } from "@nextui-org/react";
-
 import NavLink from "../../ui/NavLink";
 
 export default function Page() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, cn } from "@nextui-org/react";
+import { Checkbox, cn } from "@heroui/react";
 import Button from "../../ui/Button";
 
 interface User {

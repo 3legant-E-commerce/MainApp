@@ -1,4 +1,4 @@
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import data from "../../../data/coment.json";
 import CommentForm from "./CommentForm";
 import CommentSelected from "./CommentSelected";

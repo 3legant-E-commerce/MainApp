@@ -4,8 +4,8 @@ import RenderCartItems from "./RenderCartItems";
 import { ShopFilter } from "./ShopFilter";
 import { Loading } from "../../ui/Loading";
 import useGetShop from "./useGetShop";
-import { Pagination, Spinner } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
+import { Pagination, Spinner } from "@heroui/react";
 
 export default function MainShop() {
   const [activeCart, setActiveCart] = useState(1);

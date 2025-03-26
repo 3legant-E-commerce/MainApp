@@ -7,7 +7,6 @@ import { Loading } from "../../ui/Loading";
 import WishListButton from "../../ui/WishListButton";
 import { formatCurrency } from "../../utils/helper";
 import { useShoping } from "../shop/useShoping";
-// import { InputOtp } from "@nextui-org/input-otp";
 
 export default function ProductDetail() {
   const { shoping, isLoading } = useShoping();

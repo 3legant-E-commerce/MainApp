@@ -1,4 +1,4 @@
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 import InputForm from "../../ui/InputForm";
 import Button from "../../ui/Button";
 import { useForm } from "react-hook-form";
