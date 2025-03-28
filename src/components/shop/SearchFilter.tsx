@@ -10,14 +10,12 @@ export default function SearchInput() {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearch(value);
-
     const params = new URLSearchParams(searchParams);
     if (value) {
       params.set("search", value);
     } else {
       params.delete("search");
     }
-
     setSearchParams(params, { replace: true });
   };
 

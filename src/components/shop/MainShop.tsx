@@ -56,7 +56,7 @@ export default function MainShop() {
   }, [visibleCart, isFetching, isSmallScreen]);
 
   /* Loading */
-  if (isLoading) return <Loading />;
+  // if (isLoading) return <Loading />;
 
   return (
     <div className="flex mt-16 gap-14">
@@ -74,22 +74,28 @@ export default function MainShop() {
           }`}
         >
           {/* Items */}
-          {isSmallScreen ? (
-            <RenderCartItems
-              filteredShop={shops?.slice(0, visibleCart)}
-              visibleCart={visibleCart}
-              isSmallScreen={isSmallScreen}
-              activeCart={activeCart}
-              onClick={(id) => navigate(`/product/${id}`)}
-            />
+          {isLoading ? (
+            <Loading />
           ) : (
-            <RenderCartItems
-              filteredShop={paginatedShops}
-              visibleCart={itemsPerPage}
-              isSmallScreen={isSmallScreen}
-              activeCart={activeCart}
-              onClick={(id) => navigate(`/product/${id}`)}
-            />
+            <>
+              {isSmallScreen ? (
+                <RenderCartItems
+                  filteredShop={shops?.slice(0, visibleCart)}
+                  visibleCart={visibleCart}
+                  isSmallScreen={isSmallScreen}
+                  activeCart={activeCart}
+                  onClick={(id) => navigate(`/product/${id}`)}
+                />
+              ) : (
+                <RenderCartItems
+                  filteredShop={paginatedShops}
+                  visibleCart={itemsPerPage}
+                  isSmallScreen={isSmallScreen}
+                  activeCart={activeCart}
+                  onClick={(id) => navigate(`/product/${id}`)}
+                />
+              )}
+            </>
           )}
         </div>
 
