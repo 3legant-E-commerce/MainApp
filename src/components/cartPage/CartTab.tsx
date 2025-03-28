@@ -48,12 +48,14 @@ function CartTab() {
             </div>
             <span
               className={`~text-xs/base text-center ${
-                activeTab === tab.id ? "font-semibold" : "font-light"
+                activeTab === tab.id
+                  ? "font-semibold dark:text-grey-100"
+                  : "font-light"
               }`}
             >
               {tab.label}
             </span>
-            <h2 className="absolute text-center translate-x-1/2 max-sm:w-[200px] top-[-80px] md:top-[-120px] right-1/2 font-semibold ~text-3xl/5xl">
+            <h2 className="absolute text-center translate-x-1/2 max-sm:w-[200px] top-[-80px] md:top-[-120px] right-1/2 font-semibold dark:text-grey-300 ~text-3xl/5xl">
               {tab.id === activeTab ? tab.title : null}
             </h2>
           </div>

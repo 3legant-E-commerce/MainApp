@@ -45,7 +45,7 @@ function Header({ children }: { children: React.ReactNode }) {
     <header
       role="row"
       style={{ gridTemplateColumns: columns }}
-      className="grid gap-10 items-center py-4 border-b-2 border-gray-400 capitalize tracking-wide font-semibold text-gray-600"
+      className="grid gap-10 items-center py-4 border-b-2 border-gray-400 capitalize tracking-wide font-semibold text-gray-600 dark:text-grey-300"
     >
       {children}
     </header>

@@ -1,4 +1,4 @@
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import data from "../../../data/coment.json";
 import CommentForm from "./CommentForm";
 import CommentSelected from "./CommentSelected";
@@ -20,7 +20,7 @@ export default function Comment() {
           <Tab className="~text-xs/base" key={item.id} title={item.label}>
             <Card>
               <CardBody className="~px-5/10 pb-10 mt-10">
-                <h2 className="mb-6 text-2xl font-semibold text-neutral-05">
+                <h2 className="mb-6 text-2xl font-semibold text-neutral-05 dark:text-grey-200">
                   {item.title}
                 </h2>
                 <CommentForm button={item.button} />

@@ -1,9 +1,8 @@
-import { Checkbox, Input } from "@nextui-org/react";
+import { Checkbox, Input } from "@heroui/react";
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Error from "../signUp/Error";
 import { useSignup } from "./useSignup";
-import { Loading } from "../../ui/Loading";
 
 type FormValues = {
   fullName: string;

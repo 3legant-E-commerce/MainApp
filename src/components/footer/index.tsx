@@ -3,7 +3,7 @@ import JoinNewsLetter from "./JoinNewsLetter";
 import Legant from "./Legant";
 import Page from "./Page";
 import MainContainer from "../../ui/MainContainer";
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 
 export default function Footer() {
   return (

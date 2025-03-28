@@ -47,10 +47,12 @@ export default function PersonComment({ reviews }: { reviews: Review[] }) {
               <StarsRating rating={item.stars} />
             </div>
           </div>
-          <p className="text-neutral-04 line-clamp-4">{item.text}</p>
+          <p className="text-neutral-04 line-clamp-4 dark:text-grey-400">
+            {item.text}
+          </p>
           <div className="grid grid-cols-2 gap-4 pb-4 font-semibold justify-items-center">
             <button
-              className={`hover:underline ${
+              className={`hover:underline dark:text-grey-300 ${
                 activeStatus[item.id]?.like
                   ? "text-neutral-08 font-bold"
                   : "text-neutral-05"
@@ -60,7 +62,7 @@ export default function PersonComment({ reviews }: { reviews: Review[] }) {
               Like
             </button>
             <button
-              className={`hover:underline ${
+              className={`hover:underline dark:text-grey-300 ${
                 activeStatus[item.id]?.reply
                   ? "text-neutral-08 font-bold"
                   : "text-neutral-05"

@@ -31,7 +31,7 @@ export default function AccountNav({ account, setPageTitle }: AccountNavProps) {
         </div>
         <h3 className="font-semibold text-xl">{fullName}</h3>
       </div>
-      <ul className="flex flex-col gap-6 mb-10 font-semibold text-neutral-04 w-1/3">
+      <ul className="flex flex-col gap-6 mb-10 font-semibold text-neutral-04 dark:text-grey-400 w-1/3">
         {account.map((acc) => (
           <li
             key={acc.title}
@@ -39,12 +39,14 @@ export default function AccountNav({ account, setPageTitle }: AccountNavProps) {
               setPageTitle(acc.title);
               setSelectedTitle(acc.title);
             }}
-            className="cursor-pointer hover:text-neutral-06 transition-all duration-200"
+            className="cursor-pointer hover:text-neutral-06 dark:hover:text-grey-200 transition-all duration-200"
           >
             <Link
               to={acc.to || "#"}
               className={`${
-                acc.title === selectedTitle ? "text-neutral-06" : ""
+                acc.title === selectedTitle
+                  ? "text-neutral-06 dark:text-grey-200"
+                  : ""
               }`}
             >
               {acc.title}

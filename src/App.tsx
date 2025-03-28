@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Suspense } from "react";
@@ -41,7 +41,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen />
 
-      <NextUIProvider>
+      <HeroUIProvider>
         <ServiceWorker />
         <Suspense fallback={<Loading />}>
           <BrowserRouter>
@@ -93,7 +93,7 @@ function App() {
             },
           }}
         />
-      </NextUIProvider>
+      </HeroUIProvider>
     </QueryClientProvider>
   );
 }

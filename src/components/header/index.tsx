@@ -1,17 +1,17 @@
-import { Logo } from "../../assets/Svg";
-import HeaderList from "./HeaderList";
-import { BottomArrow } from "../../assets/icons";
 import { Link, useNavigate } from "react-router-dom";
+import { BottomArrow } from "../../assets/icons";
+import { Logo } from "../../assets/Svg";
+import HeaderMenu from "../../ui/HeaderMenu";
 import MainContainer from "../../ui/MainContainer";
 import ScrollYMotion from "../../ui/ScrollYMotion";
-import HeaderMenu from "../../ui/HeaderMenu";
 import UserAvatar from "../authentication/UserAvatar";
+import HeaderList from "./HeaderList";
 
 export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 z-[999] w-full shadow-md bg-bg-color">
+    <header className="fixed top-0 left-0 z-[999] w-full shadow-md bg-bg-color dark:bg-grey-900 dark:border-b dark:border-grey-800">
       <MainContainer className="flex items-center justify-between h-[70px]">
         <button onClick={() => navigate("/")}>
           <Logo />

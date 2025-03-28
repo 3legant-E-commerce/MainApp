@@ -1,4 +1,4 @@
-import { Button as NextButton } from "@nextui-org/button";
+import { Button as NextButton } from "@heroui/button";
 
 export default function Button({
   children,
@@ -18,7 +18,7 @@ export default function Button({
   return (
     <NextButton
       color="primary"
-      className={`text-white font-semibold bg-black rounded-md text-md hover:bg-gray-800 ${className}`}
+      className={`text-white font-semibold bg-black dark:bg-grey-200 dark:text-grey-700 rounded-md text-md hover:bg-gray-800 ${className}`}
       type={type}
       onPress={onClick || (() => {})}
       size={size}

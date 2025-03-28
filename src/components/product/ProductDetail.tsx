@@ -7,7 +7,6 @@ import { Loading } from "../../ui/Loading";
 import WishListButton from "../../ui/WishListButton";
 import { formatCurrency } from "../../utils/helper";
 import { useShoping } from "../shop/useShoping";
-// import { InputOtp } from "@nextui-org/input-otp";
 
 export default function ProductDetail() {
   const { shoping, isLoading } = useShoping();
@@ -45,7 +44,9 @@ export default function ProductDetail() {
           </span>
         </div>
         <div className="flex flex-col gap-2 pb-6 mb-6 border-b-2">
-          <p className="self-start mb-4 text-neutral-07">Offer expires in:</p>
+          <p className="self-start mb-4 text-neutral-07 dark:text-grey-200">
+            Offer expires in:
+          </p>
           <div className="flex gap-4 ~mb-4/6">
             {time.map((item) => (
               <TimeCart
