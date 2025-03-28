@@ -2,7 +2,7 @@ import { HiOutlineUser } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import Logout from "../components/authentication/Logout";
 import ButtonIcon from "./ButtonIcon";
-import DarkModeToggle from "../components/header/DarkModeToggle";
+import DarkModeToggle from "./DarkModeToggle";
 
 function HeaderMenu() {
   const navigate = useNavigate();

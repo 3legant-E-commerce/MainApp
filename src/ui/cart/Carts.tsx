@@ -67,7 +67,7 @@ export function ShopCartView1({
   const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
 
   return (
-    <div className="sm:h-[350px] h-[350px] flex flex-col gap-4">
+    <div className="sm:h-[350px] h-[350px] flex flex-col gap-4 border dark:border-grey-700 border-grey-200 rounded-md">
       <div className="bg-[#F3F5F7] dark:bg-grey-800 relative rounded-sm p-4 shadow-sm h-3/4 cursor-pointer group">
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-grey-200 rounded-sm shadow-sm left-4 dark:text-grey-700">
           {detail}
@@ -82,7 +82,7 @@ export function ShopCartView1({
 
         {children}
       </div>
-      <div className="flex flex-col gap-1 font-semibold h-1/4">
+      <div className="flex flex-col gap-1 font-semibold h-1/4 pl-2">
         <div className="h-1/4">
           <StarsRating rating={rating} />
         </div>
@@ -120,8 +120,8 @@ export function ShopCartView2({
   const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
 
   return (
-    <div className="flex flex-col sm:flex-row border-1 h-[500px] sm:h-full rounded-sm shadow-sm cursor-pointer">
-      <div className="bg-[#F3F5F7] relative h-1/2 sm:h-full sm:w-1/2 w-full">
+    <div className="flex flex-col sm:flex-row border-1 dark:border-grey-700 h-[500px] sm:h-full rounded-sm shadow-sm cursor-pointer">
+      <div className="bg-[#F3F5F7] dark:bg-grey-800 relative h-1/2 sm:h-full sm:w-1/2 w-full">
         <span className="absolute px-4 font-semibold ~text-xs/sm uppercase bg-white rounded-sm shadow-sm left-4 top-4">
           {detail}
         </span>

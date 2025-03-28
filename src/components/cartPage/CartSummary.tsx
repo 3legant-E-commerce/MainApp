@@ -63,11 +63,11 @@ export default function CartSummary() {
         </Checkbox>
       ))}
       <div className="flex justify-between pr-4 pb-3 border-b-2">
-        <p className="text-neutral-05">Subtutal</p>
+        <p className="text-neutral-05 dark:text-grey-300">Subtutal</p>
         <span className="font-semibold ~text-sm/base">$1234.00</span>
       </div>
       <div className="flex justify-between pr-4 pt-3 font-bold mb-4">
-        <p className="text-neutral-05">Total</p>
+        <p className="text-neutral-05 dark:text-grey-300">Total</p>
         <span className="~text-sm/lg">$1345.00</span>
       </div>
       <Button>Checkout</Button>

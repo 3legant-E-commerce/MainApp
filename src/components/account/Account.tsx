@@ -33,7 +33,7 @@ export default function Account() {
           {pageTitle}
         </h2>
 
-        <div className="border-2 bg-neutral-03 px-4 flex flex-col rounded-md h-[450px]">
+        <div className="border-2 bg-neutral-03 px-4 flex flex-col rounded-md h-[450px] dark:bg-grey-800  dark:border-grey-700">
           <AccountNav account={account} setPageTitle={setPageTitle} />
         </div>
 

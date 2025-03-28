@@ -3,7 +3,7 @@ import CartTab from "./CartTab";
 
 export default function Cart() {
   return (
-    <MainContainer className="~mt-44/60">
+    <MainContainer className="~pt-44/60">
       <CartTab />
     </MainContainer>
   );

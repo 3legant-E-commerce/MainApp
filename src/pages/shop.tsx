@@ -5,7 +5,7 @@ import AddShop from "./AddShop";
 
 export default function Shop() {
   return (
-    <MainContainer className="~pt-20/10 bg-bg-color dark:bg-grey-900">
+    <MainContainer className="~pt-20/24 dark:bg-grey-900">
       <ShopHeader />
 
       <AddShop />

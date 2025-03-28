@@ -25,7 +25,7 @@ export default function CommentSelected({
   return (
     <div className="mt-8">
       <div className="flex flex-col justify-between gap-y-4 sm:flex-row">
-        <h3 className="text-xl font-semibold text-neutral-05">
+        <h3 className="text-xl font-semibold text-neutral-05 dark:text-grey-300">
           {reviews.length} Reviews
         </h3>
         <Select

@@ -68,7 +68,7 @@ function UpdateUser() {
               value: fullName,
             })}
             size="sm"
-            className="placeholder:text-sm font-semibold uppercase bg-bg-color rounded-md pl-2"
+            className="placeholder:text-sm font-semibold uppercase bg-bg-color dark:bg-grey-800 rounded-md pl-2"
             value={fullName}
             onChange={(e) => {
               setValue("fullName", e.target.value);
@@ -93,7 +93,7 @@ function UpdateUser() {
               },
             })}
             size="sm"
-            className="placeholder:text-sm font-semibold uppercase bg-bg-color rounded-md pl-2"
+            className="placeholder:text-sm font-semibold uppercase bg-bg-color rounded-md pl-2 dark:bg-grey-800"
             value={userEmail}
             // onChange={(e) => setValue("email", e.target.value)}
             disabled
@@ -118,7 +118,7 @@ function UpdateUser() {
               }
             }}
             size="sm"
-            className="placeholder:text-sm font-semibold uppercase rounded-md pl-2"
+            className="placeholder:text-sm font-semibold uppercase rounded-md pl-2 dark:bg-grey-800"
             disabled={isUpdating}
           />
           {avatarUrl && (
@@ -133,14 +133,14 @@ function UpdateUser() {
         <div className="flex self-end gap-4 w-1/2">
           <Button
             type="submit"
-            className="~text-sm/base ~px-6/12 w-full md:w-1/2 mx-auto"
+            className="~text-sm/base ~px-6/12 w-full md:w-1/2 mx-auto "
             disabled={isUpdating}
           >
             Update account
           </Button>
           <Button
             type="reset"
-            className="~text-sm/base bg-bg-color ~px-6/12 w-full md:w-1/2 mx-auto"
+            className="~text-sm/base bg-bg-color ~px-6/12 w-full md:w-1/2 mx-auto dark:bg-grey-400"
             disabled={isUpdating}
             onClick={handleCancel}
           >

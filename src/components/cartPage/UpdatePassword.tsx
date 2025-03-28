@@ -46,6 +46,7 @@ function UpdatePassword() {
               },
             })}
             disabled={isUpdating}
+            className="dark:bg-grey-800 bg-bg-color rounded-md"
           />
 
           <Error>{errors?.password?.message}</Error>
@@ -64,6 +65,7 @@ function UpdatePassword() {
             })}
             autoComplete="new-password"
             disabled={isUpdating}
+            className="dark:bg-grey-800 bg-bg-color rounded-md"
           />
 
           <Error>{errors?.confirmPassword?.message}</Error>
@@ -78,7 +80,7 @@ function UpdatePassword() {
           </Button>
           <Button
             type="reset"
-            className="~text-sm/base bg-bg-color ~px-6/12 w-full md:w-1/2 mx-auto"
+            className="~text-sm/base bg-bg-color ~px-6/12 w-full md:w-1/2 mx-auto dark:bg-grey-400"
           >
             Cancel
           </Button>

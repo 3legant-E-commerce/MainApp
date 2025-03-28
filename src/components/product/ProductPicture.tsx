@@ -29,8 +29,8 @@ function ProductPicture() {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="flex h-[300px] sm:h-[400px] xl:h-[700px] flex-col xl:w-3/6 ~gap-y-1/4">
-      <div className="relative h-full overflow-hidden xl:h-4/5">
+    <div className="flex h-[300px] sm:h-[400px] border dark:border-grey-700 rounded-md xl:h-[700px] flex-col xl:w-3/6 ~gap-y-1/4">
+      <div className="relative h-full overflow-hidden xl:h-4/5 rounded-md">
         <div
           className="flex h-full transition-transform duration-500 ease-in-out"
           style={{
@@ -56,7 +56,7 @@ function ProductPicture() {
         <span className="absolute px-4 py-1 text-xs font-semibold text-white uppercase bg-green-300 rounded-sm shadow-sm left-4 top-11">
           {discount}%
         </span>
-        <span className="absolute px-4 py-1 text-xs font-semibold uppercase bg-white rounded-sm shadow-sm left-4 top-2">
+        <span className="absolute px-4 py-1 text-xs font-semibold uppercase bg-white rounded-sm shadow-sm left-4 top-2 dark:text-grey-700">
           {detail}
         </span>
 
@@ -64,13 +64,13 @@ function ProductPicture() {
           <>
             <div
               onClick={handlePrevious}
-              className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 left-4 hover:bg-gray-200"
+              className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white text-grey-800 rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 left-4 hover:bg-gray-200"
             >
               <AiOutlineArrowLeft />
             </div>
             <div
               onClick={handleNext}
-              className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 right-4 hover:bg-gray-200"
+              className="absolute flex items-center justify-center transform -translate-y-1/2 bg-white text-grey-800 rounded-full shadow-sm cursor-pointer w-9 h-9 top-1/2 right-4 hover:bg-gray-200"
             >
               <AiOutlineArrowRight />
             </div>
@@ -85,7 +85,7 @@ function ProductPicture() {
                 key={index}
                 className={`w-1/3 h-full cursor-pointer border-2 rounded-md ${
                   activeIndex === index
-                    ? "border-gray-800"
+                    ? "border-gray-800 dark:border-grey-400"
                     : "border-transparent"
                 }`}
                 onClick={() => handleThumbnailClick(index)}

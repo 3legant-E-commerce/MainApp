@@ -25,7 +25,7 @@ function Filter({ title, options, filterField }: FilterProps) {
 
   return (
     <div className="sm:w-1/2 w-full self-end">
-      <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04">
+      <p className="mb-2 ~text-xs/sm font-semibold uppercase text-neutral-04 dark:text-grey-300">
         {title}
       </p>
       <Select

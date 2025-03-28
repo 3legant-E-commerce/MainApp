@@ -58,13 +58,21 @@ export function ShopFilter({
 
           <div className="hidden sm:flex items-center gap-2 border cursor-pointer h-fit self-end">
             <div
-              className={`p-2 border ${activeCart === 1 ? "bg-gray-200" : ""}`}
+              className={`p-2 border ${
+                activeCart === 1
+                  ? "bg-gray-200 dark:bg-gray-700"
+                  : "dark:border-gray-600"
+              }`}
               onClick={() => handleClick(1)}
             >
               <ShopViewIcon1 />
             </div>
             <div
-              className={`p-2 border ${activeCart === 2 ? "bg-gray-200" : ""}`}
+              className={`p-2 border flex ${
+                activeCart === 2
+                  ? "bg-gray-200 dark:bg-gray-700"
+                  : "dark:border-gray-600"
+              }`}
               onClick={() => handleClick(2)}
             >
               <ShopViewIcon2 />
