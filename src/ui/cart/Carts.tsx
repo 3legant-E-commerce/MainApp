@@ -82,7 +82,7 @@ export function ShopCartView1({
 
         {children}
       </div>
-      <div className="flex flex-col gap-1 font-semibold h-1/4 pl-2">
+      <div className="flex flex-col gap-1 font-semibold pl-2">
         <div className="h-1/4">
           <StarsRating rating={rating} />
         </div>

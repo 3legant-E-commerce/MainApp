@@ -60,6 +60,7 @@ function App() {
                 <Route path="product/:shopId" element={<Product />} />
                 <Route path="shop" element={<Shop />} />
                 <Route path="cart" element={<Cart />} />
+                <Route path="cart/:shopId" element={<Cart />} />
 
                 <Route path="account" element={<Account />}>
                   <Route index element={<Navigate replace to="dashboard" />} />
