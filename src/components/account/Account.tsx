@@ -28,16 +28,16 @@ export default function Account() {
 
   return (
     <MainContainer>
-      <div className="grid grid-cols-[1fr_3fr] gap-x-4">
-        <h2 className="col-span-2 text-center text-4xl font-semibold mt-20 py-16">
+      <div className="lg:grid lg:grid-cols-[1fr_3fr] flex flex-col">
+        <h2 className="col-span-2 text-center ~text-2xl/4xl font-semibold mt-20 ~py-6/16">
           {pageTitle}
         </h2>
 
-        <div className="border-2 bg-neutral-03 px-4 flex flex-col rounded-md h-[450px] dark:bg-grey-800  dark:border-grey-700">
+        <div className="border-2 bg-neutral-03 px-4 flex flex-col rounded-md h-fit dark:bg-grey-800  dark:border-grey-700">
           <AccountNav account={account} setPageTitle={setPageTitle} />
         </div>
 
-        <div className="pl-10">
+        <div className="md:ml-10">
           <Outlet />
         </div>
       </div>

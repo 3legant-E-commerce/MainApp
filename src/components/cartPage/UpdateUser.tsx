@@ -130,17 +130,17 @@ function UpdateUser() {
           )}
         </div>
 
-        <div className="flex self-end gap-4 w-1/2">
+        <div className="flex self-start gap-4 border mt-6">
           <Button
             type="submit"
-            className="~text-sm/base ~px-6/12 w-full md:w-1/2 mx-auto "
+            className="~text-sm/base ~px-6/12"
             disabled={isUpdating}
           >
             Update account
           </Button>
           <Button
             type="reset"
-            className="~text-sm/base bg-bg-color ~px-6/12 w-full md:w-1/2 mx-auto dark:bg-grey-400"
+            className="~text-sm/base bg-bg-color ~px-6/12 dark:bg-grey-400"
             disabled={isUpdating}
             onClick={handleCancel}
           >

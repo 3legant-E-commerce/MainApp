@@ -6,7 +6,7 @@ import Button from "../../ui/Button";
 export default function Hero() {
   const navigate = useNavigate();
   return (
-    <section className="~pt-20/4 mb-10 bg-bg-color dark:bg-grey-900 dark:border-b dark:border-b-grey-700">
+    <section className="~pt-20/16 lg:pt-4 mb-10 bg-bg-color dark:bg-grey-900 dark:border-b dark:border-b-grey-700">
       <div className="flex flex-col-reverse mx-auto w-full ~gap-x-2/10 items-center ~px-1/6 max-w-7xl md:flex-row">
         <div className="sm:w-1/2">
           <img

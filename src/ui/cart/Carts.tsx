@@ -143,13 +143,15 @@ export function ShopCartView2({
             {priceWithDiscount === price ? "" : formatCurrency(price)}
           </span>
         </div>
-        <div className="~text-xs/sm leading-2 sm:leading-6 ~h-10/28 text-neutral-04 line-clamp-2 sm:line-clamp-4">
+        <div className="~text-xs/sm leading-2 sm:leading-6 ~h-10/24 text-neutral-04 line-clamp-2 sm:line-clamp-4">
           {description}
         </div>
-        <Button className="~mt-1/4 h-10" onClick={onClick}>
-          See details
-        </Button>
-        <WishListButton />
+        <div className="w-full flex flex-col gap-1">
+          <Button className="~mt-1/4 h-10 w-full" onClick={onClick}>
+            See details
+          </Button>
+          <WishListButton />
+        </div>
       </div>
     </div>
   );
