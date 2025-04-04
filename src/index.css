@@ -37,7 +37,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Roboto condensed";
   color: theme("colors.grey.700");
   transition: color 0.3s, background-color 0.3s;
   min-height: 100vh;

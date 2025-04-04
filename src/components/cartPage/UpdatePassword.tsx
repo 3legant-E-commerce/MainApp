@@ -46,7 +46,9 @@ function UpdatePassword() {
               },
             })}
             disabled={isUpdating}
-            className="dark:bg-grey-800 bg-bg-color rounded-md"
+            // className="dark:bg-grey-800 bg-bg-color rounded-md"
+            className="placeholder:text-sm uppercase bg-bg-color dark:bg-grey-800 rounded-md pl-2"
+            size="sm"
           />
 
           <Error>{errors?.password?.message}</Error>
@@ -65,22 +67,20 @@ function UpdatePassword() {
             })}
             autoComplete="new-password"
             disabled={isUpdating}
-            className="dark:bg-grey-800 bg-bg-color rounded-md"
+            className="placeholder:text-sm uppercase bg-bg-color dark:bg-grey-800 rounded-md pl-2"
+            size="sm"
           />
 
           <Error>{errors?.confirmPassword?.message}</Error>
         </div>
 
-        <div className="flex self-end gap-4 w-1/2">
-          <Button
-            type="submit"
-            className="~text-sm/base ~px-6/12 w-full md:w-1/2 mx-auto"
-          >
+        <div className="flex self-start gap-4 border mt-6">
+          <Button type="submit" className="~text-sm/base ~px-6/12">
             Update password
           </Button>
           <Button
             type="reset"
-            className="~text-sm/base bg-bg-color ~px-6/12 w-full md:w-1/2 mx-auto dark:bg-grey-400"
+            className="~text-sm/base bg-bg-color ~px-6/12 dark:bg-grey-400"
           >
             Cancel
           </Button>
