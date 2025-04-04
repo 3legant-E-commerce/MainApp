@@ -24,7 +24,7 @@ function CartTab() {
   };
 
   return (
-    <div className="flex flex-col ~gap-4/12">
+    <div className="flex flex-col ~gap-4/8">
       {/* Tab Headers */}
       <div className="w-full xl:w-[800px] lg:w-[600px] md:w-[500px] sm:w-[400px] md:px-10 flex self-center justify-between relative">
         {tabs.map((tab) => (

@@ -1,17 +1,21 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../cartPage/cartSlice"; // Import the addItem action
 import Button from "../../ui/Button";
 import StarsRating from "../../ui/Star";
 import { TimeCart } from "../../ui/cart/Carts";
-// import { HeartIcon } from "../../assets/icons";
 import { Loading } from "../../ui/Loading";
 import WishListButton from "../../ui/WishListButton";
 import { formatCurrency } from "../../utils/helper";
 import { useShoping } from "../shop/useShoping";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductDetail() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch(); // Initialize Redux dispatch
   const { shoping, isLoading } = useShoping();
 
-  const { title, discount, rating, description, price } = shoping || {};
+  const { id, title, discount, rating, description, price } = shoping || {};
 
   const [time] = useState([
     { id: 1, hour: 2, day: "Days" },
@@ -22,11 +26,24 @@ export default function ProductDetail() {
 
   const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
 
-  if (isLoading) <Loading />;
+  if (isLoading) return <Loading />;
+
+  const handleAddToCart = () => {
+    const newItem = {
+      shopId: id, // Unique ID for the item
+      title,
+      quantity: 1, // Default quantity
+      unitPrice: priceWithDiscount,
+      totalPrice: priceWithDiscount,
+    };
+
+    dispatch(addItem(newItem)); // Dispatch the addItem action
+    navigate(`/cart/${shoping.id}`); // Navigate to the cart page
+  };
 
   return (
     <div className="flex justify-center xl:w-3/5">
-      <div className="flex flex-col lg:pr-16">
+      <div className="flex flex-col lg:px-16 w-full">
         <div className="flex ~gap-2/4">
           <StarsRating rating={rating} />
           <span className="text-sm text-neutral-04">11 Reviews</span>
@@ -71,7 +88,9 @@ export default function ProductDetail() {
 
         <WishListButton />
 
-        <Button className="mt-4">Add to cart</Button>
+        <Button className="mt-4" onClick={handleAddToCart}>
+          Add to cart
+        </Button>
       </div>
     </div>
   );
