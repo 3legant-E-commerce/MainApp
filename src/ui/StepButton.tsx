@@ -16,7 +16,7 @@ export default function StepButton({
   tabs,
 }: StepButtonProps) {
   return (
-    <div className="flex justify-between p-2 border">
+    <div className="flex justify-between p-2">
       {tabs.findIndex((tab) => tab.id === activeTab) > 0 && (
         <Button
           onClick={() => {

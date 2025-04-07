@@ -6,8 +6,6 @@ export default function HeaderList({
   children: React.ReactNode;
 }) {
   return (
-    <li className="flex items-center max-sm:hidden text-heading-7">
-      {children}
-    </li>
+    <li className="flex items-center text-heading-7 xl:text-2xl">{children}</li>
   );
 }

@@ -12,7 +12,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: "Roboto Mono, monospace",
+      sans: "Roboto Mono, monospace, poppins",
     },
     screens,
     fontSize,
