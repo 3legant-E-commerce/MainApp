@@ -130,7 +130,7 @@ function UpdateUser() {
           )}
         </div>
 
-        <div className="flex self-start gap-4 border mt-6">
+        <div className="flex self-start gap-4 mt-6">
           <Button
             type="submit"
             className="~text-sm/base ~px-6/12"
