@@ -5,6 +5,7 @@ interface CartItem {
   quantity: number;
   unitPrice: number;
   totalPrice: number;
+  title: string;
 }
 
 interface CartState {

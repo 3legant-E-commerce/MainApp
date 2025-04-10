@@ -32,7 +32,7 @@ function UpdateUser() {
     formState: { errors },
   } = useForm<FormValues>();
 
-  function onSubmit(data: FormValues) {
+  function onSubmit() {
     if (!fullName) return;
     updateUser(
       { fullName, avatar: avatar || undefined },
