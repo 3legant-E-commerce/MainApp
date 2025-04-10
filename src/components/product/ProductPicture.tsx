@@ -4,7 +4,7 @@ import { useShoping } from "../shop/useShoping";
 import { Loading } from "../../ui/Loading";
 
 function ProductPicture() {
-  const { isLoading, shoping } = useShoping();
+  const { isLoading, shoping, error } = useShoping();
   const { images = [], detail, discount } = shoping || {};
   const hasImages = images && images.length > 0;
 
@@ -26,7 +26,9 @@ function ProductPicture() {
     setActiveIndex(index);
   };
 
+  // Handle loading and error states
   if (isLoading) return <Loading />;
+  if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   return (
     <div className="flex h-[300px] sm:h-[400px] border dark:border-grey-700 rounded-md xl:h-[700px] flex-col xl:w-3/6 ~gap-y-1/4">

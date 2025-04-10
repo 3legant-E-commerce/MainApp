@@ -10,7 +10,7 @@ function HeaderMenu() {
 
   return (
     <ul className="flex">
-      <div className="flex items-center ~gap-1/2 max-lg:hidden">
+      <div className="flex items-center ~gap-1/2 max-xl:hidden">
         <li>
           <ButtonIcon onClick={() => navigate("/account")}>
             <HiOutlineUser className="~text-lg/2xl" />

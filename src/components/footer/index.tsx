@@ -1,9 +1,9 @@
+import { Input } from "@heroui/react";
+import MainContainer from "../../ui/MainContainer";
 import Info from "./Info";
 import JoinNewsLetter from "./JoinNewsLetter";
-import Legant from "./Legant";
+import Ramo from "./Ramo";
 import Page from "./Page";
-import MainContainer from "../../ui/MainContainer";
-import { Input } from "@heroui/react";
 
 export default function Footer() {
   return (
@@ -39,8 +39,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-neutral-07">
-        <MainContainer className="bg-neutral-07 flex flex-col justify-center max-sm:text-center sm:grid sm:gap-16 gap-8 grid-cols-2 sm:grid-cols-[2fr_1fr_1fr_2fr] ~pt-8/20 pb-10 text-neutral-04">
-          <Legant />
+        <MainContainer className="bg-neutral-07 flex flex-col justify-center max-sm:text-center sm:grid sm:gap-16 gap-8 grid-cols-2 sm:grid-cols-[2fr_1fr_1fr_2fr] ~pt-8/20 pb-10 text-neutral-04 ~text-xs/lg">
+          <Ramo />
           <Page />
           <Info />
           <JoinNewsLetter />

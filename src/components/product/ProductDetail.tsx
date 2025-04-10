@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../cartPage/cartSlice"; // Import the addItem action
+import { addItem } from "../cartPage/cartSlice";
 import Button from "../../ui/Button";
 import StarsRating from "../../ui/Star";
 import { TimeCart } from "../../ui/cart/Carts";
@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductDetail() {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Initialize Redux dispatch
-  const { shoping, isLoading } = useShoping();
+  const dispatch = useDispatch();
+  const { shoping, isLoading, error } = useShoping();
 
   const { id, title, discount, rating, description, price } = shoping || {};
 
@@ -26,19 +26,21 @@ export default function ProductDetail() {
 
   const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
 
+  // Handle loading and error states
   if (isLoading) return <Loading />;
+  if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   const handleAddToCart = () => {
     const newItem = {
-      shopId: id, // Unique ID for the item
+      shopId: id,
       title,
-      quantity: 1, // Default quantity
+      quantity: 1,
       unitPrice: priceWithDiscount,
       totalPrice: priceWithDiscount,
     };
 
-    dispatch(addItem(newItem)); // Dispatch the addItem action
-    navigate(`/cart/${shoping.id}`); // Navigate to the cart page
+    dispatch(addItem(newItem));
+    navigate(`/cart/${shoping.id}`);
   };
 
   return (
@@ -80,7 +82,7 @@ export default function ProductDetail() {
           <div className="flex flex-col gap-2">
             <div className="flex gap-2 text-xs cursor-pointer hover:text-neutral-05 text-neutral-04">
               <span className="font-semibold">Choose Color</span>
-              <span>&#x279D;</span>
+              <span>➝</span>
             </div>
             <span>Black</span>
           </div>

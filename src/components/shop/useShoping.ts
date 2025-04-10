@@ -7,7 +7,7 @@ export function useShoping() {
 
   const {
     isLoading,
-    data: shoping = [],
+    data: shoping = {},
     error,
   } = useQuery({
     queryKey: ["shop", shopId],
