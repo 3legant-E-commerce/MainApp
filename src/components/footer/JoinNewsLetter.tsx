@@ -2,8 +2,8 @@ import Input from "../../ui/FooterInput";
 
 export default function JoinNewsLetter() {
   return (
-    <div>
-      <h2 className="mb-8 text-2xl font-semibold text-slate-300">
+    <div className="">
+      <h2 className="mb-4 text-2xl font-semibold text-slate-300">
         Join Newsletter
       </h2>
 

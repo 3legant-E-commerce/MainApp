@@ -18,7 +18,7 @@ export function HamburgerMenu() {
   };
 
   return (
-    <li className="flex items-center lg:hidden">
+    <li className="flex items-center">
       <button
         onClick={toggleMenu}
         className="w-10 h-10 flex items-center justify-center focus:outline-none z-50 ~mt-[18px]/[15px]"
@@ -65,7 +65,7 @@ export function HamburgerMenu() {
 
             {/* Sidebar Menu */}
             <motion.div
-              className="fixed top-0 right-0 h-full z-40 bg-bg-color dark:bg-grey-800 py-10 ~px-5/28 shadow-lg border"
+              className="fixed top-0 right-0 h-full z-40 bg-bg-color dark:bg-grey-800 py-10 ~px-5/28 shadow-lg"
               initial={{ x: "100%" }} // Starts from off-screen (right)
               animate={{ x: 0 }} // Animates to its final position (in view)
               exit={{ x: "100%" }} // Animates out of view when closed
@@ -76,11 +76,12 @@ export function HamburgerMenu() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <ul className="mt-14 text-[16px] flex flex-col gap-8">
+              <ul className="mt-14 text-[16px] flex flex-col gap-6">
                 {["/", "/account", "/cart", "/shop"].map((section, index) => (
                   <motion.li
                     key={section}
-                    className="font-semibold text-center list-none"
+                    className="font-semibold text-center list-none p-2 rounded-lg hover:bg-orange-400 dark:hover:bg-grey-700 
+                 transition-all duration-200 ease-in-out transform hover:scale-110"
                     initial={{ x: "100%", opacity: 0 }} // Start off-screen and hidden
                     animate={{ x: 0, opacity: 1 }} // Animate to final position and visible
                     exit={{ x: "100%", opacity: 0 }} // Exit state
@@ -93,13 +94,13 @@ export function HamburgerMenu() {
                   >
                     <Link
                       to={section}
-                      className="cursor-pointer transition-all hover:text-grey-400 min-w-fit flex items-center justify-center ~gap-2/4"
+                      className="cursor-pointer transition-all min-w-fit flex items-center justify-center ~gap-2/4"
                       onClick={toggleMenu}
                     >
                       {section === "/" && (
                         <>
                           <HiOutlineHome className="~text-lg/2xl" />
-                          <span>Account</span>
+                          <span>Home</span>
                         </>
                       )}
                       {section === "/account" && (

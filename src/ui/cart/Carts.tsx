@@ -8,14 +8,17 @@ export function CartCol({
   className,
   src,
   title,
+  onClick,
 }: {
   className?: string;
   src?: string;
   title?: string;
+  onClick?: () => void;
 }) {
   return (
     <div
       className={`flex flex-col col-span-1 row-span-2 shadow-sm ~px-6/14 rounded-sm bg-[#F3F5F7] dark:bg-grey-800 pt-8 ${className}`}
+      onClick={onClick}
     >
       <img src={src} title={title} className="w-5/6 mx-auto h-5/6" />
       <CartTitle title={title} className="h-1/6 dark:text-grey-200" />
@@ -27,19 +30,22 @@ export function CartRow({
   className,
   src,
   title,
+  onClick,
 }: {
   className?: string;
   src?: string;
   title?: string;
+  onClick?: () => void;
 }) {
   return (
     <div
-      className={`flex flex-row-reverse rounded-sm col-span-1 row-span-1 shadow-sm ~px-4/8 bg-[#F3F5F7] dark:bg-grey-800 pt-6 ${className}`}
+      className={`flex flex-row-reverse rounded-sm col-span-1 row-span-1 shadow-sm ~px-4/8 bg-[#F3F5F7] dark:bg-grey-800 pt-6 ${className} `}
+      onClick={onClick}
     >
-      <img src={src} title={title} className="w-1/2 sm:w-3/5" />
+      <img src={src} title={title} className="w-1/2 " />
       <CartTitle
         title={title}
-        className="self-end w-1/2 ~mb-6/14 sm:w-2/5 dark:text-grey-200"
+        className="self-end w-1/2 ~mb-6/14 dark:text-grey-200 "
       />
     </div>
   );

@@ -1,12 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { BottomArrow } from "../../assets/icons";
-import { Logo } from "../../assets/Svg";
+import DarkModeToggle from "../../ui/DarkModeToggle";
 import HeaderMenu from "../../ui/HeaderMenu";
 import MainContainer from "../../ui/MainContainer";
 import ScrollYMotion from "../../ui/ScrollYMotion";
 import UserAvatar from "../authentication/UserAvatar";
 import HeaderList from "./HeaderList";
-import DarkModeToggle from "../../ui/DarkModeToggle";
+import { HamburgerMenu } from "../../ui/HamburgerMenu";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ export default function Header() {
           </h2>
         </button>
 
-        <ul className="flex items-center gap-4 font-semibold capitalize max-lg:hidden">
+        {/* <ul className="flex items-center gap-4 font-semibold capitalize max-xl:hidden">
           <HeaderList>
             <Link to="/">home</Link>
           </HeaderList>
@@ -37,11 +36,12 @@ export default function Header() {
             <Link to="/cart">cart</Link>
           </HeaderList>
         </ul>
-
+ */}
         <div className="flex items-center ~gap-1/2">
           <UserAvatar />
           <DarkModeToggle />
-          <HeaderMenu />
+          <HamburgerMenu />
+          {/* <HeaderMenu /> */}
         </div>
 
         <ScrollYMotion />
