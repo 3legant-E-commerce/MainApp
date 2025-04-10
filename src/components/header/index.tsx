@@ -1,11 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DarkModeToggle from "../../ui/DarkModeToggle";
-import HeaderMenu from "../../ui/HeaderMenu";
+import { HamburgerMenu } from "../../ui/HamburgerMenu";
 import MainContainer from "../../ui/MainContainer";
 import ScrollYMotion from "../../ui/ScrollYMotion";
 import UserAvatar from "../authentication/UserAvatar";
-import HeaderList from "./HeaderList";
-import { HamburgerMenu } from "../../ui/HamburgerMenu";
 
 export default function Header() {
   const navigate = useNavigate();

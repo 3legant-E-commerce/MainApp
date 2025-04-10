@@ -35,9 +35,7 @@ export default function CommentSelected({
           defaultSelectedKeys={[selected[0]?.id]}
         >
           {selected.map((item) => (
-            <SelectItem key={item.id} value={item.id}>
-              {item.label}
-            </SelectItem>
+            <SelectItem key={item.id}>{item.label}</SelectItem>
           ))}
         </Select>
       </div>

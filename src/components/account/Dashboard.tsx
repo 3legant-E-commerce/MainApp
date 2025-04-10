@@ -33,7 +33,6 @@ export default function Dashboard() {
       <InputForm
         // title="Account Details"
         onSubmit={handleSubmit(onSubmit)}
-        button="Save Changes"
       >
         <h2 className="font-semibold text-xl">Account Details</h2>
         <div>
