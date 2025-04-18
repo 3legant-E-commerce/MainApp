@@ -53,7 +53,10 @@ function UpdateUser() {
   }
 
   return (
-    <InputForm onSubmit={handleSubmit(onSubmit)} className="rounded-md py-10">
+    <InputForm
+      onSubmit={handleSubmit(onSubmit)}
+      className="rounded-md pt-4 pm-10"
+    >
       <div className="flex flex-col gap-10">
         <h2 className="text-xl font-semibold">Update your account</h2>
 

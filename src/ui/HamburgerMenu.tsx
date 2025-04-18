@@ -1,53 +1,91 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import {
+  HiOutlineHeart,
   HiOutlineHome,
   HiOutlineShoppingCart,
   HiOutlineUser,
 } from "react-icons/hi2";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CartIcon } from "../assets/icons";
 import Logout from "../components/authentication/Logout";
 import DarkModeToggle from "./DarkModeToggle";
+import { RootState } from "../app/store";
+import { getCart } from "../components/cartPage/cartSlice";
 
 export function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const cart = useSelector((state: RootState) => getCart(state) || []);
+  const cartItemCount = cart.reduce(
+    (sum, item) => sum + (item.quantity || 0),
+    0
+  );
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const menuItems = [
+    {
+      path: "/",
+      label: "Home",
+      icon: <HiOutlineHome className="~text-lg/2xl" />,
+    },
+    {
+      path: "/account",
+      label: "Account",
+      icon: <HiOutlineUser className="~text-lg/2xl" />,
+    },
+    {
+      path: "/account/wishlist",
+      label: "Wishlist",
+      icon: <HiOutlineHeart className="~text-lg/2xl" />,
+    },
+    {
+      path: "/shop",
+      label: "Shop",
+      icon: <HiOutlineShoppingCart className="~text-lg/2xl" />,
+    },
+    {
+      path: "/cart",
+      label: "Cart",
+      icon: (
+        <div className="flex items-center gap-0.5">
+          <CartIcon />
+          {cartItemCount > 0 && (
+            <span className="flex items-center justify-center w-5 h-5 p-2 text-sm text-white bg-black rounded-full dark:bg-grey-700">
+              {cartItemCount}
+            </span>
+          )}
+        </div>
+      ),
+    },
+  ];
+
   return (
     <li className="flex items-center">
       <button
         onClick={toggleMenu}
-        className="w-10 h-10 flex items-center justify-center focus:outline-none z-50 ~mt-[18px]/[15px]"
+        className="w-10 h-10 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-neutral-04 z-50 ~mt-[18px]/[15px]"
+        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-expanded={isOpen}
       >
-        {/* Hamburger Icon */}
-
         <span
-          className={`block absolute ${
-            isOpen ? "h-1 w-4" : "h-1 w-6"
-          } rounded-full bg-[#495057] dark:bg-grey-300 transform transition-transform duration-300 ease-in-out ${
-            isOpen ? "rotate-45 translate-y-1" : "-translate-y-2"
+          className={`block absolute h-1 w-6 rounded-full bg-neutral-07 dark:bg-grey-300 transform transition-transform duration-300 ease-in-out ${
+            isOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
           }`}
         />
-        {/* Middle Bar */}
         <span
-          className={`block absolute h-1 w-6 rounded-full bg-[#495057] dark:bg-grey-300 transition-opacity duration-300 ease-in-out ${
+          className={`block absolute h-1 w-6 rounded-full bg-neutral-07 dark:bg-grey-300 transition-opacity duration-300 ease-in-out ${
             isOpen ? "opacity-0" : "opacity-100"
           }`}
         />
-        {/* Bottom Bar */}
         <span
-          className={`block absolute ${
-            isOpen ? "h-1 w-4" : "h-1 w-6"
-          } rounded-full bg-[#495057] dark:bg-grey-300 transform transition-transform duration-300 ease-in-out ${
-            isOpen ? "-rotate-45 -translate-y-1" : "translate-y-2"
+          className={`block absolute h-1 w-6 rounded-full bg-neutral-07 dark:bg-grey-300 transform transition-transform duration-300 ease-in-out ${
+            isOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
           }`}
         />
-
-        {/* Top Bar */}
       </button>
 
       <AnimatePresence>
@@ -56,81 +94,49 @@ export function HamburgerMenu() {
             {/* Backdrop */}
             <motion.div
               className="fixed inset-0 z-30 bg-black"
-              initial={{ opacity: 0 }} // Start state
-              animate={{ opacity: 0.8 }} // Animate to full opacity
-              exit={{ opacity: 0 }} // Animate out
-              transition={{ duration: 0.3 }} // Duration of the animation
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={toggleMenu}
             />
 
             {/* Sidebar Menu */}
             <motion.div
-              className="fixed top-0 right-0 h-full z-40 bg-bg-color dark:bg-grey-800 py-10 ~px-5/28 shadow-lg"
-              initial={{ x: "100%" }} // Starts from off-screen (right)
-              animate={{ x: 0 }} // Animates to its final position (in view)
-              exit={{ x: "100%" }} // Animates out of view when closed
-              transition={{
-                type: "spring",
-                stiffness: 900,
-                damping: 30,
-              }}
+              className="fixed top-0 right-0 lg:w-80 md:w-[290px] sm:w-56 h-full z-40 bg-neutral-03 dark:bg-grey-800 py-10 px-6 shadow-lg rounded-l-md"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <ul className="mt-14 text-[16px] flex flex-col gap-6">
-                {["/", "/account", "/cart", "/shop"].map((section, index) => (
+              <ul className="mt-14 w-full text-base flex items-center flex-col gap-4">
+                {menuItems.map((item, index) => (
                   <motion.li
-                    key={section}
-                    className="font-semibold text-center list-none p-2 rounded-lg hover:bg-orange-400 dark:hover:bg-grey-700 
-                 transition-all duration-200 ease-in-out transform hover:scale-110"
-                    initial={{ x: "100%", opacity: 0 }} // Start off-screen and hidden
-                    animate={{ x: 0, opacity: 1 }} // Animate to final position and visible
-                    exit={{ x: "100%", opacity: 0 }} // Exit state
+                    key={item.path}
+                    className="font-semibold text-center list-none p-3 rounded-md hover:bg-orange-200 dark:hover:bg-grey-700 transition-all duration-200 ease-in-out transform hover:scale-105 w-full"
+                    initial={{ x: "100%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: "100%", opacity: 0 }}
                     transition={{
                       type: "spring",
-                      stiffness: 700,
+                      stiffness: 300,
                       damping: 25,
-                      delay: index * 0.2, // Staggered delay for each item
+                      delay: index * 0.1,
                     }}
                   >
                     <Link
-                      to={section}
-                      className="cursor-pointer transition-all min-w-fit flex items-center justify-center ~gap-2/4"
+                      to={item.path}
+                      className="flex items-center justify-center gap-3 text-neutral-07 dark:text-grey-200"
                       onClick={toggleMenu}
                     >
-                      {section === "/" && (
-                        <>
-                          <HiOutlineHome className="~text-lg/2xl" />
-                          <span>Home</span>
-                        </>
-                      )}
-                      {section === "/account" && (
-                        <>
-                          <HiOutlineUser className="~text-lg/2xl" />
-                          <span>Account</span>
-                        </>
-                      )}
-                      {section === "/shop" && (
-                        <>
-                          <HiOutlineShoppingCart className="~text-lg/2xl" />
-                          <span>Shop</span>
-                        </>
-                      )}
-                      {section === "/cart" && (
-                        <>
-                          <div className="flex items-center gap-0.5">
-                            <CartIcon />
-                            <span className="flex items-center justify-center w-5 h-5 p-2 text-sm text-white bg-black rounded-full">
-                              2
-                            </span>
-                          </div>
-                          <span>Cart</span>
-                        </>
-                      )}
+                      {item.icon}
+                      <span>{item.label}</span>
                     </Link>
                   </motion.li>
                 ))}
 
-                <div className="flex items-center gap-4 mt-6">
+                <div className="flex items-center justify-between gap-4 mt-8">
                   <motion.li
                     className="font-semibold text-center list-none"
                     initial={{ x: "100%", opacity: 0 }}
@@ -138,14 +144,12 @@ export function HamburgerMenu() {
                     exit={{ x: "100%", opacity: 0 }}
                     transition={{
                       type: "spring",
-                      stiffness: 700,
+                      stiffness: 300,
                       damping: 25,
-                      delay: 0.8,
+                      delay: 0.5,
                     }}
                   >
-                    <div className="flex items-center justify-center">
-                      <DarkModeToggle />
-                    </div>
+                    <DarkModeToggle />
                   </motion.li>
 
                   <motion.li
@@ -155,14 +159,12 @@ export function HamburgerMenu() {
                     exit={{ x: "100%", opacity: 0 }}
                     transition={{
                       type: "spring",
-                      stiffness: 700,
+                      stiffness: 300,
                       damping: 25,
-                      delay: 1.0,
+                      delay: 0.6,
                     }}
                   >
-                    <div className="flex items-center justify-center">
-                      <Logout />
-                    </div>
+                    <Logout />
                   </motion.li>
                 </div>
               </ul>

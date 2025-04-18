@@ -150,9 +150,12 @@ function App() {
               fontSize: "16px",
               maxWidth: "500px",
               padding: "16px 24px",
-              backgroundColor: "var(--neutral-03)",
-              color: "var(--color-grey-800)",
             },
+            className: `
+      bg-neutral-03 text-color-grey-800
+      dark:bg-neutral-07 dark:text-grey-200
+      transition-all duration-200
+    `,
           }}
         />
       </HeroUIProvider>

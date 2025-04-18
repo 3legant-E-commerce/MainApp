@@ -44,6 +44,7 @@ const RenderCartItems = ({
         rating={item.rating}
         description={item.description}
         price={item.price}
+        onClick={() => onClick?.(item.id)}
       />
     ) : activeCart === 1 ? (
       <ShopCartView1
