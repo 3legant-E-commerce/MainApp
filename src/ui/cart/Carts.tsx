@@ -1,7 +1,7 @@
 import Button from "../Button";
 import CartTitle from "./CartTitle";
 import StarsRating from "../Star";
-import WishListButton from "../WishListButton";
+import WishListButton from "../../components/account/AddToWishlists";
 import { formatCurrency } from "../../utils/helper";
 
 export function CartCol({

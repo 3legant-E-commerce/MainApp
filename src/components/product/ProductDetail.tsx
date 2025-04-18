@@ -1,21 +1,17 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../cartPage/cartSlice";
-import Button from "../../ui/Button";
-import StarsRating from "../../ui/Star";
 import { TimeCart } from "../../ui/cart/Carts";
 import { Loading } from "../../ui/Loading";
-import WishListButton from "../../ui/WishListButton";
+import StarsRating from "../../ui/Star";
 import { formatCurrency } from "../../utils/helper";
+import AddToCart from "../account/AddToCart";
+import AddToWishlist from "../account/AddToWishlists";
 import { useShoping } from "../shop/useShoping";
-import { useNavigate } from "react-router-dom";
 
 export default function ProductDetail() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { shoping, isLoading, error } = useShoping();
 
-  const { id, title, discount, rating, description, price } = shoping || {};
+  const { id, title, discount, rating, description, price, image, images } =
+    shoping || {};
 
   const [time] = useState([
     { id: 1, hour: 2, day: "Days" },
@@ -29,19 +25,6 @@ export default function ProductDetail() {
   // Handle loading and error states
   if (isLoading) return <Loading />;
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
-
-  const handleAddToCart = () => {
-    const newItem = {
-      shopId: id,
-      title,
-      quantity: 1,
-      unitPrice: priceWithDiscount,
-      totalPrice: priceWithDiscount,
-    };
-
-    dispatch(addItem(newItem));
-    navigate(`/cart/${shoping.id}`);
-  };
 
   return (
     <div className="flex justify-center xl:w-3/5">
@@ -88,11 +71,8 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        <WishListButton />
-
-        <Button className="mt-4" onClick={handleAddToCart}>
-          Add to cart
-        </Button>
+        <AddToCart />
+        <AddToWishlist />
       </div>
     </div>
   );

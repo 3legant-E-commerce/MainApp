@@ -1,26 +1,16 @@
-import { ReactNode, MouseEventHandler } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-interface ButtonIconProps {
-  children: ReactNode;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  disabled?: boolean;
-  className?: string;
+interface ButtonIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
 }
 
-function ButtonIcon({
-  children,
-  onClick,
-  disabled,
-  className,
-}: ButtonIconProps) {
+function ButtonIcon({ children, className = "", ...props }: ButtonIconProps) {
   return (
     <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`p-2 rounded-lg hover:bg-orange-400 dark:hover:bg-grey-700 
-                 transition-all duration-200 ease-in-out transform hover:scale-110 ${className}`}
+      className={`p-2 rounded-md transition-all hover:bg-orange-100 dark:hover:bg-grey-600 ${className}`}
+      {...props}
     >
-      <div className="text-brand-600">{children}</div>
+      {children}
     </button>
   );
 }

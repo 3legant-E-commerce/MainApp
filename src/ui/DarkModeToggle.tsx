@@ -16,7 +16,6 @@ function DarkModeToggle() {
     root.classList.toggle("dark", isDark);
     localStorage.setItem("theme", isDark ? "dark" : "light");
 
-    // Listen for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e: MediaQueryListEvent) => setIsDark(e.matches);
     mediaQuery.addEventListener("change", handleChange);
@@ -28,11 +27,12 @@ function DarkModeToggle() {
     <ButtonIcon
       onClick={() => setIsDark((prev) => !prev)}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      className="focus:ring-2 focus:ring-orange-200"
     >
       {isDark ? (
-        <IoSunnyOutline className="~text-lg/2xl text-gray-700 dark:hover:text-white dark:text-white" />
+        <IoSunnyOutline className="~text-lg/2xl text-neutral-07 dark:text-grey-200" />
       ) : (
-        <IoMoonOutline className="~text-lg/2xl text-grey-700 dark:hover:text-white" />
+        <IoMoonOutline className="~text-lg/2xl text-neutral-07 dark:text-grey-200" />
       )}
     </ButtonIcon>
   );

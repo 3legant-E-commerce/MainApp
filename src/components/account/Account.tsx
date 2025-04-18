@@ -19,7 +19,7 @@ export default function Account() {
 
   useEffect(() => {
     const currentAccount = account.find(
-      (acc) => acc.to && location.pathname.endsWith(acc.to)
+      (acc) => acc.to && location.pathname.includes(acc.to)
     );
     if (currentAccount) {
       setPageTitle(currentAccount.title);
@@ -28,12 +28,12 @@ export default function Account() {
 
   return (
     <MainContainer>
-      <div className="lg:grid lg:grid-cols-[1fr_3fr] flex flex-col">
+      <div className="lg:grid lg:grid-cols-[1fr_3fr] flex flex-col gap-6">
         <h2 className="col-span-2 text-center ~text-2xl/4xl font-semibold mt-20 ~py-6/16">
           {pageTitle}
         </h2>
 
-        <div className="border-2 bg-neutral-03 px-4 flex flex-col rounded-md h-fit dark:bg-grey-800  dark:border-grey-700">
+        <div className="border-2 bg-neutral-03 px-4 flex flex-col rounded-md h-fit dark:bg-grey-800 dark:border-grey-700">
           <AccountNav account={account} setPageTitle={setPageTitle} />
         </div>
 

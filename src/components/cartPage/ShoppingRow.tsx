@@ -5,21 +5,21 @@ import {
   decreaseItemQuantity,
   deleteItem,
 } from "./cartSlice";
+import { formatCurrency } from "../../utils/helper";
 
-interface Shop {
+interface CartItem {
   shopId: string;
-  title: string;
   quantity: number;
   unitPrice: number;
   totalPrice: number;
+  title: string;
   image?: string;
-  images?: string;
+  images?: string | string[];
 }
 
-function ShoppingRow({ shop }: { shop: Shop }) {
+function ShoppingRow({ shop }: { shop: CartItem }) {
   const { shopId, title, quantity, unitPrice, totalPrice, image, images } =
     shop;
-  // console.log("my shop image", image);
   const dispatch = useDispatch();
 
   const handleIncrease = () => {
@@ -34,42 +34,55 @@ function ShoppingRow({ shop }: { shop: Shop }) {
     dispatch(deleteItem(shopId));
   };
 
+  const displayImage =
+    image ||
+    (images && images.length > 0
+      ? images[0]
+      : "../../../public/images/airpod-01.jpg");
+
   return (
     <Table.Row>
-      <div className="flex gap-4 h-20">
+      <div className="flex gap-4 h-20 items-center">
         <img
-          src={images?.at(0) ? images.at(0) : image}
-          className="w-3/5 rounded-sm shadow-sm"
+          src={displayImage}
+          className="object-cover w-20 h-full rounded-md"
           alt={title}
         />
-        <div className="flex w-2/5 flex-col justify-evenly">
-          <h3 className="capitalize font-semibold ~text-sm/medium">{title}</h3>
-          <div
-            className="max-lg:flex self-start hidden gap-2 items-center justify-center text-neutral-04 cursor-pointer ~text-xs/sm"
+        <div className="flex flex-col justify-between flex-1">
+          <h3 className="capitalize font-semibold text-sm md:text-base">
+            {title}
+          </h3>
+          <button
             onClick={handleRemove}
+            className="flex items-center gap-1 text-red-500 hover:text-red-700 text-sm"
           >
-            <span className="text-lg">&#9747;</span>
+            <span className="text-lg">☓</span>
             <span>Remove</span>
-          </div>
+          </button>
         </div>
       </div>
-      <div className="lg:flex hidden justify-between border-2 border-stone-400 rounded-md">
-        <button className="text-lg font-semibold px-2" onClick={handleDecrease}>
-          -
-        </button>
-        <input
-          type="text"
-          value={quantity}
-          readOnly
-          className="w-2/3 text-center"
-        />
-        <button className="text-lg font-semibold px-2" onClick={handleIncrease}>
-          +
-        </button>
-      </div>
 
-      <div className="flex max-lg:justify-end">{unitPrice}</div>
-      <div className="flex max-lg:justify-end">{totalPrice}</div>
+      <div className="flex justify-center items-center">
+        <div className="flex border-2 border-gray-300 rounded-md">
+          <button
+            className="text-lg font-semibold ~px-1/3 py-1 hover:bg-gray-100"
+            onClick={handleDecrease}
+          >
+            -
+          </button>
+          <span className="w-12 text-center flex items-center justify-center">
+            {quantity}
+          </span>
+          <button
+            className="text-lg font-semibold ~px-1/3 py-1 hover:bg-gray-100"
+            onClick={handleIncrease}
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div className="text-center">{formatCurrency(unitPrice)}</div>
+      <div className="text-center">{formatCurrency(totalPrice)}</div>
     </Table.Row>
   );
 }
