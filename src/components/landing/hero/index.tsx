@@ -1,7 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
-import Button from "../../ui/Button";
+import Button from "../../../ui/Button";
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -17,17 +17,17 @@ export default function Hero() {
         </div>
 
         <div className="p-4 text-center sm:w-1/2 md:text-left">
-          <h1 className="mb-6 ~text-3xl/6xl capitalize font-semibold">
+          <h1 className="mb-4 ~text-2xl/6xl capitalize font-semibold">
             Listen to the <span className="pr-2 text-blue-500">amazing</span>
-            Lorem, ipsum dolor.
+            Lorem ipsum dolor sit amet adipisicing.
           </h1>
 
-          <p className="text-lg text-gray-700 dark:text-grey-400">
+          <p className="~text-sm/lg text-gray-700 dark:text-grey-400">
             Experience music like never before
           </p>
 
           <Button
-            className="~mt-6/10 ~px-12/8 ~py-6/7 ~text-sm/xl"
+            className="~mt-6/10 ~px-12/8 ~py-6/7 ~text-sm/xl max-md:mx-auto"
             onClick={() => navigate("/shop")}
           >
             Shopping Now

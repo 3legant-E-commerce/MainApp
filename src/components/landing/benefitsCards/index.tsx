@@ -3,9 +3,9 @@ import {
   LockIcon,
   PaymentIcon,
   PhoneIcon,
-} from "../../assets/icons";
-import { BenefitCart } from "../../ui/cart/Carts";
-import MainContainer from "../../ui/MainContainer";
+} from "../../../assets/icons";
+import { BenefitCart } from "../../../ui/cart/Carts";
+import MainContainer from "../../../ui/MainContainer";
 
 export default function BenefitsCards() {
   const benefits = [

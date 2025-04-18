@@ -1,5 +1,5 @@
-import CreateShopForm from "../components/shop/CreateShopForm";
-import Modal from "../ui/Modal";
+import CreateShopForm from "./CreateShopForm";
+import Modal from "../../ui/Modal";
 
 export default function AddShop() {
   return (

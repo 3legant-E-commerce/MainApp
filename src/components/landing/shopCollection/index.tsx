@@ -1,6 +1,6 @@
-import { CartCol, CartRow } from "../../ui/cart/Carts";
-import CartHeader from "../../ui/cart/CartHeader";
-import MainContainer from "../../ui/MainContainer";
+import { CartCol, CartRow } from "../../../ui/cart/Carts";
+import CartHeader from "../../../ui/cart/CartHeader";
+import MainContainer from "../../../ui/MainContainer";
 import { useNavigate } from "react-router-dom";
 
 export default function ShopCollection() {

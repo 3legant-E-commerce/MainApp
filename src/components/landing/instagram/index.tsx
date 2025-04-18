@@ -1,4 +1,4 @@
-import MainContainer from "../../ui/MainContainer";
+import MainContainer from "../../../ui/MainContainer";
 
 export default function Instagram() {
   return (

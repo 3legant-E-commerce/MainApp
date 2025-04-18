@@ -21,15 +21,16 @@ export default function Account() {
     const currentAccount = account.find(
       (acc) => acc.to && location.pathname.includes(acc.to)
     );
-    if (currentAccount) {
-      setPageTitle(currentAccount.title);
-    }
+    setPageTitle(currentAccount?.title || account[0].title); // Fallback to Dashboard
   }, [location, account]);
 
   return (
     <MainContainer>
-      <div className="lg:grid lg:grid-cols-[1fr_3fr] flex flex-col gap-6">
-        <h2 className="col-span-2 text-center ~text-2xl/4xl font-semibold mt-20 ~py-6/16">
+      <div className="lg:grid lg:grid-cols-[1fr_3fr] flex flex-col gap-6 ~px-4/8">
+        <h2
+          className="col-span-2 text-center ~text-2xl/4xl font-semibold mt-20 ~py-6/16"
+          aria-live="polite"
+        >
           {pageTitle}
         </h2>
 
