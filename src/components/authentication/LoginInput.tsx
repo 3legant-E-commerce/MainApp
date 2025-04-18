@@ -25,7 +25,7 @@ export default function LoginInput() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormValues>({
     // defaultValues: { email: "ramtin@example.com", password: "RAMTIN1234" },
   });
 
