@@ -1,24 +1,64 @@
-import { useState } from "react";
-import { TimeCart } from "../../ui/cart/Carts";
+import { useState, useEffect, useMemo } from "react";
+
+import { useShoping } from "../shop/useShoping";
 import { Loading } from "../../ui/Loading";
 import StarsRating from "../../ui/Star";
 import { formatCurrency } from "../../utils/helper";
 import AddToCart from "../account/AddToCart";
 import AddToWishlist from "../account/AddToWishlists";
-import { useShoping } from "../shop/useShoping";
+import { TimeCart } from "../../ui/cart/Carts";
 
 export default function ProductDetail() {
   const { shoping, isLoading, error } = useShoping();
+  const { title, discount, rating, description, price } = shoping || {};
 
-  const { id, title, discount, rating, description, price, image, images } =
-    shoping || {};
+  // Initialize countdown state
+  const [time, setTime] = useState({
+    days: 2,
+    hours: 12,
+    minutes: 5,
+    seconds: 29,
+  });
 
-  const [time] = useState([
-    { id: 1, hour: 2, day: "Days" },
-    { id: 2, hour: 12, day: "Hours" },
-    { id: 3, hour: 5, day: "Minutes" },
-    { id: 4, hour: 29, day: "Seconds" },
-  ]);
+  // Memoize endTime to prevent recreation on every render
+  const endTime = useMemo(() => {
+    const end = new Date();
+    end.setDate(end.getDate() + time.days);
+    end.setHours(end.getHours() + time.hours);
+    end.setMinutes(end.getMinutes() + time.minutes);
+    end.setSeconds(end.getSeconds() + time.seconds);
+    return end;
+  }, []); // Empty deps since initial time is static
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date();
+      const timeDifference = endTime.getTime() - now.getTime();
+
+      if (timeDifference <= 0) {
+        // Countdown finished
+        setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      setTime({ days, hours, minutes, seconds });
+    };
+
+    // Update every second
+    const interval = setInterval(updateCountdown, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, [endTime]);
 
   const priceWithDiscount = price - (price * (discount ?? 0)) / 100;
 
@@ -50,14 +90,10 @@ export default function ProductDetail() {
             Offer expires in:
           </p>
           <div className="flex gap-4 ~mb-4/6">
-            {time.map((item) => (
-              <TimeCart
-                key={item.id}
-                hour={item.hour}
-                day={item.day}
-                bg="bg-neutral-02"
-              />
-            ))}
+            <TimeCart hour={time.days} day="Days" bg="bg-neutral-02" />
+            <TimeCart hour={time.hours} day="Hours" bg="bg-neutral-02" />
+            <TimeCart hour={time.minutes} day="Minutes" bg="bg-neutral-02" />
+            <TimeCart hour={time.seconds} day="Seconds" bg="bg-neutral-02" />
           </div>
         </div>
 

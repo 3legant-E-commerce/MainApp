@@ -19,7 +19,6 @@ export default function Featured() {
         <div className="relative flex items-center">
           {/* Sliding Wrapper */}
           <div ref={containerRef} className="flex gap-6">
-            {/* SVGs (Repeated for Seamless Loop) */}
             {[...Array(2)].map((_, index) => (
               <Fragment key={index}>
                 <div className="shrink-0">

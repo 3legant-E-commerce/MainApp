@@ -13,8 +13,6 @@ type FormValues = {
 };
 
 export default function SignupInput() {
-  // const [formData, setFormData] = useState<FormValues | undefined>(undefined);
-
   const { signup, isPending } = useSignup();
 
   const {

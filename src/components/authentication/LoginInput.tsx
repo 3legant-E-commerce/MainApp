@@ -26,7 +26,7 @@ export default function LoginInput() {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { email: "ramtin@example.com", password: "RAMTIN1234" },
+    // defaultValues: { email: "ramtin@example.com", password: "RAMTIN1234" },
   });
 
   function onSubmit(data: FormValues) {

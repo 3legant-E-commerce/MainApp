@@ -1,10 +1,10 @@
 import Featured from "../components/featured";
-import Hero from "../components/heroSection";
-import ShopCollection from "../components/shopCollection";
-import BestSeller from "../components/bestSellers";
-import Promotion from "../components/promotion";
-import BenefitsCards from "../components/benefitsCards";
-import Instagram from "../components/instagram";
+import Hero from "../components/landing/hero";
+import ShopCollection from "../components/landing/shopCollection";
+import BestSeller from "../components/landing/bestSellers";
+import Promotion from "../components/landing/promotion";
+import BenefitsCards from "../components/landing/benefitsCards";
+import Instagram from "../components/landing/instagram";
 import ScrollToTop from "../ui/ScrollToTop";
 
 function Landing() {

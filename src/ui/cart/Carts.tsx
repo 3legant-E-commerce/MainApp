@@ -186,11 +186,11 @@ export function BenefitCart({
 }
 
 export function TimeCart({
-  hour,
+  hour = 0, // Default to 0 if undefined
   day,
   bg = "bg-white",
 }: {
-  hour: number;
+  hour?: number; // Allow undefined but provide default
   day: string;
   bg?: string;
 }) {
@@ -199,7 +199,7 @@ export function TimeCart({
       <span
         className={`flex items-center justify-center ~w-10/16 ~h-10/16 ~text-2xl/3xl font-semibold ${bg} text-neutral-07`}
       >
-        {hour}
+        {hour.toString().padStart(2, "0")}
       </span>
       <span className="text-xs font-semibold capitalize text-neutral-04 dark:text-grey-300">
         {day}
