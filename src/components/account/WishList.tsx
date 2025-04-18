@@ -54,7 +54,7 @@ function WishList() {
         {wishlist.map((item) => (
           <div
             key={item.shopId}
-            className="flex items-center gap-4 border-b border-gray-200 dark:border-gray-700 pb-4"
+            className="flex items-center ~gap-2/4 border-b border-gray-200 dark:border-gray-700 pb-4"
           >
             <img
               src={
@@ -69,10 +69,10 @@ function WishList() {
               alt={item.title}
             />
             <div className="flex-1">
-              <p className="font-medium text-gray-800 dark:text-white">
+              <p className="font-medium ~text-xs/xl text-gray-800 dark:text-white">
                 {item.title}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="~text-xs/lg text-gray-500 dark:text-gray-400">
                 {formatCurrency(item.unitPrice)}
               </p>
             </div>
@@ -124,7 +124,7 @@ function WishList() {
         {wishlist.map((item) => (
           <div
             key={item.shopId}
-            className="flex items-center gap-4 border-b border-gray-200 dark:border-gray-700 pb-4"
+            className="flex items-center ~gap-2/4 border-b border-gray-200 dark:border-gray-700 pb-4"
           >
             <img
               src={
@@ -139,10 +139,10 @@ function WishList() {
               alt={item.title}
             />
             <div className="flex-1">
-              <p className="font-medium text-gray-800 dark:text-white">
+              <p className="~text-xs/xl text-gray-800 dark:text-white">
                 {item.title}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="~text-xs/lg text-gray-500 dark:text-gray-400">
                 {formatCurrency(item.unitPrice)}
               </p>
             </div>
